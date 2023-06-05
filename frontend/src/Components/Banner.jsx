@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../assets/img/logo.svg';
+
+
 const Banner = () => {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
 

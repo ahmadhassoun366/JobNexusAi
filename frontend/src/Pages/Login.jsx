@@ -1,12 +1,13 @@
 import React from "react";
 import loginImage from '../assets/img/login.png';
-// import Navbar from "components/Navbar.js";
-// import FooterSmall from "components/FooterSmall.js";
+import Navbar from "../Components/Header";
+import SmallFooter from "../Components/SmallFooter";
+
 
 export default function Login() {
   return (
     <>
-      {/* <Navbar transparent /> */}
+      <Navbar transparent />
       <main>
         <section className="absolute w-full h-full">
           <div
@@ -29,27 +30,28 @@ export default function Login() {
                     </div>
                     <div className="btn-wrapper text-center">
                       <button
-                        className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                        className="bg-white active:bg-gray-100 text-gray-800 px-2 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
                         type="button"
                         style={{ transition: "all .15s ease" }}
                       >
-                        {/* <img
+                        <img
                           alt="..."
                           className="w-5 mr-1"
-                          src={require("assets/img/github.svg").default}
-                        /> */}
-                        Github
+                          src={require("../assets/img/github.svg").default}
+                        />              
+                          Github
                       </button>
                       <button
-                        className="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                        className="bg-white active:bg-gray-100 text-gray-800 px-2 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
                         type="button"
                         style={{ transition: "all .15s ease" }}
                       >
-                        {/* <img
+                        {/* <BsGoogle size={20} className="mx-3 text-red-600"/> */}
+                        <img
                           alt="..."
                           className="w-5 mr-1"
-                          src={require("assets/img/google.svg").default}
-                        /> */}
+                          src={require("../assets/img/google.svg").default}
+                        />
                         Google
                       </button>
                     </div>
@@ -138,9 +140,10 @@ export default function Login() {
               </div>
             </div>
           </div>
-          {/* <FooterSmall absolute /> */}
+          <SmallFooter absolute />
         </section>
       </main>
+
     </>
   );
 }
