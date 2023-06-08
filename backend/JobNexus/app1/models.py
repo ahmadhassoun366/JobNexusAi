@@ -49,3 +49,68 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Seeker(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    profilePicture = models.ImageField(upload_to='static/product_images')
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    about = models.CharField(max_length=200)
+    education = models.CharField(max_length=50)
+    skill = models.CharField(max_length=200)
+    experience = models.CharField(max_length=200)
+    language = models.CharField(max_length=100)
+
+
+class Recruiter(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    profilePicture = models.ImageField(upload_to='static/product_images')
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30)
+    about = models.CharField(max_length=200)
+
+
+class Company(models.Model):
+    recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    field = models.CharField(max_length=200)
+    size = models.IntegerField()
+    type = models.CharField(max_length=200)
+
+
+class JobType(models.Model):
+    type = models.CharField(max_length=100)
+
+
+class JobLocationType(models.Model):
+    locationType = models.CharField(max_length=50)
+
+
+class Job(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
+    type = models.ForeignKey(JobType, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    locationType = models.ForeignKey(JobLocationType, on_delete=models.CASCADE)
+    jobTile = models.CharField(max_length=200)
+    description = models.CharField(max_length=200)
+
+
+class Application(models.Model):
+    seeker = models.ForeignKey(Seeker, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    cv = models.FileField(upload_to='static/cv')
+    coverLetter = models.FileField(upload_to='static/coverLetter')
+    similarity = models.FloatField(default=None)
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='static/blog')
+    text = models.CharField(max_length=1000)
+
