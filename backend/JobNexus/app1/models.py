@@ -50,45 +50,64 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
-    
+
 class Country(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class Seeker(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    profilePicture = models.ImageField(upload_to='static/product_images')
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    title = models.CharField(max_length=30)
-    about = models.CharField(max_length=200)
-    education = models.CharField(max_length=50)
-    skill = models.CharField(max_length=200)
-    experience = models.CharField(max_length=200)
-    language = models.CharField(max_length=100)
+    profilePicture = models.ImageField(upload_to='static/product_images', null=True, blank=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
+    title = models.CharField(max_length=30, null=True, blank=True)
+    about = models.CharField(max_length=200, null=True, blank=True)
+    education = models.CharField(max_length=50, null=True, blank=True)
+    skill = models.CharField(max_length=200, null=True, blank=True)
+    experience = models.CharField(max_length=200, null=True, blank=True)
+    language = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user}"
 
 
 class Recruiter(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    profilePicture = models.ImageField(upload_to='static/product_images')
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    title = models.CharField(max_length=30)
-    about = models.CharField(max_length=200)
+    profilePicture = models.ImageField(upload_to='static/product_images', null=True, blank=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
+    title = models.CharField(max_length=30, null=True, blank=True)
+    about = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user}"
 
 
 class Company(models.Model):
+    name = models.CharField(max_length=200)
     recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
     field = models.CharField(max_length=200)
     size = models.IntegerField()
     type = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class JobType(models.Model):
     type = models.CharField(max_length=100)
 
+    def __str__(self):
+        return f"{self.type}"
+
 
 class JobLocationType(models.Model):
     locationType = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.locationType}"
 
 
 class Job(models.Model):
@@ -100,16 +119,25 @@ class Job(models.Model):
     jobTile = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"{self.jobTile}"
+
 
 class Application(models.Model):
     seeker = models.ForeignKey(Seeker, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     cv = models.FileField(upload_to='static/cv')
     coverLetter = models.FileField(upload_to='static/coverLetter')
-    similarity = models.FloatField(default=None)
+    similarity = models.FloatField(null=True, blank=True,default=None)
+
+    def __str__(self):
+        return f"{self.job}"
 
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='static/blog')
     text = models.CharField(max_length=1000)
+
+    def __str__(self):
+        return f"{self.title}"

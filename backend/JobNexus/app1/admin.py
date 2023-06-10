@@ -36,7 +36,7 @@ class RecruiterAdmin(admin.ModelAdmin):
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('recruiter', 'field', 'country', 'size', 'type')
+    list_display = ('name', 'recruiter', 'field', 'country', 'size', 'type')
 
 
 class JobTypeAdmin(admin.ModelAdmin):
