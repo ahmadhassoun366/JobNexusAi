@@ -59,7 +59,7 @@ class BlogAdmin(admin.ModelAdmin):
     list_display = ('title', 'image', 'text')
 
 
-class CountryAmin(admin.ModelAdmin):
+class CountryAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
 
@@ -70,6 +70,6 @@ admin.site.register(Recruiter, RecruiterAdmin)
 admin.site.register(JobType, JobTypeAdmin)
 admin.site.register(JobLocationType, JobLocationTypeAdmin)
 admin.site.register(Job, JobAdmin)
-admin.site.register(Country, CountryAmin)
+admin.site.register(Country, CountryAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(Blog, BlogAdmin)

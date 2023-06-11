@@ -9,7 +9,6 @@ class CustomUserManager(BaseUserManager):
     Custom user model manager where email is the unique identifiers
     for authentication instead of usernames.
     """
-
     def create_user(self, email, password, **extra_fields):
         """
         Create and save a User with the given email and password.
@@ -52,6 +51,9 @@ class CustomUser(AbstractUser):
 
 
 class Country(models.Model):
+    class Meta:
+        verbose_name = "Country"
+        verbose_name_plural = "Countries"
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -59,6 +61,9 @@ class Country(models.Model):
 
 
 class Seeker(models.Model):
+    class Meta:
+        verbose_name = "Seeker"
+        verbose_name_plural = "Seekers"
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     profilePicture = models.ImageField(upload_to='static/product_images', null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
@@ -74,6 +79,9 @@ class Seeker(models.Model):
 
 
 class Recruiter(models.Model):
+    class Meta:
+        verbose_name = "Recruiter"
+        verbose_name_plural = "Recruiters"
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     profilePicture = models.ImageField(upload_to='static/product_images', null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
@@ -85,6 +93,9 @@ class Recruiter(models.Model):
 
 
 class Company(models.Model):
+    class Meta:
+        verbose_name = "Company"
+        verbose_name_plural = "Companies"
     name = models.CharField(max_length=200)
     recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
@@ -97,6 +108,9 @@ class Company(models.Model):
 
 
 class JobType(models.Model):
+    class Meta:
+        verbose_name = "JobType"
+        verbose_name_plural = "JobTypes"
     type = models.CharField(max_length=100)
 
     def __str__(self):
@@ -104,6 +118,9 @@ class JobType(models.Model):
 
 
 class JobLocationType(models.Model):
+    class Meta:
+        verbose_name = "JobLocationType"
+        verbose_name_plural = "JobLocationTypes"
     locationType = models.CharField(max_length=50)
 
     def __str__(self):
@@ -111,6 +128,9 @@ class JobLocationType(models.Model):
 
 
 class Job(models.Model):
+    class Meta:
+        verbose_name = "Job"
+        verbose_name_plural = "Jobs"
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
     type = models.ForeignKey(JobType, on_delete=models.CASCADE)
@@ -124,6 +144,9 @@ class Job(models.Model):
 
 
 class Application(models.Model):
+    class Meta:
+        verbose_name = "Application"
+        verbose_name_plural = "Applications"
     seeker = models.ForeignKey(Seeker, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     cv = models.FileField(upload_to='static/cv')
@@ -135,6 +158,9 @@ class Application(models.Model):
 
 
 class Blog(models.Model):
+    class Meta:
+        verbose_name = "Blog"
+        verbose_name_plural = "Blogs"
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='static/blog')
     text = models.CharField(max_length=1000)
