@@ -9,7 +9,7 @@ import Register from './Pages/Register';
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+        <Routes>
           <Route path="/"  element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
           {/* <Route path="contact" element={<Contact />} /> */}
