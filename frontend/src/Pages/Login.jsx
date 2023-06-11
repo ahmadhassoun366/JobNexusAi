@@ -1,13 +1,13 @@
 import React from "react";
 import loginImage from '../assets/img/login.png';
-import Navbar from "../Components/Header";
+import Header from "../Components/Header";
 import SmallFooter from "../Components/SmallFooter";
 
 
 export default function Login() {
   return (
     <>
-      <Navbar transparent />
+      <Header transparent />
       <main>
         <section className="absolute w-full h-full">
           <div
