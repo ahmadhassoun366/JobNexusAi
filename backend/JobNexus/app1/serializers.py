@@ -3,7 +3,7 @@ from rest_framework import serializers
 from .models import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as JwtTokenObtainPairSerializer
 from django.contrib.auth.hashers import make_password
-
+from .models import Blog
 
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
     username_field = get_user_model().USERNAME_FIELD
@@ -102,4 +102,9 @@ class GETApplicationSerializer(serializers.ModelSerializer):
 class PostApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobLocationType
+        fields = "__all__"
+
+class BlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
         fields = "__all__"

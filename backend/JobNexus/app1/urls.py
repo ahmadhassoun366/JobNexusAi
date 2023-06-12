@@ -17,5 +17,9 @@ urlpatterns = [
     path('api/company_register/', CompanyRegisterCreateAPIView.as_view(), name='company_register'),
 
     path('api/job/', JobViewSet.as_view(), name='job'),
-    
+    path('blogs/', BlogCreateAPIView.as_view(), name='blog_create'),
+    path('blogsDetails/<int:pk>/', BlogViewAPIView.as_view(), name='blog_View'),
+    path('blogsList/', BlogListAPIView.as_view(), name='blog_List'),
+    path('blogsUpdate/<int:pk>', BlogUpdateAPIView.as_view(), name='blog_update'),
+    path('blogsDelete/<int:pk>', BlogDeletAPIView.as_view(), name='blog_delete'),
 ]
