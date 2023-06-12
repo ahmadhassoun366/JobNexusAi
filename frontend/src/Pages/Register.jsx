@@ -94,8 +94,8 @@ const Register = () => {
                 </button>
 
                 <button
-              className={`flex justify-center w-full px-6 py-3 mt-4 text-gray-500 border rounded-md md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none ${
-                accountType === 'jobseeker' ? 'border-blue-500' : 'border-gray-500'
+              className={`flex justify-center w-full px-6 py-3 mt-4 text-white border rounded-md md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none ${
+                accountType === 'jobseeker' ? 'bg-blue-500' : 'bg-gray-500'
               }`}
               onClick={() => setAccountType('jobseeker')}
             >                  <svg

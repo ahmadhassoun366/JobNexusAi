@@ -33,7 +33,7 @@ const Tips = () => {
                   JobSeeker
                 </h6>
                 <p className="mt-2 mb-4 text-gray-600">
-                  Find the perfect job for your skills and experience. Create your profile, search job openings, and apply directly. Take the step in your career with our AI-powered job seeker platform!
+                Find the perfect job for your skills and experience. Create your profile, search job openings, and apply directly. Take the step in your career with our AI-powered job seeker platform!
                 </p>
               </div>
             </div>
