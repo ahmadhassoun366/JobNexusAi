@@ -5,9 +5,8 @@ import Blogs from './Pages/Blogs';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from './Pages/Register';
 import Profile from './Pages/Profile';
-// import logintest from './Pages/logintest'
-// import Seeker from './Pages/jobs';
-// import JobDetails from './Pages/jobDetails';
+import Seeker from './Pages/jobs';
+import JobDetails from './Pages/jobDetails';
 import { AuthProvider } from './Services/AuthContext';
 
 

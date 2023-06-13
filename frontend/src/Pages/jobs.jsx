@@ -16,7 +16,6 @@ const Alljobs = () => {
 
     let data = await response.json();
     console.log(data);
-
     if (response.status === 200) {
       setJobs(data);
     } else if (response.statusText === "Unauthorized") {
@@ -25,38 +24,39 @@ const Alljobs = () => {
   };
 
   return (
-    <>
-    <Navbar/>
-      {jobs.map((job) => (
-        <div class="h-screen max-w-2xl mx-auto mt-24 space-y-20">
-          <div class="max-w-screen-md md:w-3/4 mx-auto">
-            <div class="inline-flex flex-col space-y-2 items-center justify-end flex-1 h-full p-4 bg-blue-800 rounded-xl">
-              <p class="w-full text-2xl font-semibold text-white">
-              {job.jobTile}
-              </p>
-              <p class="w-full pb-8 text-sm tracking-wide leading-tight text-white">
-              {job.description}
-              </p>
-              <div class="rounded mr-auto">
-                <div class="opacity-95 border rounded-lg border-white px-4">
-                  <p class="m-auto inset-0 text-sm font-medium leading-normal text-center text-white py-2">
-                    <Link
-                        key={job.id}
-                        to={`/jobDetails/${job.id}`}
-                        className="block md:px-4 text-base 	underline underline-offset-8	 transition hover:text-primary dark:hover:text-primaryLight"
-                        >
-                        Apply
-                    </Link>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-      <h1>hello Seeker</h1>
-    </>
-  );
+  <>
+    
+
+{jobs.map((job) => (
+
+<div key={job.id} class="relative flex min-h-screen flex-col jus items-center justify-center overflow-hidden bg-gray-50 p-6 sm:py-12">
+ 
+<div class="bg-white  shadow-xl shadow-gray-100 w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center  justify-between px-5 py-4 rounded-md">
+  <div>
+    <span class="text-purple-800 text-sm">{job.company.name}</span>
+    <h3 class="font-bold mt-px">{job.jobTile}</h3>
+    <div class="flex items-center gap-3 mt-2">
+      <span class="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-sm">{}</span>
+      <span class="text-slate-600 text-sm flex gap-1 items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+</svg> Remote, UK</span>
+    </div>
+  </div>
+  <div>
+    <button class="bg-purple-900 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">Apply Now <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+</svg>
+</button>
+  </div>
+   </div>
+</div>
+
+))}
+
+  </>
+      
+      );
 };
 
 export default Alljobs;

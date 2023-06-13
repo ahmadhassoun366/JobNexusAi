@@ -85,12 +85,12 @@ class GETJobSerializer(serializers.ModelSerializer):
     jobLocation = JobLocationSerializer(read_only=True)
     jobType = JobTypeSerializer(read_only=True)
 
-    class Meta:
-        model = JobLocationType
+    class Meta: 
+        model = Job
         fields = "__all__"
 
 
-class GETApplicationSerializer(serializers.ModelSerializer):
+class GETApplicationSerializer(serializers.ModelSerializer):    
     seeker = SeekerSerializer(read_only=True)
     job = GETJobSerializer(read_only=True)
 
