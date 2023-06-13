@@ -123,6 +123,13 @@ class JobViewSet(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class JobIdViewSet(APIView):
+    def get(self, request,id):
+        # Logic for handling GET request
+        job = Job.objects.filter(id=id)
+        serializer = GETJobSerializer(job, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
 @permission_classes([IsAuthenticated])
 class JobRegisterCreateAPIView(APIView):
     def post(self, request):

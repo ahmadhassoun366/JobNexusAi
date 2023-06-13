@@ -17,6 +17,10 @@ urlpatterns = [
     path('api/company_register/', CompanyRegisterCreateAPIView.as_view(), name='company_register'),
 
     path('api/job/', JobViewSet.as_view(), name='job'),
+    path('api/job/<int:id>/', JobIdViewSet.as_view(), name='job'),
+
+
+
     path('blogs/', BlogCreateAPIView.as_view(), name='blog_create'),
     path('blogsDetails/<int:pk>/', BlogViewAPIView.as_view(), name='blog_View'),
     path('blogsList/', BlogListAPIView.as_view(), name='blog_List'),

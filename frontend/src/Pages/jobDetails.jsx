@@ -1,36 +1,40 @@
-import { useState, useEffect, useContext } from "react";
-import Navbar from "../Components/Navbar";
-import {useParams} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const JobDetails = () => {
-    const { id } = useParams();
-  let [jobs, setJobs] = useState([]);
+  const { id } = useParams();
+  const [job, setJob] = useState(null);
 
   useEffect(() => {
-    getAllJobs();
+    getJobDetails();
   }, []);
 
-  let getAllJobs = async () => {
-    let response = await fetch("http://127.0.0.1:8000/users/api/job/", {
-      method: "GET",
-    });
+  const getJobDetails = async () => {
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/users/api/job/${id}/`, {
+        method: "GET",
+      });
+      if (response.ok) {
+        const jobData = await response.json();
+        setJob(jobData);
+        console.log(jobData);
 
-    let data = await response.json();
-    console.log(data);
-
-    if (response.status === 200) {
-      setJobs(data);
-    } else if (response.statusText === "Unauthorized") {
-      console.log("can't get jobs");
+      } else {
+        console.error("Failed to fetch job details");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
+
+  if (!job) {
+    return <p>Loading job details...</p>;
+  }
+
   return (
     <>
-    {/* <Navbar/> */}
-      
-      <h1>job details</h1>
-      <h1>{id}</h1>
+ <div className=""></div>
     </>
   );
 };
