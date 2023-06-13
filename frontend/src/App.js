@@ -5,9 +5,9 @@ import Blogs from './Pages/Blogs';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from './Pages/Register';
 import Profile from './Pages/Profile';
-import logintest from './Pages/logintest'
-import Seeker from './Pages/jobs';
-import JobDetails from './Pages/jobDetails';
+// import logintest from './Pages/logintest'
+// import Seeker from './Pages/jobs';
+// import JobDetails from './Pages/jobDetails';
 import { AuthProvider } from './Services/AuthContext';
 
 
@@ -24,8 +24,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/jobs" element={<Seeker />} />
-            <Route path="/jobDetails/:id" element={<JobDetails />} />
+            {/* <Route path="/jobs" element={<Seeker />} />
+            <Route path="/jobDetails/:id" element={<JobDetails />} /> */}
         </Routes>
         </AuthProvider>
       </BrowserRouter>
