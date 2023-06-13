@@ -55,20 +55,8 @@ const AuthProvider = ({ children }) => {
     navigate('/login'); // Replace '/login' with the actual path of your login page
   };
 
-  const register = async (userData) => {
-    try {
-      const response = await axios.post('http://127.0.0.1:8000/api/register/', userData);
+  const register = async () => {
 
-      setIsAuthenticated(true);
-      setUser(response.data.user);
-      setToken(response.data.token);
-      setError('');
-
-      navigate('/'); // Replace '/' with the actual path of your home page
-
-    } catch (error) {
-      setError('Registration failed.');
-    }
   };
 
   return (
