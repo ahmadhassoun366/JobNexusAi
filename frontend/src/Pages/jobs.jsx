@@ -1,6 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom';
-import Navbar from "../Components/Navbar";
+import { useState, useEffect } from "react";
+
 
 const Alljobs = () => {
   let [jobs, setJobs] = useState([]);
