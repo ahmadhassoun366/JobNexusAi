@@ -1,22 +1,18 @@
 import { useState, useContext } from 'react';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
-import {Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Services/AuthContext';
-import axios from 'axios';
-
-
 
 const Login = () => {
-	const navigate = useNavigate();
-  const { isAuthenticated, logout } = useContext(AuthContext);
-	const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { isAuthenticated, login } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-	console.log("From login page")
-	console.log(isAuthenticated)
+  console.log("From login page");
+  console.log(isAuthenticated);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,40 +22,21 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     login(email, password);
-//   };
 
-
-
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post('http://127.0.0.1:8000/users/token/obtain/', {
-        email,
-        password
-      });
-      navigate('/'); // Replace '/login' with the actual path of your login page
-      console.log('Token: ' + response.data.refresh);
-      localStorage.setItem('token', response.data.refresh);
-      // Handle successful login
-      console.log(response.data);
-      login();
-      console.log(isAuthenticated)
-      setError('');
-
-      // Do something with the response, such as storing tokens or updating the authentication state
-
+      // Call your login function passing email and password
+      await login(email, password);
+      navigate('/'); // Redirect to the dashboard after successful login
     } catch (error) {
-      // Handle login error
-      console.log(error.response);
-      setError('Invalid email or password.');
+      setError('Invalid email or password'); // Set error message if login fails
     }
-  };
 
-  
+	console.log(email);
+    console.log(password);
+	
+  };
 
   return (
     <>

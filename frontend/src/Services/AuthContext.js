@@ -1,88 +1,81 @@
-import React, { createContext, useState } from 'react';
-
-
-// import useNavigate from 'react-router-dom';
+import React, { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Create the AuthContext
-export const AuthContext = createContext(null);
+const AuthContext = createContext();
 
 // Create the AuthProvider component
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-const [isAuthenticated, setIsAuthenticated] = useState(false);
-const [user, setUser] = useState(null);
-const [token, setToken] = useState(null);
 
-// const login = async (email, password) => {
-//     try {
-//       const response = await axios.post('http://127.0.0.1:8000/users/token/obtain/', {
-//         email,
-//         password
-//       });
-  
-//       setIsAuthenticated(true);
-//       setUser(response.data.user);
-//       setToken(response.data.token);
-//       console.log('Login successful');
-  
-//     } catch (error) {
-//       // Handle login error
-//       console.log(error.response);
-//       console.log('Invalid email or password.');
-//     }
-//   };
+  useEffect(() => {
+    console.log('isAuthenticated:', isAuthenticated);
+  }, [isAuthenticated]);
 
-const login = (userData,authToken ) => {
-    setIsAuthenticated(true);
-    setUser(userData);
-    setToken(authToken);
-    console.log(setIsAuthenticated)
 
+
+  const login = async ( email,
+    password) => {
+   
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/users/token/obtain/', {
+        email,
+        password
+      });
+      
+      setIsAuthenticated(true);
+      setUser(response.data.user);
+      setToken(response.data.token);
+      setError('');
+      alert('logged INNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN')
+      navigate('/'); // Replace '/' with the actual path of your home page
+
+    } catch (error) {
+      setError('Invalid email or password.');
+    }
+    console.log('authhhhhhhhhhhhhhhhhhhh');
+    console.log(email);
+    console.log(password);
+    console.log(isAuthenticated);
+    
   };
 
   const logout = () => {
-    setIsAuthenticated(false);  
+    setIsAuthenticated(false);
     setUser(null);
     setToken(null);
-    console.log("User logged out Successfully");
-    console.log(setUser);
-    console.log(setToken)
-    alert("User logged out Successfully");
-    // navigate('/');
+    navigate('/login'); // Replace '/login' with the actual path of your login page
   };
 
-  const register = (userData) => {
-    // Perform registration logic here
-    // For example, make a POST request to your API endpoint
+  const register = async (userData) => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/register/', userData);
 
-    fetch('http://127.0.0.1:8000/api/register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from the API
+      setIsAuthenticated(true);
+      setUser(response.data.user);
+      setToken(response.data.token);
+      setError('');
 
-        // Assuming the response includes the registered user data, you can login the user
-        login(data.user, data.token);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+      navigate('/'); // Replace '/' with the actual path of your home page
+
+    } catch (error) {
+      setError('Registration failed.');
+    }
   };
-
-  const saveToken = (token) => {
-    setToken(token);
-  };
-
 
   return (
-    <AuthContext.Provider value={{login}}>
+    <AuthContext.Provider value={{ isAuthenticated, user, token, email, password, error, login, logout, register }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+export { AuthProvider, AuthContext };
