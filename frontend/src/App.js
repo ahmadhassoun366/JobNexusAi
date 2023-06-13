@@ -24,8 +24,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-            {/* <Route path="/jobs" element={<Seeker />} />
-            <Route path="/jobDetails/:id" element={<JobDetails />} /> */}
+            <Route path="/jobs" element={<Seeker />} />
+            <Route path="/jobDetails/:id" element={<JobDetails />} />
         </Routes>
         </AuthProvider>
       </BrowserRouter>
