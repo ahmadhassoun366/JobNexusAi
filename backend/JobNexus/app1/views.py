@@ -9,6 +9,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import *
 from .serializers import *
 
+
 # Create your views here.
 
 
@@ -17,21 +18,86 @@ class EmailTokenObtainPairView(TokenObtainPairView):
 
 
 @permission_classes([IsAuthenticated])
-class CountryViewSet(viewsets.ModelViewSet):
-    queryset = Country.objects.all()
-    serializer_class = CountrySerializer
+class SeekerViewSet(APIView):
+    def get(self, request, user_id):
+        # Logic for handling GET request
+        seeker = Seeker.objects.filter(user=user_id)
+        serializer = SeekerSerializer(seeker, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@permission_classes([IsAuthenticated])
-class SeekerViewSet(viewsets.ModelViewSet):
-    queryset = Seeker.objects.all()
-    serializer_class = SeekerSerializer
-
-
-@permission_classes([IsAuthenticated])
-class SeekerCreateAPIView(APIView):
+class SeekerRegisterCreateAPIView(APIView):
     def post(self, request):
-        serializer = SeekerSerializer(data=request.data)
+        serializerUser = POSTUserSerializer(data=request.data)
+        if serializerUser.is_valid():
+            user = serializerUser.save()
+
+            # Create a Seeker instance and associate it with the newly created user
+            seeker_data = {
+                'user': user.id,
+                'country': {'name': 'Null'},
+                # Add other seeker fields as needed
+            }
+            seeker_serializer = SeekerSerializer(data=seeker_data)
+            if seeker_serializer.is_valid():
+                seeker_serializer.save()
+            else:
+                # If seeker serializer is invalid, delete the user as well
+                user.delete()
+                return Response(seeker_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+            return Response(serializerUser.data, status=status.HTTP_201_CREATED)
+        return Response(serializerUser.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@permission_classes([IsAuthenticated])
+class RecruiterViewSet(APIView):
+    def get(self, request, user_id):
+        # Logic for handling GET request
+        recruiter = Recruiter.objects.filter(user=user_id)
+        serializer = RecruiterSerializer(recruiter, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class RecruiterRegisterCreateAPIView(APIView):
+    def post(self, request):
+        serializerUser = POSTUserSerializer(data=request.data)
+        if serializerUser.is_valid():
+            user = serializerUser.save()
+
+            # Create a Seeker instance and associate it with the newly created user
+            recruiter_data = {
+                'user': user.id,
+                'country': '1',
+                # Add other seeker fields as needed
+            }
+            recruiter_serializer = RecruiterSerializer(data=recruiter_data)
+            if recruiter_serializer.is_valid():
+                recruiter_serializer.save()
+            else:
+                # If seeker serializer is invalid, delete the user as well
+                user.delete()
+                return Response(recruiter_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+            return Response(serializerUser.data, status=status.HTTP_201_CREATED)
+        return Response(serializerUser.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@permission_classes([IsAuthenticated])
+class CompanyRegisterCreateAPIView(APIView):
+    def post(self, request):
+        data = request.data
+
+        companyData = {
+            'recruiter': data.get('recruiter'),
+            'country': data.get('country'),
+            'field': data.get('field'),
+            'size': data.get('size'),
+            'type': data.get('type'),
+        }
+        print(companyData)
+
+        serializer = PostCompanySerializer(data=companyData)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -39,59 +105,56 @@ class SeekerCreateAPIView(APIView):
 
 
 @permission_classes([IsAuthenticated])
-class RecruiterViewSet(viewsets.ModelViewSet):
-    queryset = Recruiter.objects.all()
-    serializer_class = RecruiterSerializer
+class CompanyViewSet(APIView):
+    def get(self, request, recruiter_id):
+        # Logic for handling GET request
+        company = Company.objects.filter(recruiter=recruiter_id)
+        serializer = GetCompanySerializer(company, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class JobViewSet(APIView):
+    def get(self, request):
+        # Logic for handling GET request
+        job = Job.objects.all()
+        serializer = GETJobSerializer(job, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @permission_classes([IsAuthenticated])
-class RecruiterCreateAPIView(APIView):
+class JobRegisterCreateAPIView(APIView):
     def post(self, request):
-        serializer = RecruiterSerializer(data=request.data)
+        serializer = PostCompanySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
-class CompanyViewSet(viewsets.ModelViewSet):
-    queryset = Company.objects.all()
-    serializer_class = CompanySerializer
+# class ApplicationViewSet(APIView):
+#     def get(self, request):
+#         # Logic for handling GET request
+#         application = Application.objects.all()
+#         serializer = GETApplicationSerializer(application, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ApplicationViewSet(APIView):
+    def get(self, request, job_id):
+        # Logic for handling GET request
+        application = Application.objects.filter(job=job_id)
+        serializer = GETApplicationSerializer(application, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @permission_classes([IsAuthenticated])
-class CompanyCreateAPIView(APIView):
+class ApplicationRegisterCreateAPIView(APIView):
     def post(self, request):
-        serializer = CompanySerializer(data=request.data)
+        serializer = PostApplicationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@permission_classes([IsAuthenticated])
-class JobTypeViewSet(viewsets.ModelViewSet):
-    queryset = JobType.objects.all()
-    serializer_class = JobTypeSerializer
-
-
-@permission_classes([IsAuthenticated])
-class JobLocationTypeViewSet(viewsets.ModelViewSet):
-    queryset = JobLocationType.objects.all()
-    serializer_class = JobLocationTypeSerializer
-
-
-@permission_classes([IsAuthenticated])
-class JobViewSet(viewsets.ModelViewSet):
-    queryset = Job.objects.all()
-    serializer_class = JobSerializer
-
-
-@permission_classes([IsAuthenticated])
-class ApplicationViewSet(viewsets.ModelViewSet):
-    queryset = Application.objects.all()
-    serializer_class = ApplicationSerializer
 
 
 @permission_classes([IsAuthenticated])
