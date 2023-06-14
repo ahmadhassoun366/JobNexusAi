@@ -27,8 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'app.CustomUser'
-AUTHENTICATION_BACKENDS = ['app.auth_backends.EmailBackend']
+AUTH_USER_MODEL = 'app1.CustomUser'
+AUTHENTICATION_BACKENDS = ['app1.auth_backends.EmailBackend']
 # REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

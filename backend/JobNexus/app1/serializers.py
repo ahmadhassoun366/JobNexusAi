@@ -3,11 +3,6 @@ from rest_framework import serializers
 from .models import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as JwtTokenObtainPairSerializer
 from django.contrib.auth.hashers import make_password
-<<<<<<< HEAD
-from .models import Blog
-=======
-
->>>>>>> backend-api
 
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
     username_field = get_user_model().USERNAME_FIELD
@@ -16,9 +11,6 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class GETUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-<<<<<<< HEAD
-        fields = ('email', 'password', 'first_name', 'last_name', 'phone')
-=======
         fields = ('first_name', 'last_name')
 
 
@@ -26,7 +18,6 @@ class POSTUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = '__all__'
->>>>>>> backend-api
 
     def create(self, validated_data):
         password = validated_data.pop('password')
@@ -41,10 +32,7 @@ class CountrySerializer(serializers.ModelSerializer):
 
 
 class SeekerSerializer(serializers.ModelSerializer):
-<<<<<<< HEAD
-=======
     user = GETUserSerializer(read_only=True)
->>>>>>> backend-api
     country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
 
     class Meta:
@@ -53,10 +41,7 @@ class SeekerSerializer(serializers.ModelSerializer):
 
 
 class RecruiterSerializer(serializers.ModelSerializer):
-<<<<<<< HEAD
-=======
     user = GETUserSerializer(read_only=True)
->>>>>>> backend-api
     country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
 
     class Meta:
@@ -95,8 +80,6 @@ class JobLocationSerializer(serializers.ModelSerializer):
 
 
 class POSTJobSerializer(serializers.ModelSerializer):
-<<<<<<< HEAD
-=======
     class Meta:
         model = JobLocationType
         fields = "__all__"
@@ -109,18 +92,6 @@ class GETJobSerializer(serializers.ModelSerializer):
     jobLocation = JobLocationSerializer(read_only=True)
     jobType = JobTypeSerializer(read_only=True)
 
->>>>>>> backend-api
-    class Meta:
-        model = Job
-        fields = "__all__"
-
-class GETJobSerializer(serializers.ModelSerializer):
-    company = GetCompanySerializer(read_only=True)
-    recruiter = RecruiterSerializer(read_only=True)
-    country = CountrySerializer(read_only=True)
-    locationType = JobLocationSerializer(read_only=True)
-    type = JobTypeSerializer(read_only=True)
-
     class Meta:
         model = Job
         fields = "__all__"
@@ -130,13 +101,6 @@ class GETApplicationSerializer(serializers.ModelSerializer):
     seeker = SeekerSerializer(read_only=True)
     job = GETJobSerializer(read_only=True)
 
-<<<<<<< HEAD
-=======
-class GETApplicationSerializer(serializers.ModelSerializer):
-    seeker = SeekerSerializer(read_only=True)
-    job = GETJobSerializer(read_only=True)
-
->>>>>>> backend-api
     class Meta:
         model = Application
         fields = "__all__"
@@ -147,10 +111,7 @@ class PostApplicationSerializer(serializers.ModelSerializer):
         model = JobLocationType
         fields = "__all__"
 
-<<<<<<< HEAD
-=======
 
->>>>>>> backend-api
 class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
