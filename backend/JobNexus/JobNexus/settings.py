@@ -20,15 +20,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%jat23@yncw)wzgn*95s2o(h_h8$apd^5onmu7jv3s%w6c2i3('
+SECRET_KEY = 'django-insecure-4zq1p+hr$*%+rua)t&**a^z^atw-e+28)4v_4y5d9wn$ztxbcg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'app1.CustomUser'
-AUTHENTICATION_BACKENDS = ['app1.auth_backends.EmailBackend']
+AUTH_USER_MODEL = 'app.CustomUser'
+AUTHENTICATION_BACKENDS = ['app.auth_backends.EmailBackend']
 # REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'app1',
     'corsheaders',
-
 ]
 
 MIDDLEWARE = [
@@ -59,12 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'corsheaders.middleware.CorsMiddleware',  # Add this line
-
-]
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'JobNexus.urls'
@@ -144,3 +138,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# CORS
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True

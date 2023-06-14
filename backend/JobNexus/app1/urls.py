@@ -16,6 +16,7 @@ urlpatterns = [
     path('api/company/<int:recruiter_id>/', CompanyViewSet.as_view(), name='recruiter'),
     path('api/company_register/', CompanyRegisterCreateAPIView.as_view(), name='company_register'),
 
+<<<<<<< HEAD
     path('api/job/', JobViewSet.as_view(), name='job'),
     path('api/job/<int:id>/', JobIdViewSet.as_view(), name='job'),
 
@@ -27,3 +28,9 @@ urlpatterns = [
     path('blogsUpdate/<int:pk>', BlogUpdateAPIView.as_view(), name='blog_update'),
     path('blogsDelete/<int:pk>', BlogDeletAPIView.as_view(), name='blog_delete'),
 ]
+=======
+    path('api/applicants/<int:job_id>/', ApplicationViewSet.as_view(), name='applicants'),
+
+    path('api/job/', JobViewSet.as_view(), name='job'),
+]
+>>>>>>> backend-api
