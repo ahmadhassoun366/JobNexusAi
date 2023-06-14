@@ -65,7 +65,7 @@ class Seeker(models.Model):
         verbose_name = "Seeker"
         verbose_name_plural = "Seekers"
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    profilePicture = models.ImageField(upload_to='static/product_images', null=True, blank=True)
+    profilePicture = models.ImageField(upload_to='static/seeker_images', null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=30, null=True, blank=True)
     about = models.CharField(max_length=200, null=True, blank=True)
@@ -83,7 +83,7 @@ class Recruiter(models.Model):
         verbose_name = "Recruiter"
         verbose_name_plural = "Recruiters"
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    profilePicture = models.ImageField(upload_to='static/product_images', null=True, blank=True)
+    profilePicture = models.ImageField(upload_to='static/recruiter_images', null=True, blank=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=30, null=True, blank=True)
     about = models.CharField(max_length=200, null=True, blank=True)
@@ -136,11 +136,11 @@ class Job(models.Model):
     type = models.ForeignKey(JobType, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     locationType = models.ForeignKey(JobLocationType, on_delete=models.CASCADE)
-    jobTile = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
 
     def __str__(self):
-        return f"{self.jobTile}"
+        return f"{self.title}"
 
 
 class Application(models.Model):
@@ -149,9 +149,9 @@ class Application(models.Model):
         verbose_name_plural = "Applications"
     seeker = models.ForeignKey(Seeker, on_delete=models.CASCADE)
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    cv = models.FileField(upload_to='static/cv')
-    coverLetter = models.FileField(upload_to='static/coverLetter')
-    similarity = models.FloatField(null=True, blank=True,default=None)
+    cv = models.FileField(upload_to='static/cv', null=True, blank=True)
+    coverLetter = models.FileField(upload_to='static/coverLetter', null=True, blank=True)
+    similarity = models.FloatField(null=True, blank=True, default=None)
 
     def __str__(self):
         return f"{self.job}"

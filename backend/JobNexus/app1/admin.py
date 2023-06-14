@@ -48,7 +48,7 @@ class JobLocationTypeAdmin(admin.ModelAdmin):
 
 
 class JobAdmin(admin.ModelAdmin):
-    list_display = ('jobTile', 'company', 'type', 'country', 'locationType')
+    list_display = ('title', 'company', 'type', 'country', 'locationType')
 
 
 class ApplicationAdmin(admin.ModelAdmin):
