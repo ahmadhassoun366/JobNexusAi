@@ -28,28 +28,27 @@ const handleLogin = async (e) => {
     try {
       // Call your login function passing email and password
       await login(email, password);
-      navigate('/'); // Redirect to the dashboard after successful login
     } catch (error) {
       setError('Invalid email or password'); // Set error message if login fails
     }
 
 	console.log(email);
     console.log(password);
-	
+
   };
 
   return (
     <>
     <Navbar/>
     <section>
-    <div className="flex justify-center py-12 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover relative items-center"
+    <div className="flex justify-center py-24 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover relative items-center "
     style={{
-        backgroundImage: 'url(https://ingeniumtalent.com/wp-content/uploads/2018/12/Untitled-design-10-1-1-1-1.jpg)',
+        backgroundImage: 'url(https://www.hucama.com/wp-content/uploads/2019/08/Two-senior-manager-reading-a-resume-during-a-job-interview-Employer-interviewing-to-ask-young-male-job-seeker-for-recruitment-talking-in-office-1083412326_4896x3264-1080x675.jpeg)',
       }}>
-	<div className="absolute bg-gray-50 opacity-5 inset-0 z-0"></div>
-	<div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10 mt-12">
+	<div className="absolute bg-gray-50 opacity-5 inset-0 z-0 "></div>
+	<div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
 		<div className="text-center">
-			<h2 className="mt-6 text-3xl font-bold text-gray-900">
+			<h2 className="mt-2 text-3xl font-bold text-gray-900">
 				Welcom Back!
 			</h2>
 			<p className="mt-2 text-sm text-gray-600">Please sign in to your account</p>
@@ -67,12 +66,7 @@ const handleLogin = async (e) => {
 		<form className="mt-8 space-y-6" onSubmit={handleLogin}>
 			<input type="hidden" name="remember" value="true" />
 			<div className="relative">
-				<div className="absolute right-0 mt-4"><svg xmlns="http://www.w3.org/2000/svg"
-						className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-					</svg>
-                </div>
+
 				<label className="text-sm font-bold text-gray-700 tracking-wide" >Email</label>
 				<input className=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="mail@gmail.com"  type="email" value={email} onChange={handleEmailChange}/>
             </div>

@@ -17,7 +17,7 @@ const Header = () => {
     <header>
       <nav className="fixed z-20 w-full text-white bg-gray-700/100  navbar  dark:border-gray-800  dark:shadow-none">
         <div className="xl:container m-auto px-6 md:px-12 lg:px-6">
-          <div className="flex flex-wrap items-center justify-between gap-6 md:py-3 md:gap-0 lg:py-5">
+          <div className="flex flex-wrap items-center justify-between gap-6 md:py-2 md:gap-0 lg:py-4">
             <div className="w-full items-center flex justify-between lg:w-auto">
               <img src={Logo} className="mr-5 h-8 sm:h-10" alt="logo" />
               <span className="self-center text-xl text-white  first-letter:font-semibold whitespace-nowrap dark:text-white">JobNexus <span className='text-2xl font-bold'>Ai</span></span>

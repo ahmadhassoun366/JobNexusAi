@@ -123,7 +123,7 @@ const Register = () => {
             className="hidden bg-cover lg:block lg:w-2/5"
             style={{
               backgroundImage:
-                "url('https://www.resourceondemand.com/wp-content/uploads/2021/04/tech-recruitment-ROD.jpg')",
+                "url('https://www.power-technology.com/wp-content/uploads/sites/21/2021/02/jobs-auto4.jpg')",
             }}
           ></div>
 

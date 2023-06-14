@@ -35,16 +35,12 @@ const AuthProvider = ({ children }) => {
       setUser(response.data.user);
       setToken(response.data.token);
       setError('');
-      alert('logged INNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN')
       navigate('/'); // Replace '/' with the actual path of your home page
 
     } catch (error) {
       setError('Invalid email or password.');
     }
-    console.log('authhhhhhhhhhhhhhhhhhhh');
-    console.log(email);
-    console.log(password);
-    console.log(isAuthenticated);
+    
     
   };
 
