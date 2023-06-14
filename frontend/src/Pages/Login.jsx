@@ -67,12 +67,12 @@ const handleLogin = async (e) => {
 		<form className="mt-8 space-y-6" onSubmit={handleLogin}>
 			<input type="hidden" name="remember" value="true" />
 			<div className="relative">
-				{/* <div className="absolute right-0 mt-4"><svg xmlns="http://www.w3.org/2000/svg"
-						className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+				<div className="absolute right-0 mt-4"><svg xmlns="http://www.w3.org/2000/svg"
+						className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
 							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 					</svg>
-                </div> */}
+                </div>
 				<label className="text-sm font-bold text-gray-700 tracking-wide" >Email</label>
 				<input className=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="mail@gmail.com"  type="email" value={email} onChange={handleEmailChange}/>
             </div>

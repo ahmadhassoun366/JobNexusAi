@@ -35,9 +35,13 @@ const JobDetails = () => {
     <div className="">
       <div className="h">
         <h1>
-          {job?.id}
+          {job?.title}
         </h1>
+
         <h1>{job?.company.name}</h1>
+        <h1>{job?.company.field}</h1>
+        <h1>{job?.country.name}</h1>
+        <h1>{job?.type.type}</h1>
       </div>
     </div>
     </>
