@@ -16,7 +16,10 @@ const JobDetails = () => {
       });
       if (response.ok) {
         const jobData = await response.json();
-        setJob(jobData);
+      
+        //resolve the filtering from the backend 
+
+        setJob(jobData[0]);
         console.log(jobData);
 
       } else {
@@ -27,14 +30,16 @@ const JobDetails = () => {
     }
   };
 
-
-  if (!job) {
-    return <p>Loading job details...</p>;
-  }
-
   return (
     <>
- <div className=""></div>
+    <div className="">
+      <div className="h">
+        <h1>
+          {job?.id}
+        </h1>
+        <h1>{job?.company.name}</h1>
+      </div>
+    </div>
     </>
   );
 };

@@ -127,7 +127,7 @@ const Register = () => {
             }}
           ></div>
 
-          <div className="flex items-center w-full p-8 mx-auto lg:px-12 lg:w-3/5 my-24">
+          <div className="flex items-center w-full p-8 mx-auto lg:px-12 lg:w-3/5 my-20">
             <div className="w-full">
               <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
                 Get your free account now.

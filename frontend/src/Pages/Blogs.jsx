@@ -17,14 +17,14 @@ const BlogList = () => {
     fetchData();
   }, []);
 
-  // Render the blogs in your component
+  // Render the blogs in your component 
   return (
     <div>
       {blogs.map((blog) => (
         <div key={blog.id}>
           <h2>{blog.title}</h2>
           <p>{blog.text}</p>
-          <img src={blog.image} />
+          <img src={`http://127.0.0.1:8000/${blog.image}`}/>
         </div>
       ))}
     </div>
@@ -32,3 +32,4 @@ const BlogList = () => {
 };
 
 export default BlogList;
+
