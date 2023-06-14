@@ -33,7 +33,7 @@ const Alljobs = () => {
 <div  key={job.id} class="bg-white  shadow-xl shadow-gray-100 w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center  justify-between px-5 py-4 rounded-md">
   <div>
     <span class="text-blue-700 text-xl">{job.company.name}</span>
-    <h3 class="font-bold mt-px">{job.jobTile}</h3>
+    <h3 class="font-bold mt-px">{job.title}</h3>
     <div class="flex items-center gap-3 mt-2">
       <span class="bg-gray-300 text-gray-900 rounded-full px-3 py-1 text-sm">{job.locationType.locationType}</span>
       <span class="text-slate-600 text-sm flex gap-1 items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

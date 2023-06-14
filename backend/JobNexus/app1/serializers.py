@@ -89,8 +89,8 @@ class GETJobSerializer(serializers.ModelSerializer):
     company = GetCompanySerializer(read_only=True)
     recruiter = RecruiterSerializer(read_only=True)
     country = CountrySerializer(read_only=True)
-    jobLocation = JobLocationSerializer(read_only=True)
-    jobType = JobTypeSerializer(read_only=True)
+    locationType = JobLocationSerializer(read_only=True)
+    type = JobTypeSerializer(read_only=True)
 
     class Meta:
         model = Job
