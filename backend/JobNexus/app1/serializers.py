@@ -40,8 +40,26 @@ class SeekerSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class PostSeekerSerializer(serializers.ModelSerializer):
+    # user = GETUserSerializer(read_only=True)
+    country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
+
+    class Meta:
+        model = Seeker
+        fields = "__all__"
+
+
 class RecruiterSerializer(serializers.ModelSerializer):
     user = GETUserSerializer(read_only=True)
+    country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
+
+    class Meta:
+        model = Recruiter
+        fields = "__all__"
+
+
+class PostRecruiterSerializer(serializers.ModelSerializer):
+    # user = GETUserSerializer(read_only=True)
     country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
 
     class Meta:
@@ -108,7 +126,7 @@ class GETApplicationSerializer(serializers.ModelSerializer):
 
 class PostApplicationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = JobLocationType
+        model = Application
         fields = "__all__"
 
 
