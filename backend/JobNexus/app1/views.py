@@ -40,7 +40,7 @@ class SeekerRegisterCreateAPIView(APIView):
                 'country': {'name': 'Null'},
                 # Add other seeker fields as needed
             }
-            seeker_serializer = SeekerSerializer(data=seeker_data)
+            seeker_serializer = PostSeekerSerializer(data=seeker_data)
             if seeker_serializer.is_valid():
                 seeker_serializer.save()
             else:
@@ -73,8 +73,11 @@ class RecruiterRegisterCreateAPIView(APIView):
                 'country': '1',
                 # Add other seeker fields as needed
             }
-            recruiter_serializer = RecruiterSerializer(data=recruiter_data)
+            print("user id is :-----------------")
+            print(user.id)
+            recruiter_serializer = PostRecruiterSerializer(data=recruiter_data)
             if recruiter_serializer.is_valid():
+                print("serializer is valid--------------------------")
                 recruiter_serializer.save()
             else:
                 # If seeker serializer is invalid, delete the user as well
@@ -148,7 +151,7 @@ class ApplicationViewSet(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class ApplicationRegisterCreateAPIView(APIView):
     def post(self, request):
         serializer = PostApplicationSerializer(data=request.data)

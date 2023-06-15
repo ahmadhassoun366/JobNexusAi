@@ -137,7 +137,7 @@ class Job(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     locationType = models.ForeignKey(JobLocationType, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=10000)
 
     def __str__(self):
         return f"{self.title}"
