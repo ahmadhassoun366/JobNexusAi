@@ -25,124 +25,149 @@ const BlogList = () => {
     <Navbar/>
 
 
-<div className="flex justify-center items-center bg-white">
-  <div className="2xl:mx-auto 2xl:container lg:px-20 lg:py-16 md:py-12 md:px-6 py-9 px-4 w-96 sm:w-auto">
-    <div role="main" className="flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-semibold leading-9 text-center text-gray-800 dark:text-gray-50 mt-20">JobNexus AI</h1>
-      <p className="text-base leading-normal text-center text-gray-600 dark:text-white mt-4 lg:w-1/2 md:w-10/12 w-11/12">Find the perfect candidates using AI technology.</p>
+
+<section class="blog text-gray-700 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Blog</h1>
+      <p class="lg:w-1/2 w-full leading-relaxed text-base">
+        J'aime bien partager mes connaissances et des recherches intéressantes, pour le faire j'ai mis en place un blog personnel. 
+      </p>
     </div>
-    <div className="lg:flex items-stretch md:mt-12 mt-8">
-      <div className="lg:w-1/2">
-        <div className="sm:flex items-center justify-between xl:gap-x-8 gap-x-6">
-          <div className="sm:w-1/2 relative">
-          <div>
-              <div class="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">Open Position</div>
-              <div class="absolute bottom-0 left-0 p-6">
-                <h2 class="text-xl font-semibold 5 text-white">Software Engineer</h2>
-                <p class="text-base leading-4 text-white mt-2">Seeking a skilled software engineer to join our team.</p>
-                <a href="javascript:void(0)" class="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                  <p class="pr-2 text-sm font-medium leading-none">Apply Now</p>
-                  <svg class="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a>
-              </div>
+    <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+      <div class="p-4 md:w-1/3 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">
+        <div class="bg-gray-300 h-56 w-full rounded-lg shadow-md bg-cover bg-center" style={{backgroundImage: "url(https://images.unsplash.com/photo-1521185496955-15097b20c5fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)"}}></div>
+        <div class="w-70 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5">
+          <div class="header-content inline-flex">
+            <div class="category-badge flex-1 h-4 w-4 m rounded-full m-1 bg-purple-100">
+              <div class="h-2 w-2 rounded-full m-1 bg-purple-500"></div>
             </div>
-            <img src="https://i.ibb.co/DYxtCJq/img-1.png" className="bg-cover" alt="chair" />
+            <div class="category-title flex-1 text-sm">PHP</div>
           </div>
-          <div className="sm:w-1/2 sm:mt-0 mt-4 relative">
-            <div>
-            <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">26 June 2023</p>
-              <div className="absolute bottom-0 left-0 p-6">
-                <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                <a href="javascript:void(0)" className="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                  <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                  <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <img src="https://i.ibb.co/3C5HvxC/img-2.png" className="w-full" alt="wall design" />
+          <div class="title-post font-medium">Mon titre</div>
+          <div class="summary-post text-base text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis vel suscipit ex dolore possimus iure. 
+            <button class="bg-blue-100 text-blue-500 mt-4 block rounded p-2 text-sm"><span class="">Learn more</span></button>
           </div>
-        </div>
-        <div className="relative">
-          <div>
-          <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">26 June 2023</p>
-            <div className="absolute bottom-0 left-0 md:p-10 p-6">
-              <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-              <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-              <a href="javascript:void(0)" className="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <img src="https://i.ibb.co/Ms4qyXp/img-3.png" alt="sitting place" className="w-full mt-8 md:mt-6 hidden sm:block" />
-          <img className="w-full mt-4 sm:hidden" src="https://i.ibb.co/6XYbN7f/Rectangle-29.png" alt="sitting place" />
         </div>
       </div>
-      <div className="lg:w-1/2 xl:ml-8 lg:ml-4 lg:mt-0 md:mt-6 mt-4 lg:flex flex-col justify-between">
-        <div className="relative">
-          <div>
-          <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">26 June 2023</p>
-            <div className="absolute bottom-0 left-0 md:p-10 p-6">
-              <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-              <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-              <a href="javascript:void(0)" className="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
+      <div class="p-4 md:w-1/3 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">
+        <div class="bg-gray-300 h-56 w-full rounded-lg shadow-md bg-cover bg-center" style={{backgroundImage: "url(https://images.unsplash.com/photo-1543966888-7c1dc482a810?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)"}}></div>
+        <div class="w-70 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5">
+          <div class="header-content inline-flex">
+            <div class="category-badge flex-1 h-4 w-4 m rounded-full m-1 bg-yellow-100">
+              <div class="h-2 w-2 rounded-full m-1 bg-yellow-500"></div>
             </div>
+            <div class="category-title flex-1 text-sm">JS</div>
           </div>
-          <img src="https://i.ibb.co/6Wfjf2w/img-4.png" alt="sitting place" className="w-full sm:block hidden" />
-          <img className="w-full sm:hidden" src="https://i.ibb.co/dpXStJk/Rectangle-29.png" alt="sitting place" />
+          <div class="title-post font-medium">Mon titre</div>
+          <div class="summary-post text-base text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis vel suscipit ex dolore possimus iure. 
+            <button class="bg-blue-100 text-blue-500 px-2 mt-4 block rounded p-2 text-sm"><span class="">Learn more</span></button>
+          </div>
         </div>
-        <div className="sm:flex items-center justify-between xl:gap-x-8 gap-x-6 md:mt-6 mt-4">
-          <div className="relative w-full">
-            <div>
-            <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">26 June 2023</p>
-              <div className="absolute bottom-0 left-0 p-6">
-                <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                <a href="javascript:void(0)" className="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                  <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                  <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a>
-              </div>
+      </div>
+      <div class="p-4 md:w-1/3 md:mb-0 mb-6 flex flex-col justify-center items-center max-w-sm mx-auto">
+        <div class="bg-gray-300 h-56 w-full rounded-lg shadow-md bg-cover bg-center" style={{backgroundImage: "url(https://images.unsplash.com/photo-1590608897129-79da98d15969?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80)"}}></div>
+        <div class="w-70 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden p-5">
+          <div class="header-content inline-flex">
+            <div class="category-badge flex-1 h-4 w-4 m rounded-full m-1 bg-green-100">
+              <div class="h-2 w-2 rounded-full m-1 bg-green-500"></div>
             </div>
-            <img src="https://i.ibb.co/3yvZBpm/img-5.png" className="w-full" alt="chair" />
+            <div class="category-title flex-1 text-sm">Vue</div>
           </div>
-          <div className="relative w-full sm:mt-0 mt-4">
-            <div>
-            <p className="p-6 text-xs font-medium leading-3 text-white absolute top-0 right-0">26 June 2023</p>
-              <div className="absolute bottom-0 left-0 p-6">
-                <h2 className="text-xl font-semibold 5 text-white">The Decorated Ways</h2>
-                <p className="text-base leading-4 text-white mt-2">Dive into minimalism</p>
-                <a href="javascript:void(0)" className="focus:outline-none focus:underline flex items-center mt-4 cursor-pointer text-white hover:text-gray-200 hover:underline">
-                  <p className="pr-2 text-sm font-medium leading-none">Read More</p>
-                  <svg className="fill-stroke" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.75 12.5L10.25 8L5.75 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-            <img src="https://i.ibb.co/gDdnJb5/img-6.png" className="w-full" alt="wall design" />
+          <div class="title-post font-medium">Mon titre</div>
+          <div class="summary-post text-base text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis veritatis vel suscipit ex dolore possimus iure. 
+            <button class="bg-blue-100 text-blue-500 px-2 mt-4 block rounded p-2 text-sm"><span class="">Learn more</span></button>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-20">
+
+
+<section class="bg-white dark:bg-gray-900">
+    <div class="container px-6 py-10 mx-auto">
+        <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">From the blog</h1>
+
+        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+            <div class="lg:flex">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                    <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        How to use sticky note for problem solving
+                    </a>
+                    
+                    <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 July2023</span>
+                </div>
+            </div>
+
+            <div class="lg:flex">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                    <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        How to use sticky note for problem solving
+                    </a>
+
+                    <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 July2023</span>
+                </div>
+            </div>
+
+            <div class="lg:flex">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                    <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        Morning routine to boost your mood
+                    </a>
+
+                    <span class="text-sm text-gray-500 dark:text-gray-300">On: 25 June 2020</span>
+                </div>
+            </div>
+
+            <div class="lg:flex">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80" alt="" />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                    <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        All the features you want to know
+                    </a>
+
+                    <span class="text-sm text-gray-500 dark:text-gray-300">On: 30 September 2020</span>
+                </div>
+            </div>
+
+            <div class="lg:flex">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80" alt="" />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                    <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        Minimal workspace for your inspirations
+                    </a>
+
+                    <span class="text-sm text-gray-500 dark:text-gray-300">On: 13 July2023</span>
+                </div>
+            </div>
+
+            <div class="lg:flex">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                    <a href="#" class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                        What do you want to know about Blockchane
+                    </a>
+                    
+                    <span class="text-sm text-gray-500 dark:text-gray-300">On: 20 July2023</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    {/* <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-20">
       <article className=''>
       <h1 className="text-4xl font-semibold leading-9 text-center text-gray-900 	 dark:text-gray-50 mt-10 ">Blogs</h1>
           <section className="mt- grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
@@ -165,7 +190,7 @@ const BlogList = () => {
           ))}
         </section>
       </article>
-    </section>
+    </section> */}
 
     </>
   );
