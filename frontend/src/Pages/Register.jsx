@@ -117,39 +117,33 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <section className="bg-gray-900 dark:bg-gray-900">
-        <div className="flex  bg-gray-100 justify-center min-h-screen">
-          <div
-            className="hidden bg-cover lg:block lg:w-2/5"
-            style={{
-              backgroundImage:
-                "url('https://www.power-technology.com/wp-content/uploads/sites/21/2021/02/jobs-auto4.jpg')",
-            }}
-          ></div>
+      
+<section className=" bg-white">
+		<div className="container mx-auto">
+			<div className="flex justify-center px-6 ">
+				<div className="w-full xl:w-3/4 lg:w-11/12 flex my-24 shadow-2xl">
+					
+        <div
+          className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+          style={{backgroundImage: `url('https://media.licdn.com/dms/image/C4D12AQFCpiN-GPl5Hg/article-cover_image-shrink_720_1280/0/1623919781732?e=2147483647&v=beta&t=aLbrq90FmbO8jqYP76trWBn6UirnoPb7uHOGjClzu-0')`}}
+        ></div>
+					<div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+						<h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
+						
 
-          <div className="flex items-center w-full p-8 mx-auto lg:px-12 lg:w-3/5 my-20">
-            <div className="w-full">
-              <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
-                Get your free account now.
-              </h1>
+            <div classNameName="">
+                <h1 classNameName="text-sm font-bold text-gray-700 dark:text-gray-300">Select type of account</h1>
 
-              <p className="mt-4 text-gray-500 dark:text-gray-400">
-                Let’s get you all set up so you can verify your personal account and begin setting up your profile.
-              </p>
-
-              <div className="mt-6">
-                <h1 className="text-gray-500 dark:text-gray-300">Select type of account</h1>
-
-                <div className="mt-3 md:flex md:items-center md:-mx-2">
+                <div classNameName=" md:flex md:items-center md:-mx-2">
                   <button
-                    className={`flex justify-center w-full px-6 py-3 text-white rounded-md md:w-auto md:mx-2 focus:outline-none ${
-                      accountType === 'recruiter' ? 'bg-blue-500' : 'bg-gray-500'
+                    classNameName={`flex justify-center m-2 w-full px-4 py-2 text-white rounded-full md:w-auto md:mx-2 focus:outline-none ${
+                      accountType === 'recruiter' ? 'bg-gray-900' : 'bg-gray-700'
                     }`}
                     onClick={() => setAccountType('recruiter')}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
+                      classNameName="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -162,18 +156,18 @@ const Register = () => {
                       />
                     </svg>
 
-                    <span className="mx-2">Recruiter</span>
+                    <span classNameName="mx-2">Recruiter</span>
                   </button>
 
                   <button
-                    className={`flex justify-center w-full px-6 py-3 mt-4 text-white border rounded-md md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none ${
-                      accountType === 'jobseeker' ? 'bg-blue-500' : 'bg-gray-500'
+                    classNameName={`flex justify-center w-full px-4 py-2 text-white rounded-full md:w-auto md:mx-2 focus:outline-none ${
+                      accountType === 'jobseeker' ? 'bg-gray-900' : 'bg-gray-700'
                     }`}
                     onClick={() => setAccountType('jobseeker')}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
+                      classNameName="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -186,109 +180,129 @@ const Register = () => {
                       />
                     </svg>
 
-                    <span className="mx-2">JobSeeker</span>
+                    <span classNameName="mx-2">JobSeeker</span>
                   </button>
                 </div>
               </div>
-
-              <form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2" onSubmit={handleSignUp}>
-                <div>
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">First Name</label>
-                  <input
-                    type="text"
-                    placeholder="John"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded " onSubmit={handleSignUp}>
+							<div className="mb-4 md:flex md:justify-between">
+								<div className="mb-4 md:mr-2 md:mb-0">
+									<label className="block mb-2 text-sm font-bold text-gray-700" >
+										First Name
+									</label>
+									<input
+										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										type="text"
+										placeholder="First Name"
                     value={first_name}
                     onChange={handleFirstNameChange}
-
-                 />
-                </div>
-
-                <div>
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Last name</label>
-                  <input
-                    type="text"
-                    placeholder="Snow"
+									/>
+								</div>
+								<div className="md:ml-2">
+									<label className="block mb-2 text-sm font-bold text-gray-700" >
+										Last Name
+									</label>
+									<input
+										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										type="text"
+										placeholder="Last Name"
                     value={last_name}
                     onChange={handleLastNameChange}
+									/>
+								</div>
+							</div>
+              
+							<div className="mb-4">
+								<label className="block mb-2 text-sm font-bold text-gray-700" >
+									Email
+								</label>
+								<input
+									className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+								
+									type="email"
+									placeholder="Email"
+                    value={email}
+                    onChange={handleEmailChange}
+								/>
+							</div>
 
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                </div>
-
-                <div>
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Phone number</label>
+              <div className="mb-4 md:mr-2 md:mb-0">
+              <label className="block mb-2 text-sm font-bold text-gray-700" >Phone number</label>
                   <input
                     value={phone}
                     onChange={handlePhoneChange}
                     type="text"
-                    placeholder="XXX-XX-XXXX-XXX"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
+                    placeholder="+961 XXX XXX"
+                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    />
                 </div>
 
-                <div>
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Email address</label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    placeholder="johnsnow@example.com"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                </div>
-
-                <div>
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Password</label>
-                  <input
-                    type="password"
-                    placeholder="Enter your password"
+							<div className="mb-4 md:flex md:justify-between">
+								<div className="mb-4 md:mr-2 md:mb-0">
+									<label className="block mb-2 text-sm font-bold text-gray-700">
+										Password
+									</label>
+									<input
+										className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										type="password"
+										placeholder="******************"
                     value={password}
                     onChange={handlePasswordChange}
-                    className={`block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring ${
-                      passwordError ? 'border-red-500' : 'border-gray-200'
-                    }`}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm text-gray-700 dark:text-gray-200">
-                    Confirm Password
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="Confirm your password"
+									/>
+								</div>
+								<div className="md:ml-2">
+									<label className="block mb-2 text-sm font-bold text-gray-700" >
+										Confirm Password
+									</label>
+									<input
+										className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+									
+										type="password"
+										placeholder="******************"
                     value={confirmPassword}
                     onChange={handleConfirmPasswordChange}
                     onBlur={validatePasswords}
-                    className={`block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border rounded-md focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none ${
+                    classNameName={`block w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline ${
                       !passwordMatch ? 'border-red-500' : 'border-gray-200'
                     }`}
-                  />
-                  {!passwordMatch && <p className="text-red-500">Passwords do not match</p>}
-                </div>
-                <button
-                  className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-500 rounded-md hover:bg-gray-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-                >
-                  <span>Create Account</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4 ml-2"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+									/>
+								</div>
+							</div>
+							<div className="mb-6 text-center">
+								<button
+									className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+									type="submit"
+								>
+									Register Account
+								</button>
+
+							</div>
+							<hr className="mb-6 border-t" />
+							<div className="text-center">
+              {!passwordMatch && <p classNameName="text-red-500">Passwords do not match</p>}
+
+<a
+									className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+									href="#"
+								>
+									Forgot Password?
+								</a>
+							</div>
+							<div className="text-center">
+								<a
+									className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+									href="./index.html"
+								>
+									Already have an account? Login!
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
       <Footer />
     </>
   );
