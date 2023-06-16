@@ -9,6 +9,8 @@ urlpatterns = [
 
     path('api/seeker/<int:user_id>/', SeekerViewSet.as_view(), name='seeker'),
     path('api/seeker_register/', SeekerRegisterCreateAPIView.as_view(), name='seeker_register'),
+    path('api/seeker_update/<int:pk>/', SeekerUpdateAPIView.as_view(), name='seeker_update'),
+
 
     path('api/recruiter/<int:user_id>/', RecruiterViewSet.as_view(), name='recruiter'),
     path('api/recruiter_register/', RecruiterRegisterCreateAPIView.as_view(), name='recruiter_register'),

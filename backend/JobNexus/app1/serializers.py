@@ -11,7 +11,7 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class GETUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('first_name', 'last_name')
+        fields = ('id','first_name', 'last_name', 'phone')
 
 
 class POSTUserSerializer(serializers.ModelSerializer):

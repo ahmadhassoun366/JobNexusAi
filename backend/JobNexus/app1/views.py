@@ -19,7 +19,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
     serializer_class = TokenObtainPairSerializer
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class SeekerViewSet(APIView):
     def get(self, request, user_id):
         # Logic for handling GET request
@@ -205,3 +205,28 @@ class DeleteJob(APIView):
         job = Job.objects.filter(id=job_id)
         job.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class SeekerUpdateAPIView(APIView):
+    def put(self, request, pk):
+        seeker = Seeker.objects.get(id=pk)
+        user_data = request.data.pop("user", {})
+        first_name = user_data.get("first_name")
+        last_name = user_data.get("last_name")
+        phone = user_data.get("phone")
+        print(phone)
+        
+        user_instance = seeker.user
+        user_instance.first_name = first_name
+        user_instance.last_name = last_name
+        user_instance.phone = phone
+        user_instance.save()
+
+
+
+        # seeker = Seeker.objects.get(id=pk)
+        serializer = PostSeekerSerializer(seeker, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
