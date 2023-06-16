@@ -198,3 +198,10 @@ class BlogDeletAPIView(APIView):
         blog =Blog.objects.get(id=pk)
         blog.delete()
         return Response("blog delete")
+
+
+class DeleteJob(APIView):
+   def delete(self, request, job_id):
+        job = Job.objects.filter(id=job_id)
+        job.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

@@ -21,7 +21,7 @@ urlpatterns = [
     path('api/job/<int:id>/', JobIdViewSet.as_view(), name='job'),
 
     path('api/applicants/<int:job_id>/', ApplicationViewSet.as_view(), name='applicants'),
-
+    path('api/delete_job/<int:job_id>/', DeleteJob.as_view(), name='delete_job'),
 
     path('blogs/', BlogCreateAPIView.as_view(), name='blog_create'),
     path('blogsDetails/<int:pk>/', BlogViewAPIView.as_view(), name='blog_View'),

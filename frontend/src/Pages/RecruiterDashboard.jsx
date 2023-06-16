@@ -25,7 +25,7 @@ export default function RecruiterDashboard() {
     }
 
     const getJobs = () => {
-        fetch('http://127.0.0.1:8000/api/job/')
+        fetch('http://127.0.0.1:8000/users/api/job/')
             .then(response => response.json())
             .then(data => setJobs(data))
             .catch(error => console.error(error));
@@ -42,7 +42,7 @@ export default function RecruiterDashboard() {
     }
 
     const getApplicants = (job_id) => {
-        fetch(`http://127.0.0.1:8000/api/applicants/${job_id}/`)
+        fetch(`http://127.0.0.1:8000/users/api/applicants/${job_id}/`)
             .then(response => response.json())
             .then(data => {
                 data.sort(compare)
@@ -52,7 +52,7 @@ export default function RecruiterDashboard() {
     }
 
     const deleteJob = (job_id) => {
-        fetch(`http://127.0.0.1:8000/api/delete_job/${job_id}/`, {
+        fetch(`http://127.0.0.1:8000/users/api/delete_job/${job_id}/`, {
             method: 'DELETE'
         })
             .then(window.location.reload())

@@ -8,6 +8,7 @@ import Profile from './Pages/Profile';
 import Seeker from './Pages/jobs';
 import JobDetails from './Pages/jobDetails';
 import { AuthProvider } from './Services/AuthContext';
+import RecruiterDashboard from './Pages/RecruiterDashboard';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/"  element={<Home />} />
             <Route path="blogs" element={<Blogs />} />
-            {/* <Route path="contact" element={<Contact />} /> */}
+            <Route path="/recruiter" element={<RecruiterDashboard />} />
             {/* <Route path="*" element={<NoPage />} /> */}
             
             <Route path="/login" element={<Login />} />
