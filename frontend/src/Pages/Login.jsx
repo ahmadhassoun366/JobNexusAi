@@ -41,7 +41,7 @@ const handleLogin = async (e) => {
     <>
     <Navbar/>
     <section>
-    <div className="flex justify-center py-24 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover relative items-center "
+    <div className="flex justify-center py-10 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover relative items-center "
     style={{
         backgroundImage: 'url(https://www.hucama.com/wp-content/uploads/2019/08/Two-senior-manager-reading-a-resume-during-a-job-interview-Employer-interviewing-to-ask-young-male-job-seeker-for-recruitment-talking-in-office-1083412326_4896x3264-1080x675.jpeg)',
       }}>

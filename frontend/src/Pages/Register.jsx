@@ -121,7 +121,7 @@ const Register = () => {
 <section className=" bg-white">
 		<div className="container mx-auto">
 			<div className="flex justify-center px-6 ">
-				<div className="w-full xl:w-3/4 lg:w-11/12 flex my-24 shadow-2xl">
+				<div className="w-full xl:w-3/4 lg:w-11/12 flex mt-12 mb-20 shadow-2xl">
 					
         <div
           className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"

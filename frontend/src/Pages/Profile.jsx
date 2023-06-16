@@ -45,14 +45,34 @@ const Profile = () => {
 
   return (
     <>
-      <div>
-        <Navbar/>
-        <PersonalDetials/>
-        <EducationalDetails/>
-        <JobExperienceDetails/>
-        <UploadResume/>
-        <SmallFooter/>
+      <Navbar/>
+        <div class="w-full h-[250px]">
+                <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" class="w-full h-full rounded-tl-lg rounded-tr-lg" />
+            </div>
+            <div class="flex flex-col items-center -mt-20">
+                <img src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg" class="w-40 border-4 border-white rounded-full" />
+                <div class="flex items-center space-x-2 mt-2">
+                    <p class="text-2xl">Amanda Ross</p>
+                    <span class="bg-blue-500 rounded-full p-1" title="Verified">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-100 h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </span>
+                </div>
+                <p class="text-gray-700">Senior Software Engineer at Tailwind CSS</p>
+                <p class="text-sm text-gray-500">New York, USA</p>
+            </div>
+
+      <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
+        <div className="container max-w-screen-lg mx-auto bg-white rounded shadow-lg">
+
+          <PersonalDetials/>
+          <EducationalDetails/>
+          <JobExperienceDetails/>
+          <UploadResume/>
       </div>
+      </div>
+
    </>  )
 }
 
