@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../Components/Header";
+import Header from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
 export default function RecruiterDashboard() {
@@ -29,7 +29,10 @@ export default function RecruiterDashboard() {
             .then(response => response.json())
             .then(data => setJobs(data))
             .catch(error => console.error(error));
+           
+
     }
+    console.log(jobs);
 
     const compare = (a, b) => {
         if (a?.similarity < b?.similarity) {
@@ -61,33 +64,96 @@ export default function RecruiterDashboard() {
 
     return (
         <>
-            {/* <Header /> */}
-            <div className="relative flex min-h-screen flex-col gap-5 jus items-center justify-center overflow-hidden bg-gray-100 p-6 sm:py-12">
-                <div>
-                    <button onClick={addJob}>Add a Job</button>
+        <Header />
+           
+
+
+<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">We invest in the world’s potential</h1>
+        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+            <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                Get started
+                <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                Learn more
+            </a>  
+        </div>
+    </div>
+</section>
+
+
+<div class="flex items-center justify-center">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+    {jobs.map((job) => (
+        <div key={job?.id} class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+            <div class=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div class="mt-8">
+                <p class="text-xl font-semibold my-2">{job?.title}</p>
+                <div class="flex space-x-2  font-bold">
+                  
+                     <p>{job?.company.name}</p> 
                 </div>
-                {jobs.map((job) => (
-                    <div key={job?.id} className="bg-white  shadow-xl shadow-gray-100 w-full max-w-4xl flex flex-col sm:flex-row gap-3 sm:items-center  justify-between px-5 py-4 rounded-md">
-                        <div>
-                            <span className="text-blue-700 text-xl">{job?.company.name}</span>
-                            <h3 className="font-bold mt-px">{job?.title}</h3>
-                            {/* <p>Country: {job?.country.name}</p> */}
-                            <div className="flex items-center gap-3 mt-2">
-                                <span className="bg-gray-300 text-gray-900 rounded-full px-3 py-1 text-sm">{job?.country.name}</span>
-                                <span className="text-slate-600 text-sm flex gap-1 items-center"> <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>{job.type.type}</span>
-                            </div>
-                            <button onClick={() => { getApplicants(job?.id) }}>Get Applicants</button>
-                            <br />
-                            {/* <button onClick={() => editJob(job?.id)}>Edit</button>
-                            <br /> */}
-                            <button onClick={() => deleteJob(job?.id)}>Delete</button>
+                <div class="flex text-gray-700 text-base my-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                     <p>{job?.country.name}</p> 
+
+                     <div class="flex ml-24 gap-1 text-gray-500">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                        <p class="font-semibold text-base mb-2">{job.type.type}</p>
+                       
+                    </div>
+                    
+                </div>
+                <div class="border-t-2"></div>
+
+                <div class="flex justify-between">
+                    <div class="my-2">
+                        <p class="font-semibold text-base mb-2">Recruiter</p>
+                        <div class="flex space-x-2">
+                            <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`}
+                            class="w-6 h-6 rounded-full"/>
+                          
                         </div>
                     </div>
-                ))}
-            </div >
+                     
+                </div>
+
+                <div>
+                <div className="flex justify-center items-center gap-4 text-white">
+                <button onClick={() => { getApplicants(job?.id) }}
+                className="px-4 py-2 rounded-lg bg-gray-900"
+                >Applicants</button>
+               
+               <button 
+                               className="px-4 py-2 rounded-lg bg-gray-900 text-white"
+               >Edit</button>
+                       
+               <button 
+                               className="px-4 py-2 rounded-lg bg-gray-900 text-white"
+
+               onClick={() => deleteJob(job?.id)}>Delete</button>
+
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+          ))}
+</div>
+</div>
+
             {applicants.map((applicant) => (
                 <div key={applicant?.id}>
                     <h3>{applicant?.job.title}</h3>

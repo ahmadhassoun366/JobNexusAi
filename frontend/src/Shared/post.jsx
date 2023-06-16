@@ -79,16 +79,7 @@ const post = () => {
             <input type="file" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-3 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="company-logo" name="company-logo"/>
           </div>
         </div> 
-        <div class="payment mb-6">
-          
-          <h4 class="mb-2">Payment</h4>
-          <p class="bg-gray-200 py-3 text-center text-sm">
-            <span><i class="far fa-credit-card"></i></span>
-            All jobs cost <strong>€300</strong> for 30 days.
-          </p>
-          
-        </div>
-        
+       
         
         
         <div>

@@ -2,6 +2,7 @@ import React from "react";
 
 import  {BsLinkedin,BsGithub,BsDribbble} from 'react-icons/bs';
 import {FaFacebookSquare} from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -69,24 +70,24 @@ export default function Footer() {
                 </span>
                 <ul className="list-unstyled">
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/presentation">About Us
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                       >About Us
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://blog.creative-tim.com">Blog
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        >Blog
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://www.github.com/creativetimofficial">Github
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                       >Github
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/bootstrap-themes/free">Free Products
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                       >Free Products
+                    </Link>
                   </li>
 
                 </ul>
@@ -97,24 +98,24 @@ export default function Footer() {
                 </span>
                 <ul className="list-unstyled">
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">MIT License
-                  </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                   >MIT License
+                  </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/terms">Terms & Conditions
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        >Terms & Conditions
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/privacy">Privacy Policy
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        >Privacy Policy
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="https://creative-tim.com/contact-us">Contact Us
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                        >Contact Us
+                    </Link>
                   </li>
                 </ul>
 
@@ -127,12 +128,12 @@ export default function Footer() {
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
             <div className="text-sm text-gray-600 font-semibold py-1">
               Copyright © {new Date().getFullYear()}{" "}JobNexus AI by{" "}
-              <a
+              <Link
                 href="https://www.creative-tim.com"
                 className="text-gray-600 hover:text-gray-900"
               >
                 Creative Team
-              </a>.
+              </Link>.
             </div>
           </div>
         </div>
