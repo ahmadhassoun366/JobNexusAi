@@ -96,6 +96,7 @@ class Company(models.Model):
     class Meta:
         verbose_name = "Company"
         verbose_name_plural = "Companies"
+    logo = models.ImageField(upload_to='static/company_images', null=True, blank=True)
     name = models.CharField(max_length=200)
     recruiter = models.ForeignKey(Recruiter, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, default=1)
@@ -138,6 +139,7 @@ class Job(models.Model):
     locationType = models.ForeignKey(JobLocationType, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
+    deadline = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.title}"
