@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
 import Footer from "../Components/Footer";
+  
 
 const JobDetails = () => {
 
@@ -91,13 +92,12 @@ const JobDetails = () => {
             <div className="bg-white p-3 ">
               <div className="image overflow-hidden shadow-2xl rounded-full">
                 <img className="h-auto w-full mx-auto "
-                  src="https://www.digicatapult.org.uk/wp-content/uploads/2021/11/DC_square_People_juergen-600x600-c-default.jpg"
+                src={`http://127.0.0.1:8000/${job?.company.logo}`}
                   alt="" />
               </div>
-              <h1 className="text-gray-900 font-bold text-3xl leading-8  text-center mt--10 my-8">{job?.recruiter.user.first_name} {job?.recruiter.user.last_name}</h1>
-              <h2 className="text-gray-600 font-lg text-semibold text-2xl leading-6 font-semibold text-center my-2 ">{job?.recruiter.title}</h2>
+              <h2 className="text-gray-600 font-lg text-semibold text-2xl leading-6 font-semibold text-center my-2 ">{job?.title}</h2>
               <p className="text-sm text-gray-500 hover:text-gray-600 leading-6 text-center my-2"  >
-              {job?.recruiter.about}
+              {job?.company.field}
               </p>
               
             </div>
@@ -107,7 +107,7 @@ const JobDetails = () => {
           {/* <!-- Right Side --> */}
           <div className="w-full md:w-9/12 mx-24 h-64 ">
             {/* <!-- Profile tab --> */}
-          <h1 className="text-center text-4xl text-gray-900 font-semibold ">Job Application</h1>
+          <h1 className="text-center text-4xl text-gray-900 font-semibold ">{job?.title} at {job?.company.name}</h1>
             <div className="flex flex-col gap-6 p-10 shadow-lg  rounded-lg bg-gray-100 my-8">
 
 
