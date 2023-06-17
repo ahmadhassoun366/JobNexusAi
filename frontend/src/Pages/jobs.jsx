@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import { BsFillArrowDownSquareFill } from 'react-icons/bs';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+
 const Alljobs = () => {
   let [jobs, setJobs] = useState([]);
 
@@ -94,14 +94,15 @@ const Alljobs = () => {
       <div>
       </div>
 
-      <div className="flex flex-col items-center justify-center my-24 bg-gray-100 py-32 gap-10">
+      <div className="flex flex-col items-center justify-center my-20 bg-gray-100 py-24 gap-10">
   <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">
     Most In-Demand Jobs
   </h1>
 
-  <Slider {...settings} className="w-4/5 mt-1 bg-gray-100">
-    {jobs.slice(0, 5).map((job) => (
-      <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-12 mx-20 mb-20">
+  <AliceCarousel
+  
+     items={jobs.slice(0, 5).map((job) => (
+      <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
         <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
         <div className="mt-8">
@@ -135,7 +136,13 @@ const Alljobs = () => {
         </div>
       </div>
     ))}
-  </Slider>
+    responsive={{ 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 3 }, 1280: { items: 4 } }}
+  autoPlay={true  }
+  infinite={true} // Enable looping
+  animationType="custom" // Set animation type to custom
+  animationDuration={1000} // Set animation duration in milliseconds
+  animationEasingFunction="ease-in-out" // Set animation easing function
+/>
   <button className="px-6 py-2 mt-8 bg-gray-900 text-white rounded-lg shadow-2xl">
     See All Jobs
   </button>
@@ -256,16 +263,14 @@ const Alljobs = () => {
             </div>
         </div> */}
 
-      <style>
-        {`
-        
-        .slick-prev:before, .slick-next:before {
-          color: #152238; 
-          font-size: 1.8rem;
-          margins: 20px /* Increase the size here */
-        }
-        `}
-      </style>
+<style>
+    {`
+    .alice-carousel__prev-btn,
+    .alice-carousel__next-btn {
+      display: none !important;
+    }
+    `}
+  </style>
     </>
 
   );
