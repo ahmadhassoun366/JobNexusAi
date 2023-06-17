@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import axios from 'axios';
 
 export default function RecruiterDashboard() {
     let [jobs, setJobs] = useState([]);
@@ -10,8 +11,8 @@ export default function RecruiterDashboard() {
         getJobs();
     }, [])
 
-    const addJob = () => {
-        fetch('http://127.0.0.1:8000/api/recruiter_register/', {
+    /*const addJob = () => {
+        fetch('http://127.0.0.1:8000/users/api/recruiter_register/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,15 +23,38 @@ export default function RecruiterDashboard() {
 
             }) // body data type must match "Content-Type" header
         })
+    }*/
+
+    //let deadline = new Date("2000-03-25")
+
+    const jobData = {
+        "company": 2,
+        "recruiter": 2,
+        "type": 1,
+        "country": 3,
+        "locationType": 1,
+        "title": "acc",
+        "description": "aaa",
+        //"deadline": new Date("2023-10-16").toJSON()
+    }
+
+    const addJob = () => {
+        axios.post('http://127.0.0.1:8000/users/api/add_job/', jobData)
+            .then(response => {
+                console.log('Added successfully:', response.data);
+                window.location.reload()
+            })
+            .catch(error => console.error(error));
     }
 
     const getJobs = () => {
-        fetch('http://127.0.0.1:8000/users/api/job/')
+        /*fetch('http://127.0.0.1:8000/users/api/job/')
             .then(response => response.json())
             .then(data => setJobs(data))
+            .catch(error => console.error(error));*/
+        axios.get('http://127.0.0.1:8000/users/api/job/')
+            .then(response => setJobs(response.data))
             .catch(error => console.error(error));
-
-
     }
     console.log(jobs);
 
@@ -45,11 +69,31 @@ export default function RecruiterDashboard() {
     }
 
     const getApplicants = (job_id) => {
-        fetch(`http://127.0.0.1:8000/users/api/applicants/${job_id}/`)
+        /*fetch(`http://127.0.0.1:8000/users/api/applicants/${job_id}/`)
             .then(response => response.json())
             .then(data => {
                 data.sort(compare)
                 setApplicants(data);
+            })
+            .catch(error => console.error(error));*/
+        axios.get(`http://127.0.0.1:8000/users/api/applicants/${job_id}/`)
+            .then(response => {
+                response.data.sort(compare)
+                setApplicants(response.data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    const newJobData = {
+        "country": 4,
+        "locationType": 2
+    }
+
+    const editJob = (job_id) => {
+        axios.put(`http://127.0.0.1:8000/users/api/edit_job/${job_id}/`, newJobData)
+            .then(response => {
+                console.log('Updated successfully:', response.data);
+                window.location.reload();
             })
             .catch(error => console.error(error));
     }
@@ -58,41 +102,55 @@ export default function RecruiterDashboard() {
         fetch(`http://127.0.0.1:8000/users/api/delete_job/${job_id}/`, {
             method: 'DELETE'
         })
-            .then(window.location.reload())
+            .then(() => {
+                window.location.reload()
+                //getJobs()
+                //getApplicants()
+            })
             .catch(error => console.error(error));
+        /*axios.get(`http://127.0.0.1:8000/users/api/delete_job/${job_id}/`)
+            .then(() => {
+                window.location.reload()
+                //getJobs()
+                //getApplicants()
+            })
+            .catch(error => console.error(error));*/
     }
 
     return (
         <>
             <Header />
 
+            <div className="flex flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
 
-
-            <section class="bg-cover  bg-no-repeat bg-[url('https://www.jobvite.com/wp-content/uploads/2017/06/download_asset.jpg')] bg-blend-multiply bg-gray-400">
-                <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-                    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">AI-Powered Recruitment Platform for Recruiters</h1>
-                    <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Discover top talent and streamline your hiring process with our cutting-edge AI recruitment platform. Harness the power of artificial intelligence to make data-driven decisions and find the perfect candidates for your organization.</p>
-                    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                        <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                            Get started
-                            <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </a>
-                        <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                            Learn more
-                        </a>
+                <div className="">
+                    <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+                        <div class="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-white dark:bg-gray-800">
+                            <img src="https://d4y70tum9c2ak.cloudfront.net/contentImage/Job-Switching-Ticker-V02.gif" class="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt="" />
+                        </div>
+                    </div>
+                    <div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">
+                        <div class="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl w-[56px] h-[5px] md:w-[96px] md:h-[8px] bg-gray-800"></div>
                     </div>
                 </div>
-            </section>
 
-            <div class="flex items-center justify-center">
+                <div className="w-2/4 flex flex-col justify-center items-center gap-14">
+                <h1 class="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
+                <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
+                <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>                <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse	" >Post Job Now</button>
+                </div>
+
+            </div>
+
+            <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">
+                Manage Your Posted Jobs</h1>
+
+            <div class="flex items-center justify-center mt-10">
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {jobs.map((job) => (
                         <div key={job?.id} class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
-                            <div class=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
-                            </div>
+                                         <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+
                             <div class="mt-8">
                                 <p class="text-xl font-semibold my-2">{job?.title}</p>
                                 <div class="flex space-x-2  font-bold">
@@ -131,9 +189,7 @@ export default function RecruiterDashboard() {
 
                                 <div>
                                     <div className="flex justify-center items-center gap-4 text-white">
-                                        <button onClick={() => { getApplicants(job?.id) }}
-                                            className="px-4 py-2 rounded-lg bg-gray-900"
-                                        >Applicants</button>
+                                    <button onClick={() => { getApplicants(job?.id) }} className="px-4 py-2 rounded-lg bg-gray-900">Applicants</button>
 
                                         <button
                                             className="px-4 py-2 rounded-lg bg-gray-900 text-white"
@@ -144,7 +200,7 @@ export default function RecruiterDashboard() {
 
                                             onClick={() => deleteJob(job?.id)}>Delete</button>
 
-                                    </div>
+                                    </div>  
 
                                 </div>
                             </div>
@@ -155,7 +211,7 @@ export default function RecruiterDashboard() {
 
             {applicants.map((applicant) => (
                 <div key={applicant?.id}>
-                    <h3>{applicant?.job.title}</h3>
+                    {/* <h3>{applicant?.job.title}</h3> */}
                     <div>
                         <p>Name: {applicant?.seeker.user.first_name + " " + applicant?.seeker.user.last_name}</p>
                         <a href={applicant?.cv} download={applicant?.seeker.user.first_name + "-" + applicant?.seeker.user.last_name + "_CV"}>

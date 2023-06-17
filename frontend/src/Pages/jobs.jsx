@@ -95,58 +95,58 @@ const Alljobs = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center my-20 bg-gray-100 py-24 gap-10">
-  <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">
-    Most In-Demand Jobs
-  </h1>
+        <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">
+          Most In-Demand Jobs
+        </h1>
 
-  <AliceCarousel
-  
-     items={jobs.slice(0, 5).map((job) => (
-      <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
-        <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+        <AliceCarousel
 
-        <div className="mt-8">
-          <p className="text-xl font-semibold my-2">{job?.title}</p>
-          <div className="flex space-x-2 font-bold">
-            <p>{job?.company.name}</p>
-          </div>
-          <div className="flex text-gray-700 text-base my-3">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <p>{job?.country.name}</p>
+          items={jobs.slice(0, 5).map((job) => (
+            <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
+              <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
-            <div className="flex ml-24 gap-1 text-gray-500">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <p className="font-semibold text-base mb-2">{job.type.type}</p>
-            </div>
-          </div>
-          <div className="border-t-2"></div>
-          <div className="flex justify-between">
-            <div className="my-2">
-              <p className="font-semibold text-base mb-2">Recruiter</p>
-              <div className="flex space-x-2">
-                <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
+              <div className="mt-8">
+                <p className="text-xl font-semibold my-2">{job?.title}</p>
+                <div className="flex space-x-2 font-bold">
+                  <p>{job?.company.name}</p>
+                </div>
+                <div className="flex text-gray-700 text-base my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <p>{job?.country.name}</p>
+
+                  <div className="flex ml-24 gap-1 text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <p className="font-semibold text-base mb-2">{job.type.type}</p>
+                  </div>
+                </div>
+                <div className="border-t-2"></div>
+                <div className="flex justify-between">
+                  <div className="my-2">
+                    <p className="font-semibold text-base mb-2">Recruiter</p>
+                    <div className="flex space-x-2">
+                      <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          ))}
+          responsive={{ 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 3 }, 1280: { items: 4 } }}
+          autoPlay={true}
+          infinite={true} // Enable looping
+          animationType="custom" // Set animation type to custom
+          animationDuration={1000} // Set animation duration in milliseconds
+          animationEasingFunction="ease-in-out" // Set animation easing function
+        />
+        <button className="px-6 py-2 mt-8 bg-gray-900 text-white rounded-lg shadow-2xl">
+          See All Jobs
+        </button>
       </div>
-    ))}
-    responsive={{ 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 3 }, 1280: { items: 4 } }}
-  autoPlay={true  }
-  infinite={true} // Enable looping
-  animationType="custom" // Set animation type to custom
-  animationDuration={1000} // Set animation duration in milliseconds
-  animationEasingFunction="ease-in-out" // Set animation easing function
-/>
-  <button className="px-6 py-2 mt-8 bg-gray-900 text-white rounded-lg shadow-2xl">
-    See All Jobs
-  </button>
-</div>  
 
       <div class="bg-white pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
         <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto  sm:px-6 lg:px-8">
@@ -263,14 +263,14 @@ const Alljobs = () => {
             </div>
         </div> */}
 
-<style>
-    {`
+      <style>
+        {`
     .alice-carousel__prev-btn,
     .alice-carousel__next-btn {
       display: none !important;
     }
     `}
-  </style>
+      </style>
     </>
 
   );
