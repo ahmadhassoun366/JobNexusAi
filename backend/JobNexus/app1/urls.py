@@ -9,14 +9,28 @@ urlpatterns = [
 
     path('api/seeker/<int:user_id>/', SeekerViewSet.as_view(), name='seeker'),
     path('api/seeker_register/', SeekerRegisterCreateAPIView.as_view(), name='seeker_register'),
+    path('api/seeker_update/<int:pk>/', SeekerUpdateAPIView.as_view(), name='seeker_update'),
 
     path('api/recruiter/<int:user_id>/', RecruiterViewSet.as_view(), name='recruiter'),
     path('api/recruiter_register/', RecruiterRegisterCreateAPIView.as_view(), name='recruiter_register'),
+    path('api/recruiter_update/<int:recruiter_id>/', EditRecruiterProfile.as_view(), name='recruiter_update'),
 
     path('api/company/<int:recruiter_id>/', CompanyViewSet.as_view(), name='recruiter'),
     path('api/company_register/', CompanyRegisterCreateAPIView.as_view(), name='company_register'),
 
-    path('api/applicants/<int:job_id>/', ApplicationViewSet.as_view(), name='applicants'),
-
     path('api/job/', JobViewSet.as_view(), name='job'),
+    path('api/job/<int:id>/', JobIdViewSet.as_view(), name='job'),
+    path('api/add_job/', JobRegisterCreateAPIView.as_view(), name='add_job'),
+    path('api/edit_job/<int:job_id>/', EditJob.as_view(), name='edit_job'),
+
+    path('api/applicants/<int:job_id>/', ApplicationViewSet.as_view(), name='applicants'),
+    path('api/delete_job/<int:job_id>/', DeleteJob.as_view(), name='delete_job'),
+
+    # path('api/country/', CountryViewSet.as_view(), name='country'),
+
+    path('blogs/', BlogCreateAPIView.as_view(), name='blog_create'),
+    path('blogsDetails/<int:pk>/', BlogViewAPIView.as_view(), name='blog_View'),
+    path('blogsList/', BlogListAPIView.as_view(), name='blog_List'),
+    path('blogsUpdate/<int:pk>', BlogUpdateAPIView.as_view(), name='blog_update'),
+    path('blogsDelete/<int:pk>', BlogDeletAPIView.as_view(), name='blog_delete'),
 ]
