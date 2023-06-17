@@ -4,6 +4,7 @@ from .models import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as JwtTokenObtainPairSerializer
 from django.contrib.auth.hashers import make_password
 
+
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
     username_field = get_user_model().USERNAME_FIELD
 
@@ -11,7 +12,7 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class GETUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('id','first_name', 'last_name', 'phone')
+        fields = ('id', 'first_name', 'last_name', 'phone')
 
 
 class POSTUserSerializer(serializers.ModelSerializer):
@@ -67,6 +68,15 @@ class PostRecruiterSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class UpdateRecruiterSerializer(serializers.ModelSerializer):
+    user = GETUserSerializer(read_only=True)
+    # country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
+
+    class Meta:
+        model = Recruiter
+        fields = "__all__"
+
+
 # use it with POST request
 class PostCompanySerializer(serializers.ModelSerializer):
     country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
@@ -99,7 +109,7 @@ class JobLocationSerializer(serializers.ModelSerializer):
 
 class POSTJobSerializer(serializers.ModelSerializer):
     class Meta:
-        model = JobLocationType
+        model = Job
         fields = "__all__"
 
 

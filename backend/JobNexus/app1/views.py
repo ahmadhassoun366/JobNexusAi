@@ -8,7 +8,6 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import Blog
 
 
-
 from .models import *
 from .serializers import *
 
@@ -127,16 +126,17 @@ class JobViewSet(APIView):
 
 
 class JobIdViewSet(APIView):
-    def get(self, request,id):
+    def get(self, request, id):
         # Logic for handling GET request
         job = Job.objects.filter(id=id)
         serializer = GETJobSerializer(job, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
     
 @permission_classes([IsAuthenticated])
 class JobRegisterCreateAPIView(APIView):
     def post(self, request):
-        serializer = PostCompanySerializer(data=request.data)
+        serializer = POSTJobSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -171,7 +171,7 @@ class BlogCreateAPIView(APIView):
 
 
 class BlogViewAPIView(APIView):
-    def get(self, request,pk):
+    def get(self, request, pk):
         blog = Blog.objects.get(id=pk)
         serializer = BlogSerializer(blog, many=False)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -183,25 +183,28 @@ class BlogListAPIView(APIView):
         serializer = BlogSerializer(blog, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-#@permission_classes([IsAuthenticated])
+
+# @permission_classes([IsAuthenticated])
 class BlogUpdateAPIView(APIView):
-    def post(self, request,pk):
-        blog =Blog.objects.get(id=pk)
-        serializer = BlogSerializer(instance=blog,data=request.data)
+    def post(self, request, pk):
+        blog = Blog.objects.get(id=pk)
+        serializer = BlogSerializer(instance=blog, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
-#@permission_classes([IsAuthenticated])
-class BlogDeletAPIView(APIView):
-    def post(self, request,pk):
-        blog =Blog.objects.get(id=pk)
+
+
+# @permission_classes([IsAuthenticated])
+class BlogDeleteAPIView(APIView):
+    def post(self, request, pk):
+        blog = Blog.objects.get(id=pk)
         blog.delete()
         return Response("blog delete")
 
 
 class DeleteJob(APIView):
-   def delete(self, request, job_id):
+    def delete(self, request, job_id):
         job = Job.objects.filter(id=job_id)
         job.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -215,17 +218,35 @@ class SeekerUpdateAPIView(APIView):
         last_name = user_data.get("last_name")
         phone = user_data.get("phone")
         print(phone)
-        
+
         user_instance = seeker.user
         user_instance.first_name = first_name
         user_instance.last_name = last_name
         user_instance.phone = phone
         user_instance.save()
 
-
-
         # seeker = Seeker.objects.get(id=pk)
         serializer = PostSeekerSerializer(seeker, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class EditJob(APIView):
+    def put(self, request, job_id):
+        job = Job.objects.get(id=job_id)
+        serializer = POSTJobSerializer(job, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class EditRecruiterProfile(APIView):
+    def put(self, request, recruiter_id):
+        recruiter = Recruiter.objects.get(id=recruiter_id)
+        serializer = UpdateRecruiterSerializer(recruiter, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
