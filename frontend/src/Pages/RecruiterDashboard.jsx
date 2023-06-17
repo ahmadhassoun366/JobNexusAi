@@ -124,20 +124,20 @@ export default function RecruiterDashboard() {
             <div className="flex flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
 
                 <div className="">
-                    <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
-                        <div class="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-white dark:bg-gray-800">
+                    <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+                        <div class="rounded-xl overflow-hidden h-[140px] md:h-[262px]">
                             <img src="https://d4y70tum9c2ak.cloudfront.net/contentImage/Job-Switching-Ticker-V02.gif" class="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt="" />
                         </div>
                     </div>
-                    <div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">
-                        <div class="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl w-[56px] h-[5px] md:w-[96px] md:h-[8px] bg-gray-800"></div>
+                    <div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl h-[24px] max-w-[301px] md:h-[42px] md:max-w-[512px]"></div>
+                    <div class="relative mx-auto bg-gray-800 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]">
                     </div>
                 </div>
 
                 <div className="w-2/4 flex flex-col justify-center items-center gap-14">
-                <h1 class="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
-                <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
-                <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>                <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse	" >Post Job Now</button>
+                    <h1 class="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
+                    <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
+                    <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>                <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse	" >Post Job Now</button>
                 </div>
 
             </div>
@@ -149,7 +149,7 @@ export default function RecruiterDashboard() {
                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {jobs.map((job) => (
                         <div key={job?.id} class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
-                                         <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+                            <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
                             <div class="mt-8">
                                 <p class="text-xl font-semibold my-2">{job?.title}</p>
@@ -189,7 +189,7 @@ export default function RecruiterDashboard() {
 
                                 <div>
                                     <div className="flex justify-center items-center gap-4 text-white">
-                                    <button onClick={() => { getApplicants(job?.id) }} className="px-4 py-2 rounded-lg bg-gray-900">Applicants</button>
+                                        <button onClick={() => { getApplicants(job?.id) }} className="px-4 py-2 rounded-lg bg-gray-900">Applicants</button>
 
                                         <button
                                             className="px-4 py-2 rounded-lg bg-gray-900 text-white"
@@ -200,7 +200,7 @@ export default function RecruiterDashboard() {
 
                                             onClick={() => deleteJob(job?.id)}>Delete</button>
 
-                                    </div>  
+                                    </div>
 
                                 </div>
                             </div>
