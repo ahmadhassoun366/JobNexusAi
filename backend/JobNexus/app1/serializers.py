@@ -12,7 +12,7 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class GETUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('id', 'first_name', 'last_name', 'phone')
+        fields = ('id', 'first_name', 'last_name', 'phone', 'email')
 
 
 class POSTUserSerializer(serializers.ModelSerializer):
@@ -89,6 +89,7 @@ class PostCompanySerializer(serializers.ModelSerializer):
 # use it with GET request
 class GetCompanySerializer(serializers.ModelSerializer):
     country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
+    recruiter = RecruiterSerializer(read_only=True)
 
     class Meta:
         model = Company

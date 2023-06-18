@@ -32,5 +32,10 @@ urlpatterns = [
     path('blogsDetails/<int:pk>/', BlogViewAPIView.as_view(), name='blog_View'),
     path('blogsList/', BlogListAPIView.as_view(), name='blog_List'),
     path('blogsUpdate/<int:pk>', BlogUpdateAPIView.as_view(), name='blog_update'),
-    path('blogsDelete/<int:pk>', BlogDeletAPIView.as_view(), name='blog_delete'),
+    path('blogsDelete/<int:pk>', BlogDeleteAPIView.as_view(), name='blog_delete'),
+
+    path('api/companies/', GETCompany.as_view(), name='companies'),
+    path('api/countries/', GETCountry.as_view(), name='countries'),
+    path('api/job_types/', GETJobType.as_view(), name='job_types'),
+    path('api/job_location_types/', GETLocationType.as_view(), name='job_location_types'),
 ]
