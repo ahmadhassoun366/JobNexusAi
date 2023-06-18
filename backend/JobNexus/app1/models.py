@@ -139,7 +139,7 @@ class Job(models.Model):
     locationType = models.ForeignKey(JobLocationType, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=10000)
-    deadline = models.DateField(null=True, blank=True)
+    # deadline = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.title}"
