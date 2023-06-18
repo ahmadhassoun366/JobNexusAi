@@ -219,11 +219,10 @@ class SeekerUpdateAPIView(APIView):
         if profile_picture:
             seeker.profilePicture.delete()  # Delete the existing profile picture
             seeker.profilePicture.save(profile_picture.name, profile_picture)  # Save the new profile picture
-            
+
             return Response({"message": "Profile picture updated successfully."}, status=status.HTTP_200_OK)
         # else:
         #     return Response({"message": "No profile picture provided."}, status=status.HTTP_400_BAD_REQUEST)
-
 
         else:
             user_data = request.data.pop("user", {})
@@ -231,14 +230,12 @@ class SeekerUpdateAPIView(APIView):
             last_name = user_data.get("last_name")
             phone = user_data.get("phone")
             print(phone)
-            
+
             user_instance = seeker.user
             user_instance.first_name = first_name
             user_instance.last_name = last_name
             user_instance.phone = phone
             user_instance.save()
-
-
 
             # seeker = Seeker.objects.get(id=pk)
             serializer = PostSeekerSerializer(seeker, data=request.data, partial=True)
@@ -266,3 +263,31 @@ class EditRecruiterProfile(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GETCompany(APIView):
+    def get(self, request):
+        companies = Company.objects.all()
+        serializer = GetCompanySerializer(companies, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GETCountry(APIView):
+    def get(self, request):
+        countries = Country.objects.all()
+        serializer = CountrySerializer(countries, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GETJobType(APIView):
+    def get(self, request):
+        types = JobType.objects.all()
+        serializer = JobTypeSerializer(types, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GETLocationType(APIView):
+    def get(self, request):
+        locationTypes = JobLocationType.objects.all()
+        serializer = JobLocationSerializer(locationTypes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
