@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import Blog
-
+from .pdf_similarity import analyze_pdf_similarity
 
 from .models import *
 from .serializers import *
@@ -157,9 +157,28 @@ class ApplicationRegisterCreateAPIView(APIView):
         serializer = PostApplicationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+
+            application = Application.objects.filter(seeker=request.data.get('seeker'))
+            cv = application[0].cv.path
+            print(application[0])
+            print(cv)
+            job = Job.objects.get(id=request.data.get('job'))
+            print(job)
+            req = job.description       
+            print(req)
+            # print(cv)
+            similarity = analyze_pdf_similarity(req,cv)
+            # request.data["similarity"] = similarity['match_percentage']
+            application[0].similarity = similarity['match_percentage']
+            app = application[0]
+            app.similarity = similarity['match_percentage']
+            app.save()
+            if similarity is not None:
+                print(f"Match Percentage: {similarity['match_percentage']}%")
+            else:
+                print("No similarity result found.")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class BlogCreateAPIView(APIView):
   def post(self, request):

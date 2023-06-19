@@ -11,7 +11,7 @@ const JobDetails = () => {
   const [job, setJob] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [coverLetterFile, setCoverLetterFile] = useState(null);
-  const [seeker] = useState('');
+  const [seeker] = useState(4);
 
 // eslint-disable-next-line
 
@@ -59,15 +59,15 @@ const JobDetails = () => {
     formData.append('cv', selectedFile);
     formData.append('job', id);
     formData.append('seeker', seeker);
-    formData.append('coverLetter', coverLetterFile);
-
+    // formData.append('coverLetter', coverLetterFile);
     console.log('job id', id)
     console.log('seeker', seeker)
 
     // Make the POST request using Axios
-    axios.post('http://127.0.0.1:8000/users/api/create_applicants/', formData)
+    axios.post('http://127.0.0.1:8000/users/api/create_application/', formData)
       .then((response) => {
         // Handle the response from the API
+        alert('Success')
         console.log('Upload successful:', response.data);
       })
       .catch((error) => {
@@ -229,11 +229,12 @@ const JobDetails = () => {
                     </div>
 
                 </div>   
-              </form>
-            <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center">
 
                 <button className="mt-3 bg-gray-900 text-white font-medium px-10 py-3 rounded-md flex gap-1 items-center">Submit</button>
             </div>
+
+              </form>
             </div>
             {/* <!-- End of about Job section --> */}
         </div>

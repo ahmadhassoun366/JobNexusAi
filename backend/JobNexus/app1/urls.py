@@ -19,6 +19,7 @@ urlpatterns = [
     path('api/company_register/', CompanyRegisterCreateAPIView.as_view(), name='company_register'),
 
     path('api/applicants/<int:job_id>/', ApplicationViewSet.as_view(), name='applicants'),
+    path('api/create_application/', ApplicationRegisterCreateAPIView.as_view(), name='applicants'),
     path('api/delete_job/<int:job_id>/', DeleteJob.as_view(), name='delete_job'),
 
     path('api/job/', JobViewSet.as_view(), name='job'),
