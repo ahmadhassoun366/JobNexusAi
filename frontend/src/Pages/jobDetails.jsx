@@ -6,8 +6,9 @@ import Footer from "../Components/Footer";
   
 
 const JobDetails = () => {
-  const storedSeekerId = localStorage.getItem('seekerId');
+  const storedSeekerId = localStorage.getItem('seekerId'); 
   console.log('seeker' ,storedSeekerId);
+
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);

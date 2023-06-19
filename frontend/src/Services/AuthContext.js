@@ -59,15 +59,16 @@ const AuthProvider = ({ children }) => {
       const seekerResponse = await axios.get(`http://127.0.0.1:8000/users/api/seeker/${userId}/`);
       console.log(seekerResponse.data[0].id);
       setSeekerId(seekerResponse.data[0].id)
-
-
+      localStorage.setItem('userId', userId);
+      localStorage.getItem('userId');
+      console.log('after saving user', userId);
       // localStorage.setItem('seekerId', seekerId);
       // const storage = localStorage.getItem('seekerId');
       // console.log("storage",storage);
       localStorage.setItem('seekerId', seekerResponse.data[0].id);
       localStorage.getItem('seekerId');
       localStorage.setItem('seekerId', seekerResponse.data[0].id);
-      
+
     } catch (error) {
       setError('Invalid email or password.');
     } 

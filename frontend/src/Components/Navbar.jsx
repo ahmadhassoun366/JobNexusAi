@@ -6,7 +6,8 @@ import { AuthContext } from '../Services/AuthContext';
 const Header = () => {
   const id = localStorage.getItem('seekerId');
   const {isAuthenticated, logout } = useContext(AuthContext);
-
+  const storedUserId = localStorage.getItem('userId');
+  console.log('user in navbar' ,storedUserId);
   const handleLogout = () => {
     // Handle logout functionality, e.g., clear local storage, update login status, etc.
     logout()
@@ -59,7 +60,7 @@ const Header = () => {
                   </li>
                   {isAuthenticated && (
                     <li>
-                      <Link to={`/profile/${id}`} className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
+                      <Link to={`/profile/${storedUserId}`} className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
                         <button
                           id="mega-menu-full-cta-image-button"
                           className="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-white border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
