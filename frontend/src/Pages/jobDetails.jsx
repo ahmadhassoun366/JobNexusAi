@@ -6,12 +6,13 @@ import Footer from "../Components/Footer";
   
 
 const JobDetails = () => {
-
+  const storedSeekerId = localStorage.getItem('seekerId');
+  console.log('seeker' ,storedSeekerId);
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [coverLetterFile, setCoverLetterFile] = useState(null);
-  const [seeker] = useState(4);
+  const [seeker] = useState(storedSeekerId);
 
 // eslint-disable-next-line
 
@@ -56,9 +57,9 @@ const JobDetails = () => {
 
     // Create a FormData object
     const formData = new FormData();
-    formData.append('cv', selectedFile);
     formData.append('job', id);
     formData.append('seeker', seeker);
+    formData.append('cv', selectedFile);
     // formData.append('coverLetter', coverLetterFile);
     console.log('job id', id)
     console.log('seeker', seeker)
@@ -219,7 +220,7 @@ const JobDetails = () => {
                               <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                   <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                                   <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                  <p class="text-xs text-gray-500 dark:text-gray-400">Only docs (MAX. 800x400px)</p>
+                                  <p class="text-xs text-gray-500 dark:text-gray-400">Only PDF (MAX. 800x400px)</p>
                               </div>
                               <input id="dropzone-file" type="file" class="hidden"
                               onChange={handleCoverLetterFileChange} />

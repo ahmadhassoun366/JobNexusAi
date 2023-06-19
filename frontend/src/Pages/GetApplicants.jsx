@@ -49,8 +49,8 @@ const GetApplicants = () => {
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.email}</p>
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.phone}</p>
                   </div>
-                  <div className="ml-auto text-base font-semibold text-gray-800">
-                    {applicant?.similarity}%
+                  <div className="ml-auto text-base  text-gray-900 font-bold">
+                  <span className="text-gray-500 font-semibold">AI Score:</span> {applicant?.similarity}%
                   </div>
                 </div>
               </li>

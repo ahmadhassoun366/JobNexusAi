@@ -31,10 +31,6 @@ const handleLogin = async (e) => {
     } catch (error) {
       setError('Invalid email or password'); // Set error message if login fails
     }
-
-	console.log(email);
-    console.log(password);
-
   };
 
   return (

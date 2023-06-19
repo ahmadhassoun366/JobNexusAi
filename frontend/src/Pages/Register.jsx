@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [accountType, setAccountType] = useState(null);
@@ -287,12 +288,12 @@ const Register = () => {
 								</a>
 							</div>
 							<div className="text-center">
-								<a
+								<Link
 									className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-									href="./index.html"
+									to="/login"
 								>
 									Already have an account? Login!
-								</a>
+								</Link>
 							</div>
 						</form>
 					</div>

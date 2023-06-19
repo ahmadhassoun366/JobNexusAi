@@ -1,18 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
 import { BsFillArrowDownSquareFill } from 'react-icons/bs';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import { AuthContext } from '../Services/AuthContext';
 
 const Alljobs = () => {
   let [jobs, setJobs] = useState([]);
+  const { isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     getAllJobs();
   }, []);
 
   let getAllJobs = async () => {
+    // let response = await fetch(process.env.REACT_APP_JOB_API_URL, {
     let response = await fetch("http://127.0.0.1:8000/users/api/job/", {
       method: "GET",
     });
@@ -128,14 +131,26 @@ const Alljobs = () => {
                 <div className="flex justify-between">
                   <div className="my-2">
                     <div className="flex flex-row space-x-5 my-3">
-                    <p className="font-semibold text-base mb-2">Recruiter</p>
+                      <p className="font-semibold text-base mb-2">Recruiter</p>
                       <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
-                       
+
                     </div>
-                    <Link to={`/jobDetails/${job.id}`} className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">Apply Now <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                        </Link>
+                    {isAuthenticated ? (
+                          <Link
+                            to={`/jobDetails/${job.id}`}
+                            className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
+                          >
+                            Apply Now
+                        
+                            </Link>
+                        ) : (
+                          <Link
+                            to="/login"
+                            className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
+                          >
+                            Login to Apply
+                          </Link>
+                        )}
                   </div>
                 </div>
               </div>
@@ -200,10 +215,32 @@ const Alljobs = () => {
 
                       </div>
                       <div class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
-                        <Link to={`/jobDetails/${job.id}`} className="bg-gray-900 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center">Apply Now <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                        </Link>
+                        {isAuthenticated ? (
+                          <Link
+                            to={`/jobDetails/${job.id}`}
+                            className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
+                          >
+                            Apply Now
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </Link>
+                        ) : (
+                          <Link
+                            to="/login"
+                            className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
+                          >
+                            Login to Apply
+                          </Link>
+                        )}
+
                       </div>
                     </div>
                     <hr className="mt-5 "></hr>
