@@ -28,6 +28,7 @@ urlpatterns = [
 
     path('api/job/', JobViewSet.as_view(), name='job'),
     path('api/job/<int:id>/', JobIdViewSet.as_view(), name='specific_job'),
+    path('api/jobRecruiter/<int:recruiter_id>/', GetJobsByRecruiterId.as_view(), name='filter_job'),
     path('api/add_job/', JobRegisterCreateAPIView.as_view(), name='add_job'),
     path('api/edit_job/<int:job_id>/', EditJob.as_view(), name='edit_job'),
 

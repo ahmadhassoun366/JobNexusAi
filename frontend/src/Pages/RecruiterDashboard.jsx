@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Header from "../Components/Navbar";
+import Nav from "../Components/RecruiterNav";
 import Footer from "../Components/Footer";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
 export default function RecruiterDashboard() {
     let [jobs, setJobs] = useState([]);
+    const storedRecruiterID = localStorage.getItem('recruiterId'); 
 
     useEffect(() => {
         getJobs();
@@ -51,11 +52,14 @@ export default function RecruiterDashboard() {
         /*fetch('http://127.0.0.1:8000/users/api/job/')
             .then(response => response.json())
             .then(data => setJobs(data))
-            .catch(error => console.error(error));*/
-        axios.get('http://127.0.0.1:8000/users/api/job/')
+            .catch(error => console.error(error));*/    
+        axios.get(`http://127.0.0.1:8000/users/api/jobRecruiter/${storedRecruiterID}/`)
             .then(response => setJobs(response.data))
             .catch(error => console.error(error));
-    }
+
+    
+        }
+
     console.log(jobs);
 
     const compare = (a, b) => {
@@ -104,7 +108,7 @@ export default function RecruiterDashboard() {
 
     return (
         <>
-            <Header />
+            <Nav />
 
             <div className="flex flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
 
@@ -185,7 +189,7 @@ export default function RecruiterDashboard() {
                                     </Link>
 
                                     <Link to={`/editJob/${job.id}`}>
-                                        <button button
+                                        <button 
                                             className=" ml-10 text-blue-500 hover:underline">
                                         Edit
                                         </button>

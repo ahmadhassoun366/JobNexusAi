@@ -4,7 +4,6 @@ import Navbar from '../Components/Navbar';
 import axios from 'axios';
 
 export default function RecruiterProfile() {
-    let { id } = useParams();
     let [countries, setCountries] = useState([]);
     //let [idRecruiter, setIDRecruiter] = useState([]);
 
@@ -18,6 +17,7 @@ export default function RecruiterProfile() {
     let [title, setTitle] = useState("");
     let [about, setAbout] = useState("");
 
+    let id = localStorage.getItem('userId')
     const handleFirstName = (e) => {
         setFirst_name(e.target.value);
     }
@@ -206,7 +206,7 @@ export default function RecruiterProfile() {
                                                 <input
                                                     type="text"
                                                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                                                    value={title}
+                                                    value={about}
                                                     onChange={handleTitle}
                                                 />
                                             </div>

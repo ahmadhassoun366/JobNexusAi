@@ -51,7 +51,7 @@ class SeekerRegisterCreateAPIView(APIView):
         return Response(serializerUser.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class RecruiterViewSet(APIView):
     def get(self, request, user_id):
         # Logic for handling GET request
@@ -87,7 +87,7 @@ class RecruiterRegisterCreateAPIView(APIView):
         return Response(serializerUser.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class CompanyRegisterCreateAPIView(APIView):
     def post(self, request):
         data = request.data
@@ -150,16 +150,20 @@ class ApplicationViewSet(APIView):
         serializer = GETApplicationSerializer(application, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+#create application => application id
+# then apply the changes 
+
 
 # @permission_classes([IsAuthenticated])
 class ApplicationRegisterCreateAPIView(APIView):
     def post(self, request):
         serializer = PostApplicationSerializer(data=request.data)
+        print("requestttttttttt " , request.data)
         if serializer.is_valid():
             serializer.save()
 
             application = Application.objects.filter(seeker=request.data.get('seeker'))
-            cv = application[0].cv.path
+            cv = application.cv.path
             print(application[0])
             print(cv)
             job = Job.objects.get(id=request.data.get('job'))
@@ -170,9 +174,7 @@ class ApplicationRegisterCreateAPIView(APIView):
             similarity = analyze_pdf_similarity(req,cv)
             # request.data["similarity"] = similarity['match_percentage']
             application[0].similarity = similarity['match_percentage']
-            app = application[0]
-            app.similarity = similarity['match_percentage']
-            app.save()
+            application[0].save()
             if similarity is not None:
                 print(f"Match Percentage: {similarity['match_percentage']}%")
             else:
@@ -357,3 +359,10 @@ class EditRecruiterProfile(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class GetJobsByRecruiterId(APIView):
+    def get(self, request, recruiter_id):
+        jobs = Job.objects.filter(recruiter=recruiter_id)
+        serializer = GETJobSerializer(jobs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)    
+    

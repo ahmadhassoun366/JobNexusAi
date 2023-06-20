@@ -10,7 +10,7 @@ def analyze_pdf_similarity(Req,CV):
     # Req = os.path.join('/home/ahmadhassoun/JobNexusAi/backend/JobNexus/static/cv/desc.pdf')
     CV = CV
     Req = Req
-
+    print(CV)
     CV_File = open(CV, 'rb')
     Script = PyPDF2.PdfReader(CV_File)
     pages = len(Script.pages)
@@ -46,7 +46,7 @@ def analyze_pdf_similarity(Req,CV):
     # Script_Req = ''.join(Script_Req)
     # Req_Clear = Script_Req.replace("\n", "")
     # Req_Clear
-
+    
     Req_Clear = Req.replace("\n", "")
 
     Match_Test = [CV_Clear, Req_Clear]
@@ -60,7 +60,7 @@ def analyze_pdf_similarity(Req,CV):
 
     MatchPercentage = cosine_similarity(count_matrix)[0][1] * 100
     MatchPercentage = round(MatchPercentage, 2)
-
+    print(MatchPercentage)
     context = {
         'match_percentage': MatchPercentage,
     }

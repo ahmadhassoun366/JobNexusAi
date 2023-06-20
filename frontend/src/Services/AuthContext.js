@@ -19,6 +19,7 @@ const AuthProvider = ({ children }) => {
   const [error, setError] = useState('');
   const [userId, setUserId] = useState('');
   const [seekerId, setSeekerId] = useState('');
+  const [recruiterId, setRecruiterId] = useState('');
 
 
   useEffect(() => {
@@ -38,37 +39,51 @@ const AuthProvider = ({ children }) => {
       const { refresh, access } = response.data;
   
       setIsAuthenticated(true);
-      setUser(response.data.user);
       setRefreshToken(refresh);
       setAccessToken(access);
       console.log("refresh token is " + refresh);
       console.log("access token is " + access);
   
       setError('');
-      navigate('/jobs'); // Replace '/' with the actual path of your home page
+      let userId
   
       if (refresh) {
         const decodedToken = jwt_decode(refresh);
-        const userId = decodedToken.user_id; // Assuming the user ID is stored in the 'user_id' claim
+        console.log("decoded",decodedToken);
+        userId = decodedToken.user_id; // Assuming the user ID is stored in the 'user_id' claim
         console.log('User ID:', userId);
         // Use the user ID as needed
         setUserId(userId)
+        localStorage.setItem('userId', userId);        
+      }
+      const seekerResponse = await axios.get(`http://127.0.0.1:8000/users/api/seeker/${userId}/`);
+      console.log("seeeeeekr", seekerResponse.data );
+      
+      if(seekerResponse.data.length > 0){
+        console.log("Seeker Logged In Successfully");
+        setSeekerId(seekerResponse.data[0].id)
+        localStorage.setItem('seekerId', seekerResponse.data[0].id);
+        navigate('/jobs');
+
       }
 
-      console.log(userId);
-      const seekerResponse = await axios.get(`http://127.0.0.1:8000/users/api/seeker/${userId}/`);
-      console.log(seekerResponse.data[0].id);
-      setSeekerId(seekerResponse.data[0].id)
-      localStorage.setItem('userId', userId);
-      localStorage.getItem('userId');
-      console.log('after saving user', userId);
-      // localStorage.setItem('seekerId', seekerId);
-      // const storage = localStorage.getItem('seekerId');
-      // console.log("storage",storage);
-      localStorage.setItem('seekerId', seekerResponse.data[0].id);
-      localStorage.getItem('seekerId');
-      localStorage.setItem('seekerId', seekerResponse.data[0].id);
+      else {
+        // User is a recruiter
+        console.log("Recruiter Logged In Successfully");
+        navigate('/recruiter');
+        const recruiterResponse = await axios.get(`http://127.0.0.1:8000/users/api/recruiter/${userId}/`);
+        setRecruiterId(recruiterResponse.data[0].id);
+        console.log(recruiterResponse.data[0].id)
+        localStorage.setItem('recruiterId', recruiterResponse.data[0].id);
+        // Redirect to the recruiter page
+        console.log('locaaaaaaaaaaaaaaaaaaaaaaaaaaal',localStorage.getItem('recruiterId'));
+      }
 
+      // else for recruiter
+
+
+
+      
     } catch (error) {
       setError('Invalid email or password.');
     } 
@@ -82,6 +97,8 @@ const AuthProvider = ({ children }) => {
     setRefreshToken(null);
     setAccessToken(null);
     navigate('/login'); // Replace '/login' with the actual path of your login page
+    localStorage.clear();
+    
   };
 
   const register = async () => {

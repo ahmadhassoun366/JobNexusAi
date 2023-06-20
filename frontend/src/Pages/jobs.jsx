@@ -16,10 +16,7 @@ const Alljobs = () => {
 
   let getAllJobs = async () => {
     
-    // let response = await fetch(process.env.REACT_APP_JOB_API_URL, {
-
-
-    let response = await fetch("http://127.0.0.1:8000/users/api/job/", {
+    let response = await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/job/`, {
       method: "GET",
     });
 
