@@ -91,14 +91,14 @@ const JobDetails = () => {
           {/* <!-- Left Side --> */}
           <div className="w-full md:w-3/12 md:mx-2 ">
             {/* <!-- Profile Card --> */}
-            <div className="bg-white p-3 ">
+            <div className="bg-white p-3 space-y-5 ">
               <div className="image overflow-hidden shadow-2xl rounded-full">
                 <img className="h-auto w-full mx-auto "
                 src={`http://127.0.0.1:8000/${job?.company.logo}`}
                   alt="" />
               </div>
               <h2 className="text-gray-600 font-lg text-semibold text-2xl leading-6 font-semibold text-center my-2 ">{job?.title}</h2>
-              <p className="text-sm text-gray-500 hover:text-gray-600 leading-6 text-center my-2"  >
+              <p className="text-xl text-gray-500 hover:text-gray-600 leading-6 text-center my-2"  >
               {job?.company.field}
               </p>
               

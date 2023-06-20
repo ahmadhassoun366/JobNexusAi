@@ -37,7 +37,7 @@ const GetApplicants = () => {
       <div className="flex justify-center items-center my-20">
         <div className="max-w-3xl w-full px-6 py-8 bg-white rounded-lg shadow-md">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Top Talented Candidates</h2>
-          <p className="text-gray-600 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p className="text-gray-600 mb-8">We have carefully selected the following candidates based on their qualifications and experience:</p>
 
           <ul className="space-y-6">
             {applicants.map(applicant => (
