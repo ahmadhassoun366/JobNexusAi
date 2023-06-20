@@ -12,7 +12,7 @@ const GetApplicants = () => {
   }, []);
 
   const getApplicants = () => {
-    axios.get(`http://127.0.0.1:8000/users/api/applicants/${id}/`)
+    axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/applicants/${id}/`)
       .then(response => {
         const sortedApplicants = response.data.sort(compare);
         setApplicants(sortedApplicants);
@@ -43,7 +43,7 @@ const GetApplicants = () => {
             {applicants.map(applicant => (
               <li key={applicant?.id}>
                 <div className="flex items-center">
-                  <img className="w-12 h-12 rounded-full" src={`http://127.0.0.1:8000/${applicant?.seeker.profilePicture}`} alt="Profile" />
+                  <img className="w-12 h-12 rounded-full" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-800">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.email}</p>
@@ -65,7 +65,7 @@ const GetApplicants = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {applicants.map(applicant => (
               <div key={applicant?.id} className="bg-white p-6 rounded-lg shadow-md">
-                <img className="w-12 h-12 rounded-full mx-auto mb-4" src={`http://127.0.0.1:8000/${applicant?.seeker.profilePicture}`} alt="Profile" />
+                <img className="w-12 h-12 rounded-full mx-auto mb-4" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.email}</p>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.phone}</p>

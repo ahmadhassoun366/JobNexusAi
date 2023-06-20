@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/users/token/obtain/', {
+      const response = await axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/token/obtain/`, {
         email,
         password
       });
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
         setUserId(userId)
         localStorage.setItem('userId', userId);        
       }
-      const seekerResponse = await axios.get(`http://127.0.0.1:8000/users/api/seeker/${userId}/`);
+      const seekerResponse = await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker/${userId}/`);
       console.log("seeeeeekr", seekerResponse.data );
       
       if(seekerResponse.data.length > 0){
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
         // User is a recruiter
         console.log("Recruiter Logged In Successfully");
         navigate('/recruiter');
-        const recruiterResponse = await axios.get(`http://127.0.0.1:8000/users/api/recruiter/${userId}/`);
+        const recruiterResponse = await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter/${userId}/`);
         setRecruiterId(recruiterResponse.data[0].id);
         console.log(recruiterResponse.data[0].id)
         localStorage.setItem('recruiterId', recruiterResponse.data[0].id);

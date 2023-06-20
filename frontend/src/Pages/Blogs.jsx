@@ -9,7 +9,7 @@ const BlogList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/users/blogsList/');
+        const response = await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/blogsList/`);
         setBlogs(response.data);
       } catch (error) {
         console.log(error);

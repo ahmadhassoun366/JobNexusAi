@@ -50,7 +50,7 @@ const Register = () => {
         password,
       };
 
-      fetch('http://127.0.0.1:8000/users/api/recruiter_register/', {
+      fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const Register = () => {
         password,
       };
 
-      fetch('http://127.0.0.1:8000/users/api/seeker_register/', {
+      fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

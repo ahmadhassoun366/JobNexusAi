@@ -23,7 +23,7 @@ const JobDetails = () => {
 
   const getJobDetails = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/users/api/job/${id}/`, {
+      const response = await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/job/${id}/`, {
         method: "GET",
       });
       if (response.ok) {
@@ -66,7 +66,7 @@ const JobDetails = () => {
     console.log('seeker', seeker)
 
     // Make the POST request using Axios
-    axios.post('http://127.0.0.1:8000/users/api/create_application/', formData)
+    axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/create_application/`, formData)
       .then((response) => {
         // Handle the response from the API
         alert('Success')
@@ -95,7 +95,7 @@ const JobDetails = () => {
             <div className="bg-white p-3 space-y-5 ">
               <div className="image overflow-hidden shadow-2xl rounded-full">
                 <img className="h-auto w-full mx-auto "
-                src={`http://127.0.0.1:8000/${job?.company.logo}`}
+                src={`${process.env.REACT_APP_JOB_API_URL}/${job?.company.logo}`}
                   alt="" />
               </div>
               <h2 className="text-gray-600 font-lg text-semibold text-2xl leading-6 font-semibold text-center my-2 ">{job?.title}</h2>

@@ -17,19 +17,19 @@ const NewJob = () => {
     let [description, setDescription] = useState("");
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/users/api/companies/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/companies/`)
             .then(response => setCompanies(response.data))
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/countries/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/countries/`)
             .then(response => setCountries(response.data))
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/job_types/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job_types/`)
             .then(response => setTypes(response.data))
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/job_location_types/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job_location_types/`)
             .then(response => setLocationTypes(response.data))
             .catch(error => console.error(error));
     }, []);
@@ -45,7 +45,7 @@ const NewJob = () => {
             "description": description
         }
         console.log(job)
-        axios.post("http://127.0.0.1:8000/users/api/add_job/", job)
+        axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, job)
             .then(response => {
                 console.log('Added successfully:', response.data);
                 alert("Added Successfully!");

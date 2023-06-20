@@ -80,7 +80,7 @@ const Profile = () => {
     const formData = new FormData();
     formData.append('profilePicture', file);
 
-    axios.put(`http://127.0.0.1:8000/users/api/seeker_update/${idSeeker}/`, formData)
+    axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_update/${idSeeker}/`, formData)
       .then((response) => {
         // Handle the response from the API
         console.log('Upload successful:', response.data);
@@ -114,7 +114,7 @@ const Profile = () => {
     };
 
     // Make the POST request using Axios
-    axios.put(`http://127.0.0.1:8000/users/api/seeker_update/${idSeeker}/`, data)
+    axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_update/${idSeeker}/`, data)
       .then((response) => {
         // Handle the response from the API
         console.log('Upload successful:', response.data);
@@ -141,7 +141,7 @@ const Profile = () => {
 
   const getSeeker = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/users/api/seeker/${id}/`, {
+      const response = await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker/${id}/`, {
         method: "GET",
       });
       if (response.ok) {
@@ -218,7 +218,7 @@ const Profile = () => {
           <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" alt="" class="w-full h-96 " />
         </div>
         <div class="flex flex-col items-center -mt-20 ">
-          <img src={`http://127.0.0.1:8000/${seeker?.profilePicture}`}  
+          <img src={`${process.env.REACT_APP_JOB_API_URL}/${seeker?.profilePicture}`}  
           style={{ objectPosition: 'center top' }}
           class="w-80 h-80 border-4 object-cover					border-gray-700 rounded-full shadow-2xl" />
           <div class="flex items-center space-x-2 mt-2 ">

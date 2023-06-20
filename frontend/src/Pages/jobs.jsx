@@ -106,7 +106,7 @@ const Alljobs = () => {
 
           items={jobs.slice(0, 5).map((job) => (
             <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
-              <img alt="" src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+              <img alt="" src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
               <div className="mt-8">
                 <p className="text-xl font-semibold my-2">{job?.title}</p>
@@ -132,7 +132,7 @@ const Alljobs = () => {
                   <div className="my-2">
                     <div className="flex flex-row space-x-5 my-3">
                       <p className="font-semibold text-base mb-2">Recruiter</p>
-                      <img alt="" src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
+                      <img alt="" src={`${process.env.REACT_APP_JOB_API_URL}/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
 
                     </div>
                     {isAuthenticated ? (
@@ -201,7 +201,7 @@ const Alljobs = () => {
                       <div className="flex items-center flex-1 min-w-0">
                         <img
                           alt=""
-                          src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12   mb-8 " />
+                          src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12   mb-8 " />
                         <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
                           <p className="text-lg font-bold text-gray-800 truncate">{job.title}</p>
                           <p className="text-gray-600 text-md">{job.company.name}</p>

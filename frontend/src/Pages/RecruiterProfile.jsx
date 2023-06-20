@@ -51,7 +51,7 @@ export default function RecruiterProfile() {
         const formData = new FormData();
         formData.append('profilePicture', file);
 
-        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${recruiter_Id}/`, formData)
+        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${1}/`, formData)
             .then((response) => {
                 console.log('Upload successful:', response.data);
                 alert("Profile Picture Updated successfully")
@@ -77,7 +77,7 @@ export default function RecruiterProfile() {
 
         console.log(data);
 
-        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${recruiter_Id}/`, data)
+        axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_update/${1}/`, data)
             .then((response) => {
                 console.log('Upload successful:', response.data);
                 //alert("Profile Picture Updated successfully")
@@ -86,7 +86,7 @@ export default function RecruiterProfile() {
     }
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/users/api/recruiter/${user_Id}/`)
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter/${4}/`)
             .then(response => {
                 setRecruiter(response.data)
                 setFirst_name(response.data[0]?.user.first_name);
@@ -98,10 +98,10 @@ export default function RecruiterProfile() {
             })
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/countries/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/countries/`)
             .then(response => setCountries(response.data))
             .catch(error => console.error(error));
-    }, [user_Id]);
+    }, []);
 
     return (
         <>
@@ -111,7 +111,7 @@ export default function RecruiterProfile() {
                     <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" className="w-full h-96 " alt="" />
                 </div>
                 <div className="flex flex-col items-center -mt-20 ">
-                    <img src={`http://127.0.0.1:8000/${recruiter[0]?.profilePicture}`} className="w-60 h-60 border-4 border-white rounded-full" alt="" />
+                    <img src={`${process.env.REACT_APP_JOB_API_URL}/${recruiter[0]?.profilePicture}`} className="w-60 h-60 border-4 border-white rounded-full" alt="" />
                     <div className="flex items-center space-x-2 mt-2 ">
                         <p className="text-2xl">{first_name}  {last_name}</p>
                         <span className="bg-blue-500 rounded-full p-1" title="Verified">

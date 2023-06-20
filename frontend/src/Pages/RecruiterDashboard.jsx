@@ -40,7 +40,7 @@ export default function RecruiterDashboard() {
     }
 
     const addJob = () => {
-        axios.post('http://127.0.0.1:8000/users/api/add_job/', jobData)
+        axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, jobData)
             .then(response => {
                 console.log('Added successfully:', response.data);
                 window.location.reload()
@@ -53,7 +53,7 @@ export default function RecruiterDashboard() {
             .then(response => response.json())
             .then(data => setJobs(data))
             .catch(error => console.error(error));*/    
-        axios.get(`http://127.0.0.1:8000/users/api/jobRecruiter/${storedRecruiterID}/`)
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
             .then(response => setJobs(response.data))
             .catch(error => console.error(error));
 
@@ -79,7 +79,7 @@ export default function RecruiterDashboard() {
     }
 
     const editJob = (job_id) => {
-        axios.put(`http://127.0.0.1:8000/users/api/edit_job/${job_id}/`, newJobData)
+        axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/edit_job/${job_id}/`, newJobData)
             .then(response => {
                 console.log('Updated successfully:', response.data);
                 window.location.reload();
@@ -88,7 +88,7 @@ export default function RecruiterDashboard() {
     }
 
     const deleteJob = (job_id) => {
-        fetch(`http://127.0.0.1:8000/users/api/delete_job/${job_id}/`, {
+        fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {
             method: 'DELETE'
         })
             .then(() => {
@@ -141,7 +141,7 @@ export default function RecruiterDashboard() {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {jobs.map((job) => (
                         <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
-                            <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+                            <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
                             <div className="mt-8">
                                 <p className="text-xl font-semibold my-2">{job?.title}</p>
@@ -172,7 +172,7 @@ export default function RecruiterDashboard() {
                                         <div className="flex flex-row space-x-2 justify-center items-center">
                                         <p className="font-semibold text-base mb-2">Recruiter</p>
 
-                                            <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`}
+                                            <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.recruiter.profilePicture}`}
                                                 className="w-8 h-8 rounded-full" />
 
                                         </div>
