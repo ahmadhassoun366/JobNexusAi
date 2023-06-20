@@ -160,11 +160,14 @@ class ApplicationRegisterCreateAPIView(APIView):
         serializer = PostApplicationSerializer(data=request.data)
         print("requestttttttttt " , request.data)
         if serializer.is_valid():
-            serializer.save()
-
-            application = Application.objects.filter(seeker=request.data.get('seeker'))
+            check = Application.objects.filter(seeker=request.data.get('seeker'), job=request.data.get('job'))
+            if len(check) > 0:
+                return Response({"message": "You already applied to this job position."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            app = serializer.save()
+            print("appppppppppppppppppppppppppppp",app.id)
+            application = Application.objects.get(id=app.id)
             cv = application.cv.path
-            print(application[0])
+            print(application)
             print(cv)
             job = Job.objects.get(id=request.data.get('job'))
             print(job)
@@ -173,8 +176,8 @@ class ApplicationRegisterCreateAPIView(APIView):
             # print(cv)
             similarity = analyze_pdf_similarity(req,cv)
             # request.data["similarity"] = similarity['match_percentage']
-            application[0].similarity = similarity['match_percentage']
-            application[0].save()
+            application.similarity = similarity['match_percentage']
+            application.save()
             if similarity is not None:
                 print(f"Match Percentage: {similarity['match_percentage']}%")
             else:
@@ -366,3 +369,12 @@ class GetJobsByRecruiterId(APIView):
         serializer = GETJobSerializer(jobs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)    
     
+
+class EditJob(APIView):
+    def put(self, request, job_id):
+        job = Job.objects.get(id=job_id)
+        serializer = POSTJobSerializer(job, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
