@@ -69,7 +69,7 @@ class PostRecruiterSerializer(serializers.ModelSerializer):
 
 
 class UpdateRecruiterSerializer(serializers.ModelSerializer):
-    user = GETUserSerializer(read_only=True)
+    # user = GETUserSerializer(read_only=True)
     # country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
 
     class Meta:
