@@ -218,9 +218,9 @@ const Profile = () => {
           <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" alt="" class="w-full h-96 " />
         </div>
         <div class="flex flex-col items-center -mt-20 ">
-          <img src={`http://127.0.0.1:8000/${seeker?.profilePicture}`} 
+          <img src={`http://127.0.0.1:8000/${seeker?.profilePicture}`}  
           style={{ objectPosition: 'center top' }}
-          class="w-80 h-80 border-4 object-cover					 border-white rounded-full shadow-2xl" />
+          class="w-80 h-80 border-4 object-cover					border-gray-700 rounded-full shadow-2xl" />
           <div class="flex items-center space-x-2 mt-2 ">
             <p class="text-2xl">{first_name}  {last_name}</p>
             <span class="bg-blue-500 rounded-full p-1" title="Verified">
