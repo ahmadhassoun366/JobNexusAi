@@ -310,3 +310,10 @@ class GETLocationType(APIView):
         locationTypes = JobLocationType.objects.all()
         serializer = JobLocationSerializer(locationTypes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GetSeekerApplication(APIView):
+    def get(self, request, seeker_id):
+        seekerJobs = Application.objects.filter(seeker=seeker_id)
+        serializer = GETApplicationSerializer(Application, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
