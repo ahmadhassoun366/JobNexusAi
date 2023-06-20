@@ -10,7 +10,9 @@ import JobDetails from './Pages/jobDetails';
 import { AuthProvider } from './Services/AuthContext';
 import RecruiterDashboard from './Pages/RecruiterDashboard';
 import GetApplicants from './Pages/GetApplicants';
-import NewJob from './Pages/newJob';
+import NewJob from './Pages/NewJob';
+import EditJob from './Pages/EditJob';
+import RecruiterProfile from './Pages/RecruiterProfile';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
             <Route path="/jobs" element={<Seeker />} />
             <Route path="/jobDetails/:id" element={<JobDetails />} />
             <Route path="/newJob" element={<NewJob />} />
+            <Route path="/editJob/:id" element={<EditJob />} />
+            <Route path="/editRecruiterProfile/:id" element={<RecruiterProfile/>}/>
         </Routes>
         </AuthProvider>
       </BrowserRouter>
