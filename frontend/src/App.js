@@ -11,6 +11,7 @@ import { AuthProvider } from './Services/AuthContext';
 import RecruiterDashboard from './Pages/RecruiterDashboard';
 import GetApplicants from './Pages/GetApplicants';
 import NewJob from './Pages/newJob';
+import EditJob from './Pages/EditJob';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/jobs" element={<Seeker />} />
             <Route path="/jobDetails/:id" element={<JobDetails />} />
             <Route path="/newJob" element={<NewJob />} />
+            <Route path="/editJob/:id" element={<EditJob />} />
         </Routes>
         </AuthProvider>
       </BrowserRouter>
