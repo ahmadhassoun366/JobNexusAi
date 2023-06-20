@@ -91,7 +91,7 @@ const Alljobs = () => {
           <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
           <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
           <div className="rounded-[2rem] overflow-hidden w-[290px] h-[572px] bg-white dark:bg-gray-800">
-            <img alt="" src="https://media1.giphy.com/media/wZiAeWlhfLUH8Bdpkr/200w.gif?cid=6c09b952txe4pos8v4ja5gk6l5k9ki250orryb8qeaomwjoo&ep=v1_gifs_search&rid=200w.gif&ct=g" className="dark:hidden w-[290px] h-[572px]" alt="" />
+            <img alt="" src="https://media1.giphy.com/media/wZiAeWlhfLUH8Bdpkr/200w.gif?cid=6c09b952txe4pos8v4ja5gk6l5k9ki250orryb8qeaomwjoo&ep=v1_gifs_search&rid=200w.gif&ct=g" className="dark:hidden w-[290px] h-[572px]" />
           </div>
         </div>
 

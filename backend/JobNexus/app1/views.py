@@ -108,7 +108,7 @@ class CompanyRegisterCreateAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class CompanyViewSet(APIView):
     def get(self, request, recruiter_id):
         # Logic for handling GET request
@@ -133,7 +133,7 @@ class JobIdViewSet(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class JobRegisterCreateAPIView(APIView):
     def post(self, request):
         serializer = POSTJobSerializer(data=request.data)
@@ -332,3 +332,28 @@ class GetSeekerApplication(APIView):
         seekerJobs = Application.objects.filter(seeker=seeker_id)
         serializer = GETApplicationSerializer(seekerJobs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class EditRecruiterProfile(APIView):
+    def put(self, request, recruiter_id):
+        recruiter = Recruiter.objects.get(id=recruiter_id)
+        profile_picture = request.data.get("profilePicture")
+        if profile_picture:
+            recruiter.profilePicture.delete()  # Delete the existing profile picture
+            recruiter.profilePicture.save(profile_picture.name, profile_picture)  # Save the new profile picture
+            return Response({"message": "Profile picture updated successfully."}, status=status.HTTP_200_OK)
+        else:
+            user_data = request.data.pop("user", {})
+            first_name = user_data.get("first_name")
+            last_name = user_data.get("last_name")
+            phone = user_data.get("phone")
+            user_instance = recruiter.user
+            user_instance.first_name = first_name
+            user_instance.last_name = last_name
+            user_instance.phone = phone
+            user_instance.save()
+        serializer = UpdateRecruiterSerializer(recruiter, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

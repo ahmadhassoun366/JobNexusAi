@@ -29,7 +29,7 @@ export default function RecruiterDashboard() {
 
     const jobData = {
         "company": 2,
-        "recruiter": 2,
+        "recruiter": 1,
         "type": 1,
         "country": 3,
         "locationType": 1,
@@ -122,7 +122,10 @@ export default function RecruiterDashboard() {
                 <div className="w-2/4 flex flex-col justify-center items-center gap-14">
                     <h1 className="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
                     <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
-                    <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>                <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse	" >Post Job Now</button>
+                    <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>  
+                                  <Link to={'/newJob'}>
+                        <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse" >Post Job Now</button>
+                    </Link>
                 </div>
 
             </div>
@@ -181,12 +184,15 @@ export default function RecruiterDashboard() {
                                         </button>
                                     </Link>
 
-                                        <button
-                                            className="px-4 py-2 rounded-lg bg-gray-900 text-white"
-                                        >Edit</button>
+                                    <Link to={`/editJob/${job.id}`}>
+                                        <button button
+                                            className=" ml-10 text-blue-500 hover:underline">
+                                        Edit
+                                        </button>
+                                    </Link>
 
                                         <button
-                                            className="px-4 py-2 rounded-lg bg-gray-900 text-white"
+                                            className="  text-red-500 hover:underline"
 
                                             onClick={() => deleteJob(job?.id)}>Delete</button>
 
