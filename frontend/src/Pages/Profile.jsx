@@ -253,11 +253,11 @@ const Profile = () => {
                     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                       <div className='flex gap-2 md:col-span-5'>
                         <div className="flex-1 ">
-                          <label htmlFor="full_name">First Name</label>
+                          <label >First Name</label>
                           <input onChange={handleFirstName} type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value={first_name} />
                         </div>
                         <div className="flex-1">
-                          <label htmlFor="full_name">Last Name</label>
+                          <label >Last Name</label>
                           <input onChange={handleLast_name} type="text" name="full_name" id="full_name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value={last_name} />
                         </div>
                       </div>
@@ -268,14 +268,14 @@ const Profile = () => {
                     </div> */}
 
                       <div className="md:col-span-3">
-                        <label htmlFor="address">Phone Number</label>
+                        <label >Phone Number</label>
                         <input onChange={handlePhone} type="text" name="address" id="address" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value={phone} placeholder="" />
                       </div>
 
 
 
                       <div className="md:col-span-2">
-                        <label htmlFor="country">Country / region</label>
+                        <label>Country / region</label>
                         <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
                           <input onChange={handleCountry} name="country" id="country" placeholder="Country" className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" value={country} />
                           <button tabIndex="-1" className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
@@ -284,7 +284,7 @@ const Profile = () => {
                               <line x1="6" y1="6" x2="18" y2="18" />
                             </svg>
                           </button>
-                          <button tabIndex="-1" htmlFor="show_more" className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
+                          <button tabIndex="-1"  className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
                             <svg className="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
                           </button>
                         </div>
@@ -301,7 +301,7 @@ const Profile = () => {
                       </div>
 
                       <div className="md:col-span-5">
-                        <label htmlFor="profile_pic">Profile Picture</label>
+                        <label >Profile Picture</label>
                         <input type="file" name="profile_pic" id="profile_pic" className="border mt-1 rounded px-4 py-2 w-full bg-gray-50" onChange={handleProfilePicUpload} />
                       </div>
                     </div>
@@ -328,7 +328,7 @@ const Profile = () => {
                   <div className="lg:col-span-2">
                     <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                       <div className="md:col-span-5">
-                        <label htmlFor="university">Major</label>
+                        <label >Major</label>
                         <input
                           type="text"
                           name="university"

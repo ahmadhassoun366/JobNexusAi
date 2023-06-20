@@ -17,7 +17,6 @@ const Contact = () => {
               <div className="relative w-full mb-3 mt-8">
                 <label
                   className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="full-name"
                 >
                   Full Name
                 </label>
@@ -31,9 +30,7 @@ const Contact = () => {
 
               <div className="relative w-full mb-3">
                 <label
-                  className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="email"
-                >
+                  className="block uppercase text-gray-700 text-xs font-bold mb-2"                >
                   Email
                 </label>
                 <input
@@ -47,7 +44,6 @@ const Contact = () => {
               <div className="relative w-full mb-3">
                 <label
                   className="block uppercase text-gray-700 text-xs font-bold mb-2"
-                  htmlFor="message"
                 >
                   Message
                 </label>

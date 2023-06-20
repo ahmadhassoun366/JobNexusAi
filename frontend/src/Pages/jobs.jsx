@@ -56,23 +56,23 @@ const Alljobs = () => {
   return (
     <>
       <Navbar />
-      <div class="flex flex-col items-center sm:px-5 md:flex-row mt-16">
-        <div class="flex flex-col items-center justify-center w-full h-full pt-6 pr-0 pl-0 md:mb-0 md:w-1/2 ">
-          <div class="flex flex-col items-start gap-5 justify-center h-full space-y-3 ml-28 transform md:pr-10 lg:pr-16
+      <div className="flex flex-col items-center sm:px-5 md:flex-row mt-16">
+        <div className="flex flex-col items-center justify-center w-full h-full pt-6 pr-0 pl-0 md:mb-0 md:w-1/2 ">
+          <div className="flex flex-col items-start gap-5 justify-center h-full space-y-3 ml-28 transform md:pr-10 lg:pr-16
             md:space-y-5 ">
-            <div class="bg-gray-700 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
+            <div className="bg-gray-700 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
               uppercase ">
-              <p class="inline">
-                <svg class="w-3.5 h-3.5 mr-1" fill="currentColor" viewbox="0 0 20 20"
+              <p className="inline">
+                <svg className="w-3.5 h-3.5 mr-1" fill="currentColor" viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0
                   00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755
                   1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1
                   0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </p>
-              <p class="inline text-xs font-medium">New</p>
+              <p className="inline text-xs font-medium">New</p>
             </div>
-            <a class="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">AI in Recruitment</a>
-            <p class="text-3xl font-medium inline">Revolutionizing the Job Seeking Process</p>
+            <a className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">AI in Recruitment</a>
+            <p className="text-3xl font-medium inline">Revolutionizing the Job Seeking Process</p>
             <p>Looking for a job? Discover how the recruitment system works and gain valuable tips to enhance your job-seeking journey.</p>
             <div className="flex justify-center w-full" >
               <button>
@@ -82,13 +82,13 @@ const Alljobs = () => {
           </div>
         </div>
 
-        <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[320px] shadow-xl">
-          <div class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
-          <div class="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
-          <div class="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
-          <div class="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-          <div class="rounded-[2rem] overflow-hidden w-[290px] h-[572px] bg-white dark:bg-gray-800">
-            <img src="https://media1.giphy.com/media/wZiAeWlhfLUH8Bdpkr/200w.gif?cid=6c09b952txe4pos8v4ja5gk6l5k9ki250orryb8qeaomwjoo&ep=v1_gifs_search&rid=200w.gif&ct=g" class="dark:hidden w-[290px] h-[572px]" alt="" />
+        <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[320px] shadow-xl">
+          <div className="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+          <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+          <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+          <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+          <div className="rounded-[2rem] overflow-hidden w-[290px] h-[572px] bg-white dark:bg-gray-800">
+            <img src="https://media1.giphy.com/media/wZiAeWlhfLUH8Bdpkr/200w.gif?cid=6c09b952txe4pos8v4ja5gk6l5k9ki250orryb8qeaomwjoo&ep=v1_gifs_search&rid=200w.gif&ct=g" className="dark:hidden w-[290px] h-[572px]" alt="" />
           </div>
         </div>
 
@@ -168,42 +168,42 @@ const Alljobs = () => {
         </button>
       </div>
 
-      <div class="bg-white pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
-        <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto  sm:px-6 lg:px-8">
-          <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:px-6 lg:px-8">
-            <div class="pt-0 pr-4 pb-0 pl-4 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
+      <div className="bg-white pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
+        <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto  sm:px-6 lg:px-8">
+          <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:px-6 lg:px-8">
+            <div className="pt-0 pr-4 pb-0 pl-4 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
               <div>
-                <p class="text-3xl font-bold text-gray-900">Open Positions</p>
-                <p class="text-sm mt-1 mr-0 mb-0 ml-0 font-semi-bold text-gray-500">Lorem ipsum dolor sit amet, consectetur
+                <p className="text-3xl font-bold text-gray-900">Open Positions</p>
+                <p className="text-sm mt-1 mr-0 mb-0 ml-0 font-semi-bold text-gray-500">Lorem ipsum dolor sit amet, consectetur
                   adipis</p>
               </div>
-              <div class="mt-4 mr-0 mb-0 ml-0 sm:mt-0">
-                <p class="sr-only">Search Position</p>
-                <div class="relative">
-                  <div class="flex items-center pt-0 pr-0 pb-0 pl-3 absolute inset-y-0 left-0 pointer-events-none">
+              <div className="mt-4 mr-0 mb-0 ml-0 sm:mt-0">
+                <p className="sr-only">Search Position</p>
+                <div className="relative">
+                  <div className="flex items-center pt-0 pr-0 pb-0 pl-3 absolute inset-y-0 left-0 pointer-events-none">
                     <p>
-                      <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21
+                      <svg className="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21
                     21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </p>
                   </div>
-                  <input placeholder="Search Positions " type="search" class="border block pt-2 pr-0 pb-2 pl-10 w-full py-2
+                  <input placeholder="Search Positions " type="search" className="border block pt-2 pr-0 pb-2 pl-10 w-full py-2
                  border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"/>
                 </div>
               </div>
             </div>
-            <div class="shadow-2xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
-              <div class="pt--10 pr-0 pb-10 pl-0">
+            <div className="shadow-2xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
+              <div className="pt--10 pr-0 pb-10 pl-0">
                 {jobs.map((job) => (
 
-                  <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                    <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                      <div class="flex items-center flex-1 min-w-0">
+                  <div key={job?.id} className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                    <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                      <div className="flex items-center flex-1 min-w-0">
                         <img
-                          src={`http://127.0.0.1:8000/${job.company.logo}`} class="flex-shrink-0 object-cover rounded-full btn- w-12 h-12   mb-8 " />
-                        <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                          <p class="text-lg font-bold text-gray-800 truncate">{job.title}</p>
-                          <p class="text-gray-600 text-md">{job.company.name}</p>
+                          src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12   mb-8 " />
+                        <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                          <p className="text-lg font-bold text-gray-800 truncate">{job.title}</p>
+                          <p className="text-gray-600 text-md">{job.company.name}</p>
                           <div className="flex items-center gap-3 mt-2">
                             <span className="bg-gray-300 text-gray-900 rounded-full px-3 py-1 text-sm">{job.locationType.locationType}</span>
                             <span className="text-slate-600 text-sm flex gap-1 items-center"> <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -214,7 +214,7 @@ const Alljobs = () => {
                         </div>
 
                       </div>
-                      <div class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
+                      <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
                         {isAuthenticated ? (
                           <Link
                             to={`/jobDetails/${job.id}`}
@@ -254,50 +254,50 @@ const Alljobs = () => {
 
 
 
-      {/* <div class="flex items-center justify-center">
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+      {/* <div className="flex items-center justify-center">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
     
-        <div class="relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl">
-            <div class=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
+        <div className="relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl">
+            <div className=" text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6">
                
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
             </div>
-            <div class="mt-8">
-                <p class="text-xl font-semibold my-2">App Development</p>
-                <div class="flex space-x-2 text-gray-400 text-sm">
+            <div className="mt-8">
+                <p className="text-xl font-semibold my-2">App Development</p>
+                <div className="flex space-x-2 text-gray-400 text-sm">
                   
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                      <p>Marketing Team</p> 
                 </div>
-                <div class="flex space-x-2 text-gray-400 text-sm my-3">
+                <div className="flex space-x-2 text-gray-400 text-sm my-3">
                   
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                      <p>1 Weeks Left</p> 
                 </div>
-                <div class="border-t-2"></div>
+                <div className="border-t-2"></div>
 
-                <div class="flex justify-between">
-                    <div class="my-2">
-                        <p class="font-semibold text-base mb-2">Team Member</p>
-                        <div class="flex space-x-2">
+                <div className="flex justify-between">
+                    <div className="my-2">
+                        <p className="font-semibold text-base mb-2">Team Member</p>
+                        <div className="flex space-x-2">
                             <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" 
-                            class="w-6 h-6 rounded-full"/>
+                            className="w-6 h-6 rounded-full"/>
                              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Woman_7.jpg" 
-                            class="w-6 h-6 rounded-full"/>
+                            className="w-6 h-6 rounded-full"/>
                              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxSqK0tVELGWDYAiUY1oRrfnGJCKSKv95OGUtm9eKG9HQLn769YDujQi1QFat32xl-BiY&usqp=CAU" 
-                            class="w-6 h-6 rounded-full"/>
+                            className="w-6 h-6 rounded-full"/>
                         </div>
                     </div>
-                     <div class="my-2">
-                        <p class="font-semibold text-base mb-2">Progress</p>
-                        <div class="text-base text-gray-400 font-semibold">
+                     <div className="my-2">
+                        <p className="font-semibold text-base mb-2">Progress</p>
+                        <div className="text-base text-gray-400 font-semibold">
                             <p>34%</p>
                         </div>
                     </div>

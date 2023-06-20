@@ -2,15 +2,16 @@ import React from 'react';
 import { FiUsers } from 'react-icons/fi';
 import { GrUserManager } from 'react-icons/gr';
 import { MdPersonSearch } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Tips = () => {
-  
+
   return (
     <section className="pb-20 bg-gray-300 -mt-24">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-center gap-20">
           <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <Link to='/recruiter' className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
                   <GrUserManager className="text-white" size={60} />
@@ -20,11 +21,11 @@ const Tips = () => {
                   Connect with talented professionals. Post job listings, review applicant profiles, and streamline your hiring process. Build your dream team with our AI-driven recruitment platform!
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
-          <div className="pt-6 w-full md:w-4/12 px-4 text-center">
-            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+          <div className="pt-6 w-full md:w-4/12 px-4 text-center ">
+            <Link to={'/jobs'}className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
               <div className="px-4 py-5 flex-auto">
                 <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
                   <MdPersonSearch size={60} />
@@ -33,10 +34,10 @@ const Tips = () => {
                   JobSeeker
                 </h6>
                 <p className="mt-2 mb-4 text-gray-600">
-                Find the perfect job for your skills and experience. Create your profile, search job openings, and apply directly. Take the step in your career with our AI-powered job seeker platform!
+                  Find the perfect job for your skills and experience. Create your profile, search job openings, and apply directly. Take the step in your career with our AI-powered job seeker platform!
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 

@@ -109,18 +109,18 @@ export default function RecruiterDashboard() {
             <div className="flex flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
 
                 <div className="">
-                    <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
-                        <div class="rounded-xl overflow-hidden h-[140px] md:h-[262px]">
-                            <img src="https://d4y70tum9c2ak.cloudfront.net/contentImage/Job-Switching-Ticker-V02.gif" class="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt="" />
+                    <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+                        <div className="rounded-xl overflow-hidden h-[140px] md:h-[262px]">
+                            <img src="https://d4y70tum9c2ak.cloudfront.net/contentImage/Job-Switching-Ticker-V02.gif" className="dark:hidden h-[156px] md:h-[278px] w-full rounded-xl" alt="" />
                         </div>
                     </div>
-                    <div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl h-[24px] max-w-[301px] md:h-[42px] md:max-w-[512px]"></div>
-                    <div class="relative mx-auto bg-gray-800 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]">
+                    <div className="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl h-[24px] max-w-[301px] md:h-[42px] md:max-w-[512px]"></div>
+                    <div className="relative mx-auto bg-gray-800 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]">
                     </div>
                 </div>
 
                 <div className="w-2/4 flex flex-col justify-center items-center gap-14">
-                    <h1 class="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
+                    <h1 className="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
                     <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
                     <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>                <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse	" >Post Job Now</button>
                 </div>
@@ -130,43 +130,43 @@ export default function RecruiterDashboard() {
             <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">
                 Manage Your Posted Jobs</h1>
 
-            <div class="flex items-center justify-center mt-10">
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+            <div className="flex items-center justify-center mt-10">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {jobs.map((job) => (
-                        <div key={job?.id} class="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
+                        <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
                             <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
-                            <div class="mt-8">
-                                <p class="text-xl font-semibold my-2">{job?.title}</p>
-                                <div class="flex space-x-2  font-bold">
+                            <div className="mt-8">
+                                <p className="text-xl font-semibold my-2">{job?.title}</p>
+                                <div className="flex space-x-2  font-bold">
 
                                     <p>{job?.company.name}</p>
                                 </div>
-                                <div class="flex text-gray-700 text-base my-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <div className="flex text-gray-700 text-base my-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg>
                                     <p>{job?.country.name}</p>
 
-                                    <div class="flex ml-24 gap-1 text-gray-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    <div className="flex ml-24 gap-1 text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
-                                        <p class="font-semibold text-base mb-2">{job.type.type}</p>
+                                        <p className="font-semibold text-base mb-2">{job.type.type}</p>
 
                                     </div>
 
                                 </div>
-                                <div class="border-t-2"></div>
+                                <div className="border-t-2"></div>
 
-                                <div class="flex justify-between">
-                                    <div class="my-2">
-                                        <div class="flex flex-row space-x-2 justify-center items-center">
-                                        <p class="font-semibold text-base mb-2">Recruiter</p>
+                                <div className="flex justify-between">
+                                    <div className="my-2">
+                                        <div className="flex flex-row space-x-2 justify-center items-center">
+                                        <p className="font-semibold text-base mb-2">Recruiter</p>
 
                                             <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`}
-                                                class="w-8 h-8 rounded-full" />
+                                                className="w-8 h-8 rounded-full" />
 
                                         </div>
                                     </div>
