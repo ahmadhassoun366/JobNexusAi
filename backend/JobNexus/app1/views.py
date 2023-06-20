@@ -315,5 +315,5 @@ class GETLocationType(APIView):
 class GetSeekerApplication(APIView):
     def get(self, request, seeker_id):
         seekerJobs = Application.objects.filter(seeker=seeker_id)
-        serializer = GETApplicationSerializer(Application, many=True)
+        serializer = GETApplicationSerializer(seekerJobs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
