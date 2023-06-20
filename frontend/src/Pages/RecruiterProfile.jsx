@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
 
@@ -17,7 +16,8 @@ export default function RecruiterProfile() {
     let [title, setTitle] = useState("");
     let [about, setAbout] = useState("");
 
-    let id = localStorage.getItem('userId')
+    let recruiter_Id = localStorage.getItem('recruiterId')
+    let user_Id = localStorage.getItem('userId')
     const handleFirstName = (e) => {
         setFirst_name(e.target.value);
     }
@@ -51,7 +51,7 @@ export default function RecruiterProfile() {
         const formData = new FormData();
         formData.append('profilePicture', file);
 
-        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${id}/`, formData)
+        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${recruiter_Id}/`, formData)
             .then((response) => {
                 console.log('Upload successful:', response.data);
                 alert("Profile Picture Updated successfully")
@@ -77,7 +77,7 @@ export default function RecruiterProfile() {
 
         console.log(data);
 
-        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${id}/`, data)
+        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${recruiter_Id}/`, data)
             .then((response) => {
                 console.log('Upload successful:', response.data);
                 //alert("Profile Picture Updated successfully")
@@ -86,7 +86,7 @@ export default function RecruiterProfile() {
     }
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/users/api/recruiter/${id}/`)
+        axios.get(`http://127.0.0.1:8000/users/api/recruiter/${user_Id}/`)
             .then(response => {
                 setRecruiter(response.data)
                 setFirst_name(response.data[0]?.user.first_name);
@@ -101,7 +101,7 @@ export default function RecruiterProfile() {
         axios.get("http://127.0.0.1:8000/users/api/countries/")
             .then(response => setCountries(response.data))
             .catch(error => console.error(error));
-    }, [id]);
+    }, [user_Id]);
 
     return (
         <>
@@ -206,7 +206,7 @@ export default function RecruiterProfile() {
                                                 <input
                                                     type="text"
                                                     className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                                                    value={about}
+                                                    value={title}
                                                     onChange={handleTitle}
                                                 />
                                             </div>

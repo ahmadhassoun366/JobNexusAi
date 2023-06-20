@@ -73,7 +73,8 @@ const JobDetails = () => {
         console.log('Upload successful:', response.data);
       })
       .catch((error) => {
-        // Handle any errors
+        if(error.response.status === 405)
+        alert('Already Apllied for this JOB')
         console.error('Error:', error);
       });
   };
