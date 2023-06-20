@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// import React, { useEffect, useState } from 'react';
+import React from 'react';
+// import axios from 'axios';
 import Navbar from '../Components/Navbar';
-import SmallFooter from '../Components/SmallFooter';
+import { Link } from 'react-router-dom';
 
 const BlogList = () => {
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://127.0.0.1:8000/users/blogsList/');
-        setBlogs(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('http://127.0.0.1:8000/users/blogsList/');
+  //       setBlogs(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // Render the blogs in your component
   return (
@@ -95,9 +96,9 @@ const BlogList = () => {
                 <img className="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
 
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
-                    <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                    <Link  className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                         How to use sticky note for problem solving
-                    </a>
+                    </Link>
                     
                     <span className="text-sm text-gray-500 dark:text-gray-300">On: 20 July2023</span>
                 </div>
@@ -107,9 +108,9 @@ const BlogList = () => {
                 <img className="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
 
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
-                    <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                    <Link  className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                         How to use sticky note for problem solving
-                    </a>
+                    </Link>
 
                     <span className="text-sm text-gray-500 dark:text-gray-300">On: 20 July2023</span>
                 </div>
@@ -119,9 +120,9 @@ const BlogList = () => {
                 <img className="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
 
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
-                    <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                    <Link  className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                         Morning routine to boost your mood
-                    </a>
+                    </Link>
 
                     <span className="text-sm text-gray-500 dark:text-gray-300">On: 25 June 2020</span>
                 </div>
@@ -131,9 +132,9 @@ const BlogList = () => {
                 <img className="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80" alt="" />
 
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
-                    <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                    <Link  className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                         All the features you want to know
-                    </a>
+                    </Link>
 
                     <span className="text-sm text-gray-500 dark:text-gray-300">On: 30 September 2020</span>
                 </div>
@@ -143,9 +144,9 @@ const BlogList = () => {
                 <img className="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80" alt="" />
 
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
-                    <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                    <Link  className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                         Minimal workspace for your inspirations
-                    </a>
+                    </Link>
 
                     <span className="text-sm text-gray-500 dark:text-gray-300">On: 13 July2023</span>
                 </div>
@@ -155,9 +156,9 @@ const BlogList = () => {
                 <img className="object-cover w-full h-56 rounded-lg lg:w-64" src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
 
                 <div className="flex flex-col justify-between py-6 lg:mx-6">
-                    <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
+                    <Link  className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                         What do you want to know about Blockchane
-                    </a>
+                    </Link>
                     
                     <span className="text-sm text-gray-500 dark:text-gray-300">On: 20 July2023</span>
                 </div>
@@ -168,11 +169,11 @@ const BlogList = () => {
 
 
     {/* <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 mb-20">
-      <article className=''>
+      <Linkrticle className=''>
       <h1 className="text-4xl font-semibold leading-9 text-center text-gray-900 	 dark:text-gray-50 mt-10 ">Blogs</h1>
           <section className="mt- grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-8">
           {blogs.map((blog) => (
-            <article
+            <Linkrticle
               key={blog.id}
               className="mt-10 relative w-full h-64 bg-cover bg-center group rounded-lg drop-shadow-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 ease-in-out"
               style={{ backgroundImage: `url("http://127.0.0.1:8000/${blog.image}")` }}
@@ -180,10 +181,10 @@ const BlogList = () => {
               <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:opacity-75 transition duration-300 ease-in-out"></div>
               <div className="relative w-full h-full px-4 sm:px-6 lg:px-4 flex justify-center items-center">
                 <h3 className="text-center">
-                  <a className="text-white text-sm font-bold text-center" href="#">
+                  <Link className="text-white text-sm font-bold text-center" href="#">
                     <span className="absolute inset-0"></span>
                     {blog.title}
-                  </a>
+                  </Link>
                 </h3>
               </div>
             </article>

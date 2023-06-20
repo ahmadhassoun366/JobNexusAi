@@ -215,7 +215,7 @@ const Profile = () => {
       <Navbar />
       <form onSubmit={handleUpdate}>
         <div class="w-full ">
-          <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" class="w-full h-96 " />
+          <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" alt="" class="w-full h-96 " alt=""/>
         </div>
         <div class="flex flex-col items-center -mt-20 ">
           <img src={`http://127.0.0.1:8000/${seeker?.profilePicture}`} class="w-60 h-60 border-4 border-white rounded-full" />

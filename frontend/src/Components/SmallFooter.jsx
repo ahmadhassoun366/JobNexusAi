@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function FooterSmall(props) {
   return (
@@ -16,47 +17,42 @@ export default function FooterSmall(props) {
             <div className="w-full md:w-4/12 px-4">
               <div className="text-sm text-white font-semibold py-1">
                 Copyright © {new Date().getFullYear()}{" "}
-                <a
-                  href="https://www.creative-tim.com"
+                <Link
                   className="text-white hover:text-gray-400 text-sm font-semibold py-1"
                 >
                   Creative Tim
-                </a>
+                </Link>
               </div>
             </div>
             <div className="w-full md:w-8/12 px-4">
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li>
-                  <a
-                    href="https://www.creative-tim.com"
+                  <Link
                     className="text-white hover:text-gray-400 text-sm font-semibold block py-1 px-3"
                   >
                     Creative Tim
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://www.creative-tim.com/presentation"
+                  <Link
                     className="text-white hover:text-gray-400 text-sm font-semibold block py-1 px-3"
                   >
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="http://blog.creative-tim.com"
+                  <Link
                     className="text-white hover:text-gray-400 text-sm font-semibold block py-1 px-3"
                   >
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md"
+                  <Link
                     className="text-white hover:text-gray-400 text-sm font-semibold block py-1 px-3"
                   >
                     MIT License
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

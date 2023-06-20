@@ -71,7 +71,7 @@ const Alljobs = () => {
               </p>
               <p className="inline text-xs font-medium">New</p>
             </div>
-            <a className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">AI in Recruitment</a>
+            <h1 className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">AI in Recruitment</h1>
             <p className="text-3xl font-medium inline">Revolutionizing the Job Seeking Process</p>
             <p>Looking for a job? Discover how the recruitment system works and gain valuable tips to enhance your job-seeking journey.</p>
             <div className="flex justify-center w-full" >
@@ -88,7 +88,7 @@ const Alljobs = () => {
           <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
           <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
           <div className="rounded-[2rem] overflow-hidden w-[290px] h-[572px] bg-white dark:bg-gray-800">
-            <img src="https://media1.giphy.com/media/wZiAeWlhfLUH8Bdpkr/200w.gif?cid=6c09b952txe4pos8v4ja5gk6l5k9ki250orryb8qeaomwjoo&ep=v1_gifs_search&rid=200w.gif&ct=g" className="dark:hidden w-[290px] h-[572px]" alt="" />
+            <img alt="" src="https://media1.giphy.com/media/wZiAeWlhfLUH8Bdpkr/200w.gif?cid=6c09b952txe4pos8v4ja5gk6l5k9ki250orryb8qeaomwjoo&ep=v1_gifs_search&rid=200w.gif&ct=g" className="dark:hidden w-[290px] h-[572px]" alt="" />
           </div>
         </div>
 
@@ -106,7 +106,7 @@ const Alljobs = () => {
 
           items={jobs.slice(0, 5).map((job) => (
             <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
-              <img src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+              <img alt="" src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
               <div className="mt-8">
                 <p className="text-xl font-semibold my-2">{job?.title}</p>
@@ -132,25 +132,25 @@ const Alljobs = () => {
                   <div className="my-2">
                     <div className="flex flex-row space-x-5 my-3">
                       <p className="font-semibold text-base mb-2">Recruiter</p>
-                      <img src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
+                      <img alt="" src={`http://127.0.0.1:8000/${job.recruiter.profilePicture}`} className="w-6 h-6 rounded-full" />
 
                     </div>
                     {isAuthenticated ? (
-                          <Link
-                            to={`/jobDetails/${job.id}`}
-                            className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
-                          >
-                            Apply Now
-                        
-                            </Link>
-                        ) : (
-                          <Link
-                            to="/login"
-                            className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
-                          >
-                            Login to Apply
-                          </Link>
-                        )}
+                      <Link
+                        to={`/jobDetails/${job.id}`}
+                        className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
+                      >
+                        Apply Now
+
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/login"
+                        className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
+                      >
+                        Login to Apply
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -200,6 +200,7 @@ const Alljobs = () => {
                     <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
                       <div className="flex items-center flex-1 min-w-0">
                         <img
+                          alt=""
                           src={`http://127.0.0.1:8000/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12   mb-8 " />
                         <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
                           <p className="text-lg font-bold text-gray-800 truncate">{job.title}</p>
