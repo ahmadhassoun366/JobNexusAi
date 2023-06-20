@@ -10,7 +10,7 @@ import JobDetails from './Pages/jobDetails';
 import { AuthProvider } from './Services/AuthContext';
 import RecruiterDashboard from './Pages/RecruiterDashboard';
 import GetApplicants from './Pages/GetApplicants';
-
+import NewJob from './Pages/newJob';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/jobs" element={<Seeker />} />
             <Route path="/jobDetails/:id" element={<JobDetails />} />
+            <Route path="/newJob" element={<NewJob />} />
         </Routes>
         </AuthProvider>
       </BrowserRouter>
