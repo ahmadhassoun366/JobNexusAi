@@ -39,7 +39,7 @@ const Header = () => {
               <div className="text-white dark:text-gray-300 lg:pr-4">
                 <ul className="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
                   <li>
-                    <Link to="/" className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
+                    <Link to="/jobs" className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
                       <span>Home</span>
                     </Link>
                   </li>
@@ -58,8 +58,14 @@ const Header = () => {
                       </button>
                     </Link>
                   </li>
-                  {isAuthenticated && (
-                    <li>
+                 </ul>
+              </div>
+
+
+              <div className="w-full space-y-2 border-primary/10 dark:border-gray-700 flex flex-col -ml-1 sm:flex-row lg:space-y-0 md:w-max lg:border-l">
+              
+              {isAuthenticated && (
+                   
                       <Link to={`/profile/${storedUserId}`} className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
                         <button
                           id="mega-menu-full-cta-image-button"
@@ -68,27 +74,24 @@ const Header = () => {
                           Profile
                         </button>
                       </Link>
-                    </li>
+                 
                   )}
-                  {isAuthenticated ? (
-                    <li>
+
+              {isAuthenticated ? (
+                    <Link>
                       <button
                         onClick={handleLogout}
                         className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                       >
                         Logout
                       </button>
-                    </li>
+                    </Link>
                   ) : (
-                    <li>
+                    <Link>
                     
-                    </li>
+                    </Link>
                   )}
-                </ul>
-              </div>
-
-              <div className="w-full space-y-2 border-primary/10 dark:border-gray-700 flex flex-col -ml-1 sm:flex-row lg:space-y-0 md:w-max lg:border-l">
-                {!isAuthenticated && (
+                  {!isAuthenticated && (
                   <Link
                     to="/register"
                     className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full focus:before:bg-sky-600/10 dark:focus:before:bg-sky-400/10 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
