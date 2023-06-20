@@ -18,9 +18,9 @@ const Header = () => {
       <nav className="fixed z-20 w-full text-white bg-gray-500/50  navbar  dark:border-gray-800 peer-checked:navbar-active dark:shadow-none">
         <div className="xl:container m-auto px-4 md:px-10 lg:px-4">
           <div className="flex flex-wrap items-center justify-between gap-6 md:py-2 md:gap-0 lg:py-3">
-            <Link className="w-full items-center flex justify-between lg:w-auto">
+            <div className="w-full items-center flex justify-between lg:w-auto">
               <img src={Logo} className="mr-5 h-8 sm:h-10" alt="logo" />
-              <span className="self-center text-xl text-white  first-letter:font-semibold whitespace-nowrap dark:text-white">JobNexus <span className='text-2xl font-bold'>Ai</span></span>
+              <Link to='/' className="self-center text-xl text-white  first-letter:font-semibold whitespace-nowrap dark:text-white">JobNexus <span className='text-2xl font-bold'>Ai</span></Link>
 
               <label
                 className="peer-checked:hamburger text-white first-letter:block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden"
@@ -34,7 +34,7 @@ const Header = () => {
                   className="m-auto mt-2 h-0.5 w-5 rounded text-white bg-gray-900 dark:bg-gray-300 transition duration-300"
                 ></div>
               </label>
-            </Link>
+            </div>
             <div className="navmenu hidden w-full flex-wrap justify-between items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
               <div className="text-white dark:text-gray-300 lg:pr-4">
                 <ul className="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
