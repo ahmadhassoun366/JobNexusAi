@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Link } from 'react-router-dom';
+import signup from '../assets/img/signup.png';
 
 const Register = () => {
   const [accountType, setAccountType] = useState(null);
@@ -126,7 +127,7 @@ const Register = () => {
 					
         <div
           className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
-          style={{backgroundImage: `url('https://media.licdn.com/dms/image/C4D12AQFCpiN-GPl5Hg/article-cover_image-shrink_720_1280/0/1623919781732?e=2147483647&v=beta&t=aLbrq90FmbO8jqYP76trWBn6UirnoPb7uHOGjClzu-0')`}}
+          style={{backgroundImage: `url(`+signup+`)`}}
         ></div>
 					<div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
           <h2 className="mt-2 text-3xl font-bold text-gray-900 text-center">Create an Account!</h2>

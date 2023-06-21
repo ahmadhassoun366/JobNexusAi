@@ -3,6 +3,7 @@ import { FiUsers } from 'react-icons/fi';
 import { GrUserManager } from 'react-icons/gr';
 import { MdPersonSearch } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import tips from "../assets/img/tips.avif";
 
 const Tips = () => {
 
@@ -67,7 +68,7 @@ const Tips = () => {
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-600">
               <img
                 alt="..."
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                src={tips}
                 className="w-full align-middle rounded-t-lg"
               />
               <blockquote className="relative p-8 mb-4">
