@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Logo from '../assets/img/logo.svg';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Services/AuthContext';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Header = () => {
   const id = localStorage.getItem('seekerId');
   const {isAuthenticated, logout } = useContext(AuthContext);
   const storedUserId = localStorage.getItem('userId');
+  const [open, setOpen] = useState(false);
   console.log('user in navbar' ,storedUserId);
   const handleLogout = () => {
     // Handle logout functionality, e.g., clear local storage, update login status, etc.
@@ -22,18 +24,78 @@ const Header = () => {
               <img src={Logo} className="mr-5 h-8 sm:h-10" alt="logo" />
               <span className="self-center text-xl text-white first-letter:font-semibold whitespace-nowrap dark:text-white">JobNexus <span className="text-2xl font-bold">Ai</span></span>
 
-              <label
-                className="peer-checked:hamburger text-white first-letter:block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden"
+              <div
+                onClick={() => setOpen(!open)}
+                className={`z-[999]  ${open ? "text-gray-900" : "text-gray-100"
+                  } text-3xl md:hidden m-5`}
               >
-                <div
-                  aria-hidden="true"
-                  className="m-auto h-0.5 w-5 rounded text-white bg-gray-900 dark:bg-gray-300 transition duration-300"
-                ></div>
-                <div
-                  aria-hidden="true"
-                  className="m-auto mt-2 h-0.5 w-5 rounded text-white bg-gray-900 dark:bg-gray-300 transition duration-300"
-                ></div>
-              </label>
+                <GiHamburgerMenu name="menu"></GiHamburgerMenu>
+              </div>
+              <div
+                className={`md:hidden text-gray-900 absolute w-2/3 h-screen z-20
+                 px-7 py-2 font-medium bg-white top-0 duration-300 ${open ? "right-0" : "right-[-100%]"
+                  }`}
+              >
+                <ul className="flex flex-col justify-center h-full gap-10 py-2 text-lg text-center">
+                    <li
+                      onClick={() => setOpen(false)}
+                      className="px-6 hover:text-cyan-600"
+                    >
+                    </li>
+                    <li>
+                      <Link to='/'>
+                      Home
+                      </Link>
+                      
+                    </li>
+                    {!isAuthenticated && (
+                  <Link
+                    to="/register"
+                  
+                  >
+                    <span >
+                      Sign Up
+                    </span>
+                  </Link>
+                )}
+                {!isAuthenticated && (
+                  <Link
+                    to="/login"
+                   
+                  >
+                    <span>
+                      Login
+                    </span>
+                  </Link>
+                )}
+
+                {isAuthenticated && (
+                    <li>
+                      <Link to={`/profile/${storedUserId}`} >
+                        <button
+                          id="mega-menu-full-cta-image-button"
+                         
+                        >
+                          Profile
+                        </button>
+                      </Link>
+                    </li>
+                  )}
+                  {isAuthenticated ? (
+                    <li>
+                      <button
+                        onClick={handleLogout}>
+                        Logout
+                      </button>
+                    </li>
+                  ) : (
+                    <li>
+
+                    </li>
+                  )}
+
+                </ul>
+              </div>
             </div>
             <div className="navmenu hidden w-full flex-wrap justify-between items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
               <div className="text-white dark:text-gray-300 lg:pr-4">
