@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import Logo from '../assets/img/logo.svg';
 import { Link } from 'react-router-dom';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Header = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+
+  const menuLinks = [
+    { name: "HOME", link: "/" },
+    { name: "BLOG", link: "/blogs" },
+    // { name: "SKILLS", link: "#skills" },
+    { name: "SIGNUP", link: "/register" },
+    { name: "LOGIN", link: "/login" },
+  ];
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -21,19 +32,31 @@ const Header = () => {
             <div className="w-full items-center flex justify-between lg:w-auto">
               <img src={Logo} className="mr-5 h-8 sm:h-10" alt="logo" />
               <Link to='/' className="self-center text-xl text-white  first-letter:font-semibold whitespace-nowrap dark:text-white">JobNexus <span className='text-2xl font-bold'>Ai</span></Link>
-
-              <label
-                className="peer-checked:hamburger text-white first-letter:block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden"
+        <div
+          onClick={() => setOpen(!open)}
+          className={`z-[999]  ${open ? "text-gray-900" : "text-gray-100"
+            } text-3xl md:hidden m-5`}
+        >
+          <GiHamburgerMenu name="menu"></GiHamburgerMenu>
+        </div>
+        <div
+          className={`md:hidden text-gray-900 absolute w-2/3 h-screen
+      px-7 py-2 font-medium bg-white top-0 duration-300 ${open ? "right-0" : "right-[-100%]"
+            }`}
+        >
+          <ul className="flex flex-col justify-center h-full gap-10 py-2 text-lg">
+            {menuLinks?.map((menu, i) => (
+              <li
+                onClick={() => setOpen(false)}
+                key={i}
+                className="px-6 hover:text-cyan-600"
               >
-                <div
-                  aria-hidden="true"
-                  className="m-auto h-0.5 w-5 rounded text-white bg-gray-900 dark:bg-gray-300 transition duration-300"
-                ></div>
-                <div
-                  aria-hidden="true"
-                  className="m-auto mt-2 h-0.5 w-5 rounded text-white bg-gray-900 dark:bg-gray-300 transition duration-300"
-                ></div>
-              </label>
+                <a href={menu?.link}>{menu?.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
             </div>
             <div className="navmenu hidden w-full flex-wrap justify-between items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
               <div className="text-white dark:text-gray-300 lg:pr-4">
@@ -213,6 +236,8 @@ const Header = () => {
         </div>
       )}
           {/* End of Dropdown Content */}
+
+     
         </div>
       </nav>
     </header>
