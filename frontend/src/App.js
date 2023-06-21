@@ -13,6 +13,7 @@ import GetApplicants from './Pages/GetApplicants';
 import NewJob from './Pages/NewJob';
 import EditJob from './Pages/EditJob';
 import RecruiterProfile from './Pages/RecruiterProfile';
+import { ResetPassword } from './Pages/ResetPassword';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           {/* <Route path="*" element={<NoPage />} /> */}
 
           <Route path="/login" element={<Login />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/applicants/:id" element={<GetApplicants />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile/:id" element={<Profile />} />
