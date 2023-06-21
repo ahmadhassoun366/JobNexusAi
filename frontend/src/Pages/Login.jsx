@@ -3,6 +3,7 @@ import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Services/AuthContext';
+import loginImg from "../assets/img/login.jpeg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const handleLogin = async (e) => {
     <section>
     <div className="flex justify-center py-10 px-4 sm:px-6 lg:px-8 bg-no-repeat bg-cover relative items-center "
     style={{
-        backgroundImage: 'url(https://www.hucama.com/wp-content/uploads/2019/08/Two-senior-manager-reading-a-resume-during-a-job-interview-Employer-interviewing-to-ask-young-male-job-seeker-for-recruitment-talking-in-office-1083412326_4896x3264-1080x675.jpeg)',
+        backgroundImage: 'url('+loginImg+')',
       }}>
 	<div className="absolute bg-gray-50 opacity-5 inset-0 z-0 "></div>
 	<div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">

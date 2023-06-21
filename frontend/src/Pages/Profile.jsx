@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import bgProfile from "../assets/img/seekerProfile.webp";
 
 
 const Profile = () => {
@@ -215,7 +216,7 @@ const Profile = () => {
       <Navbar />
       <form onSubmit={handleUpdate}>
         <div class="w-full ">
-          <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" alt="" class="w-full h-96 " />
+          <img src={bgProfile} alt="" class="w-full h-96 " />
         </div>
         <div class="flex flex-col items-center -mt-20 ">
           <img src={`${process.env.REACT_APP_JOB_API_URL}/${seeker?.profilePicture}`}  
