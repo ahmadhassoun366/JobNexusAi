@@ -42,7 +42,7 @@ export default function RecruiterProfile() {
         setTitle(e.target.value);
     }
 
-    const handleProfilePicUpload = (event) => {
+    const handleProfilePicUpload = async(event) => {
         event.preventDefault();
 
         const file = event.target.files[0];
@@ -51,7 +51,7 @@ export default function RecruiterProfile() {
         const formData = new FormData();
         formData.append('profilePicture', file);
 
-        axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${1}/`, formData)
+      await  axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${1}/`, formData)
             .then((response) => {
                 console.log('Upload successful:', response.data);
                 alert("Profile Picture Updated successfully")
@@ -61,7 +61,7 @@ export default function RecruiterProfile() {
         console.log("Profile uploaded-----------------");
     };
 
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
 
         const data = {
@@ -77,7 +77,7 @@ export default function RecruiterProfile() {
 
         console.log(data);
 
-        axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_update/${1}/`, data)
+        await axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_update/${1}/`, data)
             .then((response) => {
                 console.log('Upload successful:', response.data);
                 //alert("Profile Picture Updated successfully")

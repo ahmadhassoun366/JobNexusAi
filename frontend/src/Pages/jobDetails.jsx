@@ -75,6 +75,8 @@ const JobDetails = () => {
       .catch((error) => {
         if(error.response.status === 405)
         alert('Already Apllied for this JOB')
+        if(error.response.status === 403)
+        alert('Deadline passed')
         console.error('Error:', error);
       });
   };
@@ -102,6 +104,7 @@ const JobDetails = () => {
               <p className="text-xl text-gray-500 hover:text-gray-600 leading-6 text-center my-2"  >
               {job?.company.field}
               </p>
+              <h1 className=" text-3xl text-gray-800 font-bold text-center"> <span className="text-2xl text-red-500">Deadline:</span> {job?.deadline}</h1>
               
             </div>
             {/* <!-- End of profile card --> */}

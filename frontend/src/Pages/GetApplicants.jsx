@@ -11,8 +11,8 @@ const GetApplicants = () => {
     getApplicants();
   }, []);
 
-  const getApplicants = () => {
-    axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/applicants/${id}/`)
+  const getApplicants = async () => {
+    await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/applicants/${id}/`)
       .then(response => {
         const sortedApplicants = response.data.sort(compare);
         setApplicants(sortedApplicants);

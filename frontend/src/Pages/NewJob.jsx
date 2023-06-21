@@ -34,7 +34,7 @@ const NewJob = () => {
             .catch(error => console.error(error));
     }, []);
 
-    const addjob = () => {
+    const addjob = async () => {
         let job = {
             "title": title,
             "company": company,
@@ -45,7 +45,7 @@ const NewJob = () => {
             "description": description
         }
         console.log(job)
-        axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, job)
+       await axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, job)
             .then(response => {
                 console.log('Added successfully:', response.data);
                 alert("Added Successfully!");

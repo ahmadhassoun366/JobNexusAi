@@ -97,7 +97,6 @@ const AuthProvider = ({ children }) => {
     setRefreshToken(null);
     setAccessToken(null);
     navigate('/login'); // Replace '/login' with the actual path of your login page
-    localStorage.clear();
     
   };
 

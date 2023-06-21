@@ -39,8 +39,8 @@ export default function RecruiterDashboard() {
         //"deadline": new Date("2023-10-16").toJSON()
     }
 
-    const addJob = () => {
-        axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, jobData)
+    const addJob = async () => {
+     await   axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, jobData)
             .then(response => {
                 console.log('Added successfully:', response.data);
                 window.location.reload()
@@ -48,12 +48,12 @@ export default function RecruiterDashboard() {
             .catch(error => console.error(error));
     }
 
-    const getJobs = () => {
+    const getJobs = async() => {
         /*fetch('http://127.0.0.1:8000/users/api/job/')
             .then(response => response.json())
             .then(data => setJobs(data))
             .catch(error => console.error(error));*/    
-        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
+       await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
             .then(response => setJobs(response.data))
             .catch(error => console.error(error));
 
@@ -78,8 +78,8 @@ export default function RecruiterDashboard() {
         "locationType": 2
     }
 
-    const editJob = (job_id) => {
-        axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/edit_job/${job_id}/`, newJobData)
+    const editJob = async (job_id) => {
+      await  axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/edit_job/${job_id}/`, newJobData)
             .then(response => {
                 console.log('Updated successfully:', response.data);
                 window.location.reload();
@@ -87,8 +87,8 @@ export default function RecruiterDashboard() {
             .catch(error => console.error(error));
     }
 
-    const deleteJob = (job_id) => {
-        fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {
+    const deleteJob = async(job_id) => {
+      await  fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {
             method: 'DELETE'
         })
             .then(() => {

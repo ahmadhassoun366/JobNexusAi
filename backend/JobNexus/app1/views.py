@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import Blog
 from .pdf_similarity import analyze_pdf_similarity
-
+from datetime import datetime
 from .models import *
 from .serializers import *
 
@@ -163,17 +163,26 @@ class ApplicationRegisterCreateAPIView(APIView):
             check = Application.objects.filter(seeker=request.data.get('seeker'), job=request.data.get('job'))
             if len(check) > 0:
                 return Response({"message": "You already applied to this job position."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+           
+            today = datetime.today().strftime("%Y-%m-%d")
+
+            # jobId = Application.objects.get(job = request.data.get('job'))
+            job = Job.objects.get(id=request.data.get('job'))
+            deadline = job.deadline.strftime("%Y-%m-%d")
+            
+            if deadline <= today:
+                return Response({"message": "ajsdhjkashdkjahsdkjhaskj."}, status=status.HTTP_403_FORBIDDEN)
+            
+            print(deadline)
             app = serializer.save()
             print("appppppppppppppppppppppppppppp",app.id)
             application = Application.objects.get(id=app.id)
             cv = application.cv.path
             print(application)
-            print(cv)
-            job = Job.objects.get(id=request.data.get('job'))
+         
+            # job = Job.objects.get(id=request.data.get('job'))
             print(job)
-            req = job.description       
-            print(req)
-            # print(cv)
+            req = job.description         
             similarity = analyze_pdf_similarity(req,cv)
             # request.data["similarity"] = similarity['match_percentage']
             application.similarity = similarity['match_percentage']

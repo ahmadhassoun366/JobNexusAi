@@ -34,7 +34,7 @@ const Register = () => {
     }
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     // Perform the sign-up logic based on the selected account type
@@ -50,7 +50,7 @@ const Register = () => {
         password,
       };
 
-      fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_register/`, {
+     await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const Register = () => {
         password,
       };
 
-      fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_register/`, {
+      await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
