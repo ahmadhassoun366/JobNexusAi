@@ -62,6 +62,12 @@ const Register = () => {
         .then((response) => response.json())
         .then((data) => {
           // Handle the response data
+
+          setFirst_name('')
+          setLast_name('')
+          setPassword('')
+          setPhone('')
+          setConfirmPassword('')
           console.log(data);
         })
         .catch((error) => {
@@ -91,6 +97,11 @@ const Register = () => {
         .then((response) => response.json())
         .then((data) => {
           // Handle the response data
+          setFirst_name('')
+          setLast_name('')
+          setPassword('')
+          setPhone('')
+          setConfirmPassword('')
           console.log(data);
         })
         .catch((error) => {
