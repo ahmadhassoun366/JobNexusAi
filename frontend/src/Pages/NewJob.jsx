@@ -5,20 +5,21 @@ import Modal from '../Shared/Modal'
 
 
 const NewJob = () => {
+    let recruiter = Number(localStorage.getItem('recruiterId'));
+
     let [companies, setCompanies] = useState([]);
     let [countries, setCountries] = useState([]);
     let [types, setTypes] = useState([]);
     let [locationTypes, setLocationTypes] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    //let [recruiter, setRecruiter] = useState([]);
-
     let [title, setTitle] = useState("");
-    let [company, setCompany] = useState(1); //change to 1 after creating a new database
-    let [country, setCountry] = useState(1); //change to 1 after creating a new database
-    let [type, setType] = useState(1);
-    let [locationType, setLocationType] = useState(1);
+    let [company, setCompany] = useState(2);           //change to the id of the 1st element in database
+    let [country, setCountry] = useState(3);           //change to the id of the 1st element in database
+    let [type, setType] = useState(1);                 //change to the id of the 1st element in database
+    let [locationType, setLocationType] = useState(1); //change to the id of the 1st element in database
     let [description, setDescription] = useState("");
+    let [deadline, setDeadline] = useState("");
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/companies/`)
@@ -40,16 +41,18 @@ const NewJob = () => {
 
     const addjob = async () => {
         let job = {
+            "recruiter": recruiter,
             "title": title,
             "company": company,
             "country": country,
-            "recruiter": 2, //recruiter
             "type": type,
             "locationType": locationType,
-            "description": description
+            "description": description,
+            "deadline": deadline
         }
         console.log(job)
-       await axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, job)
+
+        await axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, job)
             .then(response => {
                 console.log('Added successfully:', response.data);
                 setIsModalOpen(true);
@@ -156,6 +159,14 @@ const NewJob = () => {
                             </div>
                         </div>
 
+                        <div>
+                            <label htmlFor="deadline" className="block text-gray-700 text-sm mb-2">Deadline</label>
+                            <input type="date" name="deadline" id="deadline" cols="76" rows="7" onChange={(event) => {
+                                let deadlineDate = event.target.value.toString();
+                                setDeadline(deadlineDate);
+                                console.log(deadlineDate);
+                            }}></input>
+                        </div>
 
                         <div>
                             <label htmlFor="description" className="block text-gray-700 text-sm mb-2">Description</label>

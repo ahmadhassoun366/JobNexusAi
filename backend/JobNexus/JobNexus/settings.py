@@ -25,6 +25,14 @@ SECRET_KEY = 'django-insecure-4zq1p+hr$*%+rua)t&**a^z^atw-e+28)4v_4y5d9wn$ztxbcg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'recruitsystem.webapp@gmail.com'
+EMAIL_HOST_PASSWORD = 'fiwgyskpvsdnatfx'
+EMAIL_USE_TLS = True
+
 
 AUTH_USER_MODEL = 'app1.CustomUser'
 AUTHENTICATION_BACKENDS = ['app1.auth_backends.EmailBackend']
@@ -47,6 +55,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'app1',
     'corsheaders',
+    'django_rest_passwordreset',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +74,7 @@ ROOT_URLCONF = 'JobNexus.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

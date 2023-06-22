@@ -13,7 +13,8 @@ import GetApplicants from './Pages/GetApplicants';
 import NewJob from './Pages/NewJob';
 import EditJob from './Pages/EditJob';
 import RecruiterProfile from './Pages/RecruiterProfile';
-import { ResetPassword } from './Pages/ResetPassword';
+import ResetPasswordEmail  from './Pages/ResetPasswordEmail';
+import ResetPasswordNewPass from './Pages/RestPasswordNewPass';
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
           {/* <Route path="*" element={<NoPage />} /> */}
 
           <Route path="/login" element={<Login />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/resetPassword" element={<ResetPasswordEmail />} />
+          <Route path="/resetNewPassword/:token" element={<ResetPasswordNewPass />} />
           <Route path="/applicants/:id" element={<GetApplicants />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile/:id" element={<Profile />} />
