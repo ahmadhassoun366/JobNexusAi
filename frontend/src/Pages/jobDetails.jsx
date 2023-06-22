@@ -61,7 +61,9 @@ const JobDetails = () => {
     formData.append('job', id);
     formData.append('seeker', seeker);
     formData.append('cv', selectedFile);
-    // formData.append('coverLetter', coverLetterFile);
+
+    formData.append('coverLetter', coverLetterFile);
+
     console.log('job id', id)
     console.log('seeker', seeker)
 
