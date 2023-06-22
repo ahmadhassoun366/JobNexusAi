@@ -6,10 +6,18 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .models import Blog
-
+from .pdf_similarity import analyze_pdf_similarity
+from datetime import datetime
 from .models import *
 from .serializers import *
 
+from rest_framework.permissions import IsAuthenticated
+from django.core.mail import EmailMultiAlternatives
+from django.dispatch import receiver
+from django.template.loader import render_to_string
+from django.urls import reverse
+
+from django_rest_passwordreset.signals import reset_password_token_created
 
 # Create your views here.
 
@@ -18,7 +26,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
     serializer_class = TokenObtainPairSerializer
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class SeekerViewSet(APIView):
     def get(self, request, user_id):
         # Logic for handling GET request
@@ -51,7 +59,7 @@ class SeekerRegisterCreateAPIView(APIView):
         return Response(serializerUser.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class RecruiterViewSet(APIView):
     def get(self, request, user_id):
         # Logic for handling GET request
@@ -87,7 +95,7 @@ class RecruiterRegisterCreateAPIView(APIView):
         return Response(serializerUser.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class CompanyRegisterCreateAPIView(APIView):
     def post(self, request):
         data = request.data
@@ -108,7 +116,7 @@ class CompanyRegisterCreateAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 class CompanyViewSet(APIView):
     def get(self, request, recruiter_id):
         # Logic for handling GET request
@@ -132,11 +140,16 @@ class JobIdViewSet(APIView):
         serializer = GETJobSerializer(job, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+    
 # @permission_classes([IsAuthenticated])
 class JobRegisterCreateAPIView(APIView):
     def post(self, request):
+        deadline = datetime.strptime(request.data.get('deadline'), '%Y-%m-%d').date()
+        if deadline is None:
+            return Response({'message': 'not a date'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        request.data['deadline'] = deadline
         serializer = POSTJobSerializer(data=request.data)
+        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -150,24 +163,57 @@ class ApplicationViewSet(APIView):
         serializer = GETApplicationSerializer(application, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+#create application => application id
+# then apply the changes 
+
 
 # @permission_classes([IsAuthenticated])
 class ApplicationRegisterCreateAPIView(APIView):
     def post(self, request):
         serializer = PostApplicationSerializer(data=request.data)
+        print("requestttttttttt " , request.data)
         if serializer.is_valid():
-            serializer.save()
+            check = Application.objects.filter(seeker=request.data.get('seeker'), job=request.data.get('job'))
+            if len(check) > 0:
+                return Response({"message": "You already applied to this job position."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+           
+            today = datetime.today().strftime("%Y-%m-%d")
+
+            # jobId = Application.objects.get(job = request.data.get('job'))
+            job = Job.objects.get(id=request.data.get('job'))
+            deadline = job.deadline.strftime("%Y-%m-%d")
+            
+            if deadline <= today:
+                return Response({"message": "ajsdhjkashdkjahsdkjhaskj."}, status=status.HTTP_403_FORBIDDEN)
+            
+            print(deadline)
+            app = serializer.save()
+            print("appppppppppppppppppppppppppppp",app.id)
+            application = Application.objects.get(id=app.id)
+            cv = application.cv.path
+            print(application)
+         
+            # job = Job.objects.get(id=request.data.get('job'))
+            print(job)
+            req = job.description         
+            similarity = analyze_pdf_similarity(req,cv)
+            # request.data["similarity"] = similarity['match_percentage']
+            application.similarity = similarity['match_percentage']
+            application.save()
+            if similarity is not None:
+                print(f"Match Percentage: {similarity['match_percentage']}%")
+            else:
+                print("No similarity result found.")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class BlogCreateAPIView(APIView):
-    def post(self, request):
-        serializer = BlogSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  def post(self, request):
+      serializer = BlogSerializer(data=request.data)
+      if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class BlogViewAPIView(APIView):
@@ -179,7 +225,7 @@ class BlogViewAPIView(APIView):
 
 class BlogListAPIView(APIView):
     def get(self, request):
-        blog = Blog.objects.all()
+        blog =Blog.objects.all()
         serializer = BlogSerializer(blog, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -247,7 +293,11 @@ class SeekerUpdateAPIView(APIView):
 
 class EditJob(APIView):
     def put(self, request, job_id):
+        deadline = datetime.strptime(request.data.get('deadline'), '%Y-%m-%d').date()
+        if deadline is None:
+            return Response({'message': 'not a date'}, status=status.HTTP_406_NOT_ACCEPTABLE)
         job = Job.objects.get(id=job_id)
+        request.data['deadline'] = deadline
         serializer = POSTJobSerializer(job, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -307,3 +357,85 @@ class GETLocationType(APIView):
         serializer = JobLocationSerializer(locationTypes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+
+class GetSeekerApplication(APIView):
+    def get(self, request, seeker_id):
+        seekerJobs = Application.objects.filter(seeker=seeker_id)
+        serializer = GETApplicationSerializer(seekerJobs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class EditRecruiterProfile(APIView):
+    def put(self, request, recruiter_id):
+        recruiter = Recruiter.objects.get(id=recruiter_id)
+        profile_picture = request.data.get("profilePicture")
+        if profile_picture:
+            recruiter.profilePicture.delete()  # Delete the existing profile picture
+            recruiter.profilePicture.save(profile_picture.name, profile_picture)  # Save the new profile picture
+            return Response({"message": "Profile picture updated successfully."}, status=status.HTTP_200_OK)
+        else:
+            user_data = request.data.pop("user", {})
+            first_name = user_data.get("first_name")
+            last_name = user_data.get("last_name")
+            phone = user_data.get("phone")
+            user_instance = recruiter.user
+            user_instance.first_name = first_name
+            user_instance.last_name = last_name
+            user_instance.phone = phone
+            user_instance.save()
+        serializer = UpdateRecruiterSerializer(recruiter, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class GetJobsByRecruiterId(APIView):
+    def get(self, request, recruiter_id):
+        jobs = Job.objects.filter(recruiter=recruiter_id)
+        serializer = GETJobSerializer(jobs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@receiver(reset_password_token_created)
+def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+    """
+    Handles password reset tokens
+    When a token is created, an e-mail needs to be sent to the user
+    :param sender: View Class that sent the signal
+    :param instance: View Instance that sent the signal
+    :param reset_password_token: Token Model Object
+    :param args:
+    :param kwargs:
+    :return:
+    """
+    # send an e-mail to the user
+    confirm_url = "http://localhost:3000/resetNewPassword/"
+    context = {
+        'current_user': reset_password_token.user,
+        'username': reset_password_token.user.username,
+        'email': reset_password_token.user.email,
+        # 'reset_password_url': "{}?token={}".format(
+        #     instance.request.build_absolute_uri(reverse('password_reset:reset-password-confirm')),
+        #     reset_password_token.key)
+        'reset_password_url': "{}{}".format(
+            confirm_url,
+            reset_password_token.key)
+    }
+
+    # render email text
+    email_html_message = render_to_string('user_reset_password.html', context)
+    # email_plaintext_message = render_to_string('user_reset_password.txt', context)
+    email_plaintext_message = "this is our text"
+
+    msg = EmailMultiAlternatives(
+        # title:
+        "Password Reset for {title}".format(title="JobNexusAi"),
+        # message:
+        email_plaintext_message,
+        # from:
+        "noreply@somehost.local",
+        # to:
+        [reset_password_token.user.email]
+    )
+    msg.attach_alternative(email_html_message, "text/html")
+    msg.send()
