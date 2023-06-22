@@ -52,7 +52,7 @@ class JobAdmin(admin.ModelAdmin):
 
 
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ('seeker', 'job', 'cv', 'coverLetter', 'similarity')
+    list_display = ('seeker', 'job', 'cv', 'coverLetter', 'cv_similarity','letter_similarity')
 
 
 class BlogAdmin(admin.ModelAdmin):

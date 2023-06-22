@@ -153,7 +153,8 @@ class Application(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
     cv = models.FileField(upload_to='static/cv', null=True, blank=True)
     coverLetter = models.FileField(upload_to='static/coverLetter', null=True, blank=True)
-    similarity = models.FloatField(null=True, blank=True, default=None)
+    cv_similarity = models.FloatField(null=True, blank=True, default=None)
+    letter_similarity = models.FloatField(null=True, blank=True, default=None)
 
     def __str__(self):
         return f"{self.job}"

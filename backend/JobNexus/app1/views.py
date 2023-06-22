@@ -190,18 +190,23 @@ class ApplicationRegisterCreateAPIView(APIView):
             app = serializer.save()
             print("appppppppppppppppppppppppppppp",app.id)
             application = Application.objects.get(id=app.id)
+            letter = application.coverLetter.path
             cv = application.cv.path
             print(application)
-         
+
             # job = Job.objects.get(id=request.data.get('job'))
             print(job)
             req = job.description         
-            similarity = analyze_pdf_similarity(req,cv)
+            cv_similarity = analyze_pdf_similarity(req,cv)
+            letter_similarity = analyze_pdf_similarity(req,letter)
             # request.data["similarity"] = similarity['match_percentage']
-            application.similarity = similarity['match_percentage']
+            application.cv_similarity = cv_similarity['match_percentage']
+            application.letter_similarity = letter_similarity['match_percentage']
             application.save()
-            if similarity is not None:
-                print(f"Match Percentage: {similarity['match_percentage']}%")
+            if cv_similarity is not None:
+                print(f"Match Percentage for CV: {cv_similarity['match_percentage']}%")
+                print(f"Match Percentage for Cover Letter: {letter_similarity['match_percentage']}%")
+
             else:
                 print("No similarity result found.")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
