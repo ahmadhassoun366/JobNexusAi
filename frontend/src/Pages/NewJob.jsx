@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Navbar from '../Components/RecruiterNav'
+import Modal from '../Shared/Modal'
+
 
 const NewJob = () => {
     let [companies, setCompanies] = useState([]);
     let [countries, setCountries] = useState([]);
     let [types, setTypes] = useState([]);
     let [locationTypes, setLocationTypes] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     //let [recruiter, setRecruiter] = useState([]);
 
@@ -48,16 +52,24 @@ const NewJob = () => {
        await axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, job)
             .then(response => {
                 console.log('Added successfully:', response.data);
-                alert("Added Successfully!");
-                window.location.href = "http://localhost:3000/recruiter";
+                setIsModalOpen(true);
+                setTimeout(() => {
+                    window.location.href = "http://localhost:3000/recruiter";
+                  }, 3000);
             })
             .catch(error => console.error(error))
     }
 
-    return (
+    const closeModal = () => {
+        setIsModalOpen(false);
+      };
 
-        <main className="main bg-white px-6 md:px-16 py-6">
-            <div className="w-full max-w-xl mx-auto">
+      
+    return (
+            <>
+            <Navbar/>
+        <main className="main bg-gray-50 px-6 md:px-16 py-6">
+            <div className="w-2/4 max-w mx-auto bg-white p-10 m-5 rounded-2xl shadow-2xl">
                 <form>
                     <h1 className="text-2xl mb-2">Add New Job</h1>
 
@@ -147,19 +159,33 @@ const NewJob = () => {
 
                         <div>
                             <label htmlFor="description" className="block text-gray-700 text-sm mb-2">Description</label>
-                            <textarea name="description" id="description" cols="76" rows="7" onChange={(event) => setDescription(event.target.value)}></textarea>
+                            <textarea name="description" 
+                            className="border shadow-inner"
+                            id="description" cols="76" rows="7" onChange={(event) => setDescription(event.target.value)}></textarea>
                         </div>
 
 
                     </div>
                 </form>
-                <div>
-                    <button onClick={() => addjob()} className="bg-teal-500 hover:bg-teal-600 text-white py-2 px-3 rounded">
+                <div className="flex justify-center items-center">
+                    <button onClick={() => addjob()} className="bg-gray-900 hover:bg-gray-700 text-white py-2 px-5 rounded">
                         Add
                     </button>
                 </div>
             </div>
-        </main>)
+        </main>
+        
+                  {/* Modal */}
+  {isModalOpen && (
+    <Modal
+      closeModal={closeModal}
+      title="Job has been posted successfully"
+      message="You can Check Applicants.Thank you!"
+    />
+  )}
+
+        </>
+        )
 }
 
 export default NewJob

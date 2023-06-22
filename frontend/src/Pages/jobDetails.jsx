@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
 import Footer from "../Components/Footer";
-  
+import Modal from '../Shared/Modal'
 
 const JobDetails = () => {
   const storedSeekerId = localStorage.getItem('seekerId'); 
   console.log('seeker' ,storedSeekerId);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { id } = useParams();
   const [job, setJob] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -69,7 +69,7 @@ const JobDetails = () => {
     axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/create_application/`, formData)
       .then((response) => {
         // Handle the response from the API
-        alert('Success')
+        setIsModalOpen(true);
         console.log('Upload successful:', response.data);
       })
       .catch((error) => {
@@ -81,6 +81,10 @@ const JobDetails = () => {
       });
   };
 
+  
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
 
   return (
@@ -90,13 +94,13 @@ const JobDetails = () => {
 
 
       <div className="containe p-5 ">
-        <div className="md:flex no-wrap md:-mx-2 mt-8">
+        <div className="md:flex flex-row md:-mx-2 mt-8">
           {/* <!-- Left Side --> */}
           <div className="w-full md:w-3/12 md:mx-2 ">
             {/* <!-- Profile Card --> */}
             <div className="bg-white p-3 space-y-5 ">
               <div className="image overflow-hidden shadow-2xl rounded-full">
-                <img className="h-auto w-full mx-auto "
+                <img className="h-44 w-44 mx-auto md:h-full md:w-full"
                 src={`${process.env.REACT_APP_JOB_API_URL}/${job?.company.logo}`}
                   alt="" />
               </div>
@@ -111,7 +115,7 @@ const JobDetails = () => {
             
           </div>
           {/* <!-- Right Side --> */}
-          <div className="w-full md:w-9/12 mx-24 h-64 ">
+          <div className="w-3/4 md:w-full mx-24 h-64 ">
             {/* <!-- Profile tab --> */}
           <h1 className="text-center text-4xl text-gray-900 font-semibold ">{job?.title} at {job?.company.name}</h1>
             <div className="flex flex-col gap-6 p-10 shadow-lg  rounded-lg bg-gray-100 my-8">
@@ -246,6 +250,14 @@ const JobDetails = () => {
         </div>
       </div>
       </div>
+           {/* Modal */}
+  {isModalOpen && (
+    <Modal
+      closeModal={closeModal}
+      title="Thank you for submitting your job application."
+      message="I'll review it and get back to you as soon as possible.Thank you!"
+    />
+  )}
     </>
   );
 };

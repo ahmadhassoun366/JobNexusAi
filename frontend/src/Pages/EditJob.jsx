@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import Navbar from '../Components/RecruiterNav'
 
 const EditJob = () => {
     let { id } = useParams();
@@ -11,10 +12,10 @@ const EditJob = () => {
     let [locationTypes, setLocationTypes] = useState([]);
 
     let [title, setTitle] = useState("");
-    let [company, setCompany] = useState(0);
-    let [country, setCountry] = useState(0);
-    let [type, setType] = useState(0);
-    let [locationType, setLocationType] = useState(0);
+    let [company, setCompany] = useState(1);
+    let [country, setCountry] = useState(1);
+    let [type, setType] = useState(1);
+    let [locationType, setLocationType] = useState(1);
     let [description, setDescription] = useState("");
 
     useEffect(() => {
@@ -67,8 +68,9 @@ const EditJob = () => {
 
     return (
         <>
-            <main className="main bg-white px-6 md:px-16 py-6">
-                <div className="w-full max-w-xl mx-auto">
+            <Navbar/>
+            <main className="main bg-gray-50 px-6 md:px-16 py-6">
+            <div className="w-2/4 max-w mx-auto bg-white p-10 m-5 rounded-2xl shadow-2xl">
                     <form>
                         <h1 className="text-2xl mb-2">  </h1>
 
@@ -155,13 +157,15 @@ const EditJob = () => {
 
                             <div>
                                 <label htmlFor="description" className="block text-gray-700 text-sm mb-2">Description</label>
-                                <textarea type="text" name="description" id="description" cols="76" rows="7" value={description} onChange={(event) => { setDescription(event.target.value) }}></textarea>
+                                <textarea type="text" 
+                                  className="border shadow-inner"
+                                  name="description" id="description" cols="76" rows="7" value={description} onChange={(event) => { setDescription(event.target.value) }}></textarea>
                             </div>
 
                         </div>
                     </form>
-                    <div>
-                        <button onClick={() => updateJob()} className="bg-teal-500 hover:bg-teal-600 text-white py-2 px-3 rounded">
+                    <div className="flex justify-center items-center">
+                        <button onClick={() => updateJob()} className="bg-gray-900 hover:bg-gray-700 text-white py-2 px-5 rounded">
                             Update
                         </button>
                     </div>

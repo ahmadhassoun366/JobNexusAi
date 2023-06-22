@@ -110,7 +110,7 @@ export default function RecruiterDashboard() {
         <>
             <Nav />
 
-            <div className="flex flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
 
                 <div className="">
                     <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
