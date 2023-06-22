@@ -6,104 +6,23 @@ import { Link } from "react-router-dom";
 
 export default function RecruiterDashboard() {
     let [jobs, setJobs] = useState([]);
-    const storedRecruiterID = localStorage.getItem('recruiterId'); 
+    const storedRecruiterID = localStorage.getItem('recruiterId');
 
     useEffect(() => {
-        getJobs();
-    }, [])
-
-    /*const addJob = () => {
-        fetch('http://127.0.0.1:8000/users/api/recruiter_register/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
-            },
-            mode: 'cors',
-            body: JSON.stringify({
-
-            }) // body data type must match "Content-Type" header
-        })
-    }*/
-
-    //let deadline = new Date("2000-03-25")
-
-    const jobData = {
-        "company": 2,
-        "recruiter": 1,
-        "type": 1,
-        "country": 3,
-        "locationType": 1,
-        "title": "acc",
-        "description": "aaa",
-        //"deadline": new Date("2023-10-16").toJSON()
-    }
-
-    const addJob = async () => {
-     await   axios.post(`${process.env.REACT_APP_JOB_API_URL}/users/api/add_job/`, jobData)
-            .then(response => {
-                console.log('Added successfully:', response.data);
-                window.location.reload()
-            })
-            .catch(error => console.error(error));
-    }
-
-    const getJobs = async() => {
-        /*fetch('http://127.0.0.1:8000/users/api/job/')
-            .then(response => response.json())
-            .then(data => setJobs(data))
-            .catch(error => console.error(error));*/    
-       await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
+        //getJobs();
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
             .then(response => setJobs(response.data))
             .catch(error => console.error(error));
+    }, [storedRecruiterID])
 
-    
-        }
-
-    console.log(jobs);
-
-    const compare = (a, b) => {
-        if (a?.similarity < b?.similarity) {
-            return 1;
-        }
-        if (a?.similarity > b?.similarity) {
-            return -1;
-        }
-        return 0;
-    }
-
-   
-    const newJobData = {
-        "country": 4,
-        "locationType": 2
-    }
-
-    const editJob = async (job_id) => {
-      await  axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/edit_job/${job_id}/`, newJobData)
-            .then(response => {
-                console.log('Updated successfully:', response.data);
-                window.location.reload();
-            })
-            .catch(error => console.error(error));
-    }
-
-    const deleteJob = async(job_id) => {
-      await  fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {
+    const deleteJob = async (job_id) => {
+        await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {
             method: 'DELETE'
         })
             .then(() => {
                 window.location.reload()
-                //getJobs()
-                //getApplicants()
             })
             .catch(error => console.error(error));
-        /*axios.get(`http://127.0.0.1:8000/users/api/delete_job/${job_id}/`)
-            .then(() => {
-                window.location.reload()
-                //getJobs()
-                //getApplicants()
-            })
-            .catch(error => console.error(error));*/
     }
 
     return (
@@ -126,8 +45,8 @@ export default function RecruiterDashboard() {
                 <div className="w-2/4 flex flex-col justify-center items-center gap-14">
                     <h1 className="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
                     <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
-                    <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>  
-                                  <Link to={'/newJob'}>
+                    <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>
+                    <Link to={'/newJob'}>
                         <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse" >Post Job Now</button>
                     </Link>
                 </div>
@@ -141,7 +60,8 @@ export default function RecruiterDashboard() {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {jobs.map((job) => (
                         <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
-                            <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
+                            {/* warning in console if there's no image */}
+                            <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" alt="" />
 
                             <div className="mt-8">
                                 <p className="text-xl font-semibold my-2">{job?.title}</p>
@@ -170,10 +90,10 @@ export default function RecruiterDashboard() {
                                 <div className="flex justify-between">
                                     <div className="my-2">
                                         <div className="flex flex-row space-x-2 justify-center items-center">
-                                        <p className="font-semibold text-base mb-2">Recruiter</p>
-
+                                            <p className="font-semibold text-base mb-2">Recruiter</p>
+                                            {/* warning in console if there's no image */}
                                             <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.recruiter.profilePicture}`}
-                                                className="w-8 h-8 rounded-full" />
+                                                className="w-8 h-8 rounded-full" alt="" />
 
                                         </div>
                                     </div>
@@ -182,18 +102,18 @@ export default function RecruiterDashboard() {
 
                                 <div>
                                     <div className="flex justify-center items-center gap-4 text-white">
-                                    <Link to={`/applicants/${job.id}`}>
-                                        <button className="px-4 py-2 rounded-lg bg-gray-900">
-                                        Applicants
-                                        </button>
-                                    </Link>
+                                        <Link to={`/applicants/${job.id}`}>
+                                            <button className="px-4 py-2 rounded-lg bg-gray-900">
+                                                Applicants
+                                            </button>
+                                        </Link>
 
-                                    <Link to={`/editJob/${job.id}`}>
-                                        <button 
-                                            className=" ml-10 text-blue-500 hover:underline">
-                                        Edit
-                                        </button>
-                                    </Link>
+                                        <Link to={`/editJob/${job.id}`}>
+                                            <button
+                                                className=" ml-10 text-blue-500 hover:underline">
+                                                Edit
+                                            </button>
+                                        </Link>
 
                                         <button
                                             className="  text-red-500 hover:underline"
@@ -208,8 +128,6 @@ export default function RecruiterDashboard() {
                     ))}
                 </div>
             </div>
-
-            
             {/* <Footer /> */}
         </>
     );
