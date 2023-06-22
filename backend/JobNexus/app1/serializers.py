@@ -43,7 +43,7 @@ class SeekerSerializer(serializers.ModelSerializer):
 
 class PostSeekerSerializer(serializers.ModelSerializer):
     # user = GETUserSerializer(read_only=True)
-    country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
+    # country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
 
     class Meta:
         model = Seeker
@@ -61,7 +61,7 @@ class RecruiterSerializer(serializers.ModelSerializer):
 
 class PostRecruiterSerializer(serializers.ModelSerializer):
     # user = GETUserSerializer(read_only=True)
-    country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
+    # country = CountrySerializer(read_only=True)  # Use the nested serializer for country field
 
     class Meta:
         model = Recruiter

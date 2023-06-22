@@ -44,7 +44,7 @@ class SeekerRegisterCreateAPIView(APIView):
             # Create a Seeker instance and associate it with the newly created user
             seeker_data = {
                 'user': user.id,
-                'country': {'name': 'Null'},
+                'country': '1',
                 # Add other seeker fields as needed
             }
             seeker_serializer = PostSeekerSerializer(data=seeker_data)
