@@ -16,9 +16,10 @@ const EditJob = () => {
     let [type, setType] = useState(0);
     let [locationType, setLocationType] = useState(0);
     let [description, setDescription] = useState("");
+    let [deadline, setDeadline] = useState("");
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/users/api/job/${id}/`)
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job/${id}/`)
             .then(response => {
                 setTitle(response.data[0]?.title);
                 setCompany(response.data[0]?.company.id);
@@ -26,22 +27,23 @@ const EditJob = () => {
                 setType(response.data[0]?.type.id);
                 setLocationType(response.data[0]?.locationType.id);
                 setDescription(response.data[0]?.description);
+                setDeadline(response.data[0]?.deadline)
             })
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/companies/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/companies/`)
             .then(response => setCompanies(response.data))
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/countries/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/countries/`)
             .then(response => setCountries(response.data))
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/job_types/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job_types/`)
             .then(response => setTypes(response.data))
             .catch(error => console.error(error));
 
-        axios.get("http://127.0.0.1:8000/users/api/job_location_types/")
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job_location_types/`)
             .then(response => setLocationTypes(response.data))
             .catch(error => console.error(error));
     }, [id]);
@@ -53,10 +55,11 @@ const EditJob = () => {
             "country": country,
             "type": type,
             "locationType": locationType,
-            "description": description
+            "description": description,
+            "deadline": deadline
         }
         console.log(jobData);
-        axios.put(`http://127.0.0.1:8000/users/api/edit_job/${id}/`, jobData)
+        axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/edit_job/${id}/`, jobData)
             .then(response => {
                 console.log('Updated successfully:', response.data);
                 alert("Updated Successfully!");
@@ -152,6 +155,15 @@ const EditJob = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            <div>
+                            <label htmlFor="deadline" className="block text-gray-700 text-sm mb-2">Deadline</label>
+                            <input type="date" name="deadline" id="deadline" cols="76" rows="7" value={deadline} onChange={(event) => {
+                                let deadlineDate = event.target.value.toString();
+                                setDeadline(deadlineDate);
+                                console.log(deadlineDate);
+                            }}></input>
+                        </div>
 
                             <div>
                                 <label htmlFor="description" className="block text-gray-700 text-sm mb-2">Description</label>
