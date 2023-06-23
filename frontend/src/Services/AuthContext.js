@@ -78,6 +78,8 @@ const AuthProvider = ({ children }) => {
         localStorage.setItem('recruiterId', recruiterResponse.data[0].id);
         // Redirect to the recruiter page
         console.log('locaaaaaaaaaaaaaaaaaaaaaaaaaaal',localStorage.getItem('recruiterId'));
+        localStorage.setItem('isAuthenticated', true.toString());
+        console.log( 'Scoooooooooooooooooooooooooot' ,localStorage.getItem('isAuthenticated') );
       }
     }
       // else for recruiter
@@ -97,9 +99,18 @@ const AuthProvider = ({ children }) => {
     setUser(null);
     setRefreshToken(null);
     setAccessToken(null);
+
+    localStorage.setItem('isAuthenticated', false.toString());
     navigate('/login'); // Replace '/login' with the actual path of your login page
-    
+
   };
+
+  useEffect(() => {
+    // Retrieve the isAuthenticated value from local storage
+    const isAuthenticatedValue = localStorage.getItem('isAuthenticated');
+    setIsAuthenticated(isAuthenticatedValue === 'true');
+  }, []);
+
 
   const register = async () => {
 

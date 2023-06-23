@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import Nav from "../Components/RecruiterNav";
 import Footer from "../Components/Footer";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { AuthContext } from '../Services/AuthContext';
 
 export default function RecruiterDashboard() {
     let [jobs, setJobs] = useState([]);
+    const {  isAuthenticated } = useContext(AuthContext);
+
     const storedRecruiterID = localStorage.getItem('recruiterId');
     useEffect(() => {
         //getJobs();
+        if (isAuthenticated) {
         axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
             .then(response => setJobs(response.data))
             .catch(error => console.error(error));
-    }, [storedRecruiterID])
+        }
+    }, [storedRecruiterID,isAuthenticated])
 
     const deleteJob = async (job_id) => {
         await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {

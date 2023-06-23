@@ -6,13 +6,16 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 
 const Header = () => {
   const id = localStorage.getItem('seekerId');
-  const {isAuthenticated, logout } = useContext(AuthContext);
+  const {  isAuthenticated, logout } = useContext(AuthContext);
   const storedUserId = localStorage.getItem('userId');
   const [open, setOpen] = useState(false);
+
+
   console.log('user in navbar' ,storedUserId);
   const handleLogout = () => {
     // Handle logout functionality, e.g., clear local storage, update login status, etc.
     logout()
+
   };
 
   return (

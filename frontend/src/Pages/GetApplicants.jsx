@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import { FiDownload } from 'react-icons/fi';
+import { AuthContext } from '../Services/AuthContext';
 
 const GetApplicants = () => {
   const { id } = useParams();
   const [applicants, setApplicants] = useState([]);
+  const {  isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
-    getApplicants();
-  }, []);
+    if (isAuthenticated) {
+      getApplicants();
+    }
+  }, [isAuthenticated]);
 
   const getApplicants = async () => {
     await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/applicants/${id}/`)
@@ -79,7 +83,7 @@ const GetApplicants = () => {
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">All Applicants</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {applicants.map(applicant => (
+          {isAuthenticated && applicants.map(applicant => (
               <div key={applicant?.id} className="bg-white p-6 rounded-lg shadow-md">
                 <img className="w-12 h-12 rounded-full mx-auto mb-4" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
