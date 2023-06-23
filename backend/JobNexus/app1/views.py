@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets, status
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -12,12 +12,17 @@ from .models import *
 from .serializers import *
 
 from rest_framework.permissions import IsAuthenticated
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives, EmailMessage
 from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.urls import reverse
 
 from django_rest_passwordreset.signals import reset_password_token_created
+
+from django.utils.encoding import force_str, force_bytes
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from .email_tokens import account_activation_token
+from django.contrib.sites.shortcuts import get_current_site
 
 # Create your views here.
 
@@ -454,3 +459,39 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     )
     msg.attach_alternative(email_html_message, "text/html")
     msg.send()
+
+
+def activate(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        print("Thank you for your email confirmation. Now you can login to your account.")
+        return redirect('http://localhost:3000/login')
+    else:
+        print("Activation link is invalid!")
+    return redirect('http://localhost:3000/register')
+
+
+def activateEmail(request, user):
+    subject = "Activate your JobNexusAI account."
+    sender = "recruitsystem.webapp@gmail.com"
+    context = {
+        'user': user.first_name + ' ' + user.last_name,
+        'domain': get_current_site(request).domain,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': account_activation_token.make_token(user),
+        'protocol': 'https' if request.is_secure() else 'http'
+    }
+    content = render_to_string("email_verification_message.html", context)
+    email = EmailMessage(subject, content, sender, to=[user.email])
+    if email.send():
+        print(f'Dear {user.first_name} {user.last_name}, please go to your email {user.email} inbox and click on received activation link to confirm and complete the registration. Note: Check your spam folder.')
+    else:
+        print(f'Problem sending email to {user.email}, check if you typed it correctly.')
