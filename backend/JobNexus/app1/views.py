@@ -45,6 +45,10 @@ class SeekerRegisterCreateAPIView(APIView):
         serializerUser = POSTUserSerializer(data=request.data)
         if serializerUser.is_valid():
             user = serializerUser.save()
+            # deactivating the user until he verifies his account
+            user.is_active = False
+            user.save()
+            activateEmail(request, user)
 
             # Create a Seeker instance and associate it with the newly created user
             seeker_data = {
@@ -78,7 +82,11 @@ class RecruiterRegisterCreateAPIView(APIView):
         serializerUser = POSTUserSerializer(data=request.data)
         if serializerUser.is_valid():
             user = serializerUser.save()
-
+            # deactivating the user until he verifies his account
+            user.is_active = False
+            user.save()
+            activateEmail(request, user)
+            
             # Create a Seeker instance and associate it with the newly created user
             recruiter_data = {
                 'user': user.id,
