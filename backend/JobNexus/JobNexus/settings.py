@@ -146,6 +146,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+
+CSRF_TRUSTED_ORIGINS = ['https://jobnexusai.navybits.com/']
+
 # CORS
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
