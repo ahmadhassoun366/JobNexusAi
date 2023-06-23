@@ -2,10 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
+import Modal from '../Shared/Modal';
+
 
 const GetApplicants = () => {
   const { id } = useParams();
   const [applicants, setApplicants] = useState([]);
+  const [seekerId, setSeekerId] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
     getApplicants();
@@ -19,6 +26,50 @@ const GetApplicants = () => {
       })
       .catch(error => console.error(error));
   }
+
+  const handleSendNotification = async (e) => {
+    e.preventDefault();
+
+    setSeekerId(e);
+    
+    let job = id;
+    console.log("job: ", id);
+    let seeker = seekerId;
+    console.log("seeker: ", seeker);
+    const data = {
+      job,
+      seeker,
+    };
+
+    await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/accepte_Notification/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+
+    })
+      .then((response) => {
+        console.log('send successful');
+        setIsModalOpen(true);
+
+      })
+      .catch((error) => {
+        // Handle the error
+        console.error(error);
+      });
+
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSeeker = (id, f_Name, l_Name) => {
+    setSeekerId(id);
+    setFirstName(f_Name);
+    setLastName(l_Name);
+  };
 
   const compare = (a, b) => {
     if (a?.similarity < b?.similarity) {
@@ -55,6 +106,10 @@ const GetApplicants = () => {
                   <div className="ml-auto text-base  text-gray-900 font-bold">
                   <span className="text-gray-500 font-semibold">Cover Letter AI Score:</span> {applicant?.letter_similarity}%
                   </div>
+                  <form onSubmit={handleSendNotification} className="ml-auto text-base  text-gray-900 font-bold">
+                    {/* <input type="hidden" onChange={handleSeeker} value={applicant?.seeker.id}/> */}
+                    <button type="submit" onClick={() => handleSeeker(applicant?.seeker.id, applicant?.seeker.user.first_name, applicant?.seeker.user.last_name)} className="inline-block mx-auto shadow bg-gray-800 hover:bg-gray-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-5 rounded">send</button>
+                  </form>
                 </div>
               </li>
             ))}
@@ -80,6 +135,14 @@ const GetApplicants = () => {
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {isModalOpen && (
+        <Modal
+          closeModal={closeModal}
+          title="Send successfully."
+          message={`Successfully send an email to ${firstName} ${lastName} to prepare for the next step`}
+        />
+      )}
     </>
   );
 }
