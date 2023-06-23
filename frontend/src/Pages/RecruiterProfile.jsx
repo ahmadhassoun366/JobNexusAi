@@ -18,6 +18,7 @@ export default function RecruiterProfile() {
 
     let recruiter_Id = localStorage.getItem('recruiterId')
     let user_Id = localStorage.getItem('userId')
+
     const handleFirstName = (e) => {
         setFirst_name(e.target.value);
     }
@@ -42,7 +43,7 @@ export default function RecruiterProfile() {
         setTitle(e.target.value);
     }
 
-    const handleProfilePicUpload = async(event) => {
+    const handleProfilePicUpload = async (event) => {
         event.preventDefault();
 
         const file = event.target.files[0];
@@ -50,15 +51,18 @@ export default function RecruiterProfile() {
 
         const formData = new FormData();
         formData.append('profilePicture', file);
+        if (recruiter_Id) {
+            await axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_update/${recruiter_Id}/`, formData)
+                .then((response) => {
+                    console.log('Upload successful:', response.data);
+                    alert("Profile Picture Updated successfully")
+                })
+                .catch(error => console.error(error));
 
-      await  axios.put(`http://127.0.0.1:8000/users/api/recruiter_update/${1}/`, formData)
-            .then((response) => {
-                console.log('Upload successful:', response.data);
-                alert("Profile Picture Updated successfully")
-            })
-            .catch(error => console.error(error));
+            console.log("Profile uploaded-----------------");
 
-        console.log("Profile uploaded-----------------");
+        }
+
     };
 
     const handleUpdate = async (e) => {
@@ -76,32 +80,39 @@ export default function RecruiterProfile() {
         };
 
         console.log(data);
+        if (recruiter_Id) {
+            await axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_update/${recruiter_Id}/`, data)
+                .then((response) => {
+                    console.log('Upload successful:', response.data);
+                    //alert("Profile Picture Updated successfully")
+                })
+                .catch((error) => console.error(error));
 
-        await axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter_update/${1}/`, data)
-            .then((response) => {
-                console.log('Upload successful:', response.data);
-                //alert("Profile Picture Updated successfully")
-            })
-            .catch((error) => console.error(error));
+        }
+
     }
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter/${4}/`)
-            .then(response => {
-                setRecruiter(response.data)
-                setFirst_name(response.data[0]?.user.first_name);
-                setLast_name(response.data[0]?.user.last_name);
-                setPhone(response.data[0]?.user.phone);
-                setCountry(response.data[0]?.country.id);
-                setAbout(response.data[0]?.about);
-                setTitle(response.data[0]?.title);
-            })
-            .catch(error => console.error(error));
 
-        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/countries/`)
-            .then(response => setCountries(response.data))
-            .catch(error => console.error(error));
-    }, []);
+        if (user_Id) {
+            axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/recruiter/${user_Id}/`)
+                .then(response => {
+                    setRecruiter(response.data)
+                    setFirst_name(response.data[0]?.user.first_name);
+                    setLast_name(response.data[0]?.user.last_name);
+                    setPhone(response.data[0]?.user.phone);
+                    setCountry(response.data[0]?.country.id);
+                    setAbout(response.data[0]?.about);
+                    setTitle(response.data[0]?.title);
+                })
+                .catch(error => console.error(error));
+
+            axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/countries/`)
+                .then(response => setCountries(response.data))
+                .catch(error => console.error(error));
+        }
+
+    }, [user_Id]);
 
     return (
         <>
@@ -111,6 +122,7 @@ export default function RecruiterProfile() {
                     <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" className="w-full h-96 " alt="" />
                 </div>
                 <div className="flex flex-col items-center -mt-20 ">
+                   
                     <img src={`${process.env.REACT_APP_JOB_API_URL}/${recruiter[0]?.profilePicture}`} className="w-60 h-60 border-4 border-white rounded-full" alt="" />
                     <div className="flex items-center space-x-2 mt-2 ">
                         <p className="text-2xl">{first_name}  {last_name}</p>

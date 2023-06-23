@@ -45,6 +45,7 @@ const AuthProvider = ({ children }) => {
       console.log("access token is " + access);
   
       setError('');
+
       let userId
   
       if (refresh) {
@@ -56,9 +57,9 @@ const AuthProvider = ({ children }) => {
         setUserId(userId)
         localStorage.setItem('userId', userId);        
       }
-      const seekerResponse = await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker/${userId}/`);
-      console.log("seeeeeekr", seekerResponse.data );
-      
+      if(userId){
+        const seekerResponse = await axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker/${userId}/`);
+        console.log("seeeeeekr", seekerResponse.data ); 
       if(seekerResponse.data.length > 0){
         console.log("Seeker Logged In Successfully");
         setSeekerId(seekerResponse.data[0].id)
@@ -78,7 +79,7 @@ const AuthProvider = ({ children }) => {
         // Redirect to the recruiter page
         console.log('locaaaaaaaaaaaaaaaaaaaaaaaaaaal',localStorage.getItem('recruiterId'));
       }
-
+    }
       // else for recruiter
 
 

@@ -38,6 +38,7 @@ function App() {
           <Route path="/editJob/:id" element={<EditJob />} />
           <Route path="/editRecruiterProfile/:id" element={<RecruiterProfile />} />
         </Routes>
+        
       </AuthProvider>
     </BrowserRouter>
   );

@@ -81,19 +81,22 @@ const Profile = () => {
     const formData = new FormData();
     formData.append('profilePicture', file);
 
-    axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_update/${idSeeker}/`, formData)
-      .then((response) => {
-        // Handle the response from the API
-        console.log('Upload successful:', response.data);
-        alert("Profile Picture Updated successfully")
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error:', error);
-      });
+    if (idSeeker) {
+      axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_update/${idSeeker}/`, formData)
+        .then((response) => {
+          // Handle the response from the API
+          console.log('Upload successful:', response.data);
+          alert("Profile Picture Updated successfully")
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error('Error:', error);
+        });
 
-    console.log("Profile uploaded-----------------");
-  };
+      console.log("Profile uploaded-----------------");
+    };
+  }
+
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -114,29 +117,31 @@ const Profile = () => {
       "language": language
     };
 
-    // Make the POST request using Axios
-    axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_update/${idSeeker}/`, data)
-      .then((response) => {
-        // Handle the response from the API
-        console.log('Upload successful:', response.data);
-        alert("Profile Update successfully")
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error:', error);
-      });
+    if (idSeeker) {
+      // Make the POST request using Axios
+      axios.put(`${process.env.REACT_APP_JOB_API_URL}/users/api/seeker_update/${idSeeker}/`, data)
+        .then((response) => {
+          // Handle the response from the API
+          console.log('Upload successful:', response.data);
+          alert("Profile Update successfully")
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error('Error:', error);
+        });
+    }
+
+
+
   }
-
-
 
 
   useEffect(() => {
     console.log("useEffect");
-    getSeeker();
-
-
-
-  }, []);
+    if(id){
+      getSeeker();
+    }
+  }, [id]);
 
 
 
@@ -219,9 +224,9 @@ const Profile = () => {
           <img src={bgProfile} alt="" class="w-full h-96 " />
         </div>
         <div class="flex flex-col items-center -mt-20 ">
-          <img src={`${process.env.REACT_APP_JOB_API_URL}/${seeker?.profilePicture}`}  
-          style={{ objectPosition: 'center top' }}
-          class="w-80 h-80 border-4 object-cover					border-gray-700 rounded-full shadow-2xl" />
+          <img src={`${process.env.REACT_APP_JOB_API_URL}/${seeker?.profilePicture}`}
+            style={{ objectPosition: 'center top' }}
+            class="w-80 h-80 border-4 object-cover					border-gray-700 rounded-full shadow-2xl" />
           <div class="flex items-center space-x-2 mt-2 ">
             <p class="text-2xl">{first_name}  {last_name}</p>
             <span class="bg-blue-500 rounded-full p-1" title="Verified">
@@ -287,7 +292,7 @@ const Profile = () => {
                               <line x1="6" y1="6" x2="18" y2="18" />
                             </svg>
                           </button>
-                          <button tabIndex="-1"  className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
+                          <button tabIndex="-1" className="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
                             <svg className="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
                           </button>
                         </div>

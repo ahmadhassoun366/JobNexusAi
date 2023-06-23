@@ -5,7 +5,9 @@ import { AuthContext } from '../Services/AuthContext';
 import { GiHamburgerMenu } from 'react-icons/gi';
 const Header = () => {
   const id = localStorage.getItem('seekerId');
+  
   const { isAuthenticated, logout } = useContext(AuthContext);
+  
   const storedUserId = localStorage.getItem('userId');
 
   const [open, setOpen] = useState(false);

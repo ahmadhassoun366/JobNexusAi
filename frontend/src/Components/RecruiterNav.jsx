@@ -71,7 +71,7 @@ const Header = () => {
 
                 {isAuthenticated && (
                     <li>
-                      <Link to={`/profile/${storedUserId}`} >
+                      <Link to={`/editRecruiterProfile/${storedUserId}`} >
                         <button
                           id="mega-menu-full-cta-image-button"
                          

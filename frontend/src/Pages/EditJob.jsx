@@ -83,7 +83,7 @@ const EditJob = () => {
 
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm mb-2" htmlFor="title">Title</label>
-                                <input className="appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" id="title" name="title" onChange={(event) => setTitle(event.target.value)} value={title} />
+                                <input zclassName="appearance-none block w-full bg-white text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500" type="text" id="title" name="title" onChange={(event) => setTitle(event.target.value)} value={title} />
                             </div>
 
                             <div className="md:flex md:justify-between">

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 export default function RecruiterDashboard() {
     let [jobs, setJobs] = useState([]);
     const storedRecruiterID = localStorage.getItem('recruiterId');
-
     useEffect(() => {
         //getJobs();
         axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
