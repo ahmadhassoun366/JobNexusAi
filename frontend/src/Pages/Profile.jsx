@@ -220,9 +220,9 @@ const Profile = () => {
     <>
       <Navbar />
       <form onSubmit={handleUpdate}>
-        <div class="w-full ">
-          <img src={bgProfile} alt="" class="w-full h-96 " />
-        </div>
+      <   div className="w-full mt-24 sm:mt-0">
+                <img src={bgProfile} className="w-full h-96 hidden sm:block" alt="" />
+            </div>
         <div class="flex flex-col items-center -mt-20 ">
           <img src={`${process.env.REACT_APP_JOB_API_URL}/${seeker?.profilePicture}`}
             style={{ objectPosition: 'center top' }}

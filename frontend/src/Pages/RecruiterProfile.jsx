@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import bgProfile from "../assets/img/seekerProfile.webp";
 
 export default function RecruiterProfile() {
     let [countries, setCountries] = useState([]);
@@ -118,9 +119,10 @@ export default function RecruiterProfile() {
         <>
             <Navbar />
             <form onSubmit={handleUpdate}>
-                <div className="w-full ">
-                    <img src="https://marketplace.canva.com/EAE7gQjr2dU/1/0/1600w/canva-blue-modern-motivational-linkedin-banner-TJd4gmEFWyQ.jpg" className="w-full h-96 " alt="" />
-                </div>
+            <div className="w-full mt-24 sm:mt-0">
+                <img src={bgProfile} className="w-full h-96 hidden sm:block" alt="" />
+            </div>
+
                 <div className="flex flex-col items-center -mt-20 ">
                    
                     <img src={`${process.env.REACT_APP_JOB_API_URL}/${recruiter[0]?.profilePicture}`} className="w-60 h-60 border-4 border-white rounded-full" alt="" />
