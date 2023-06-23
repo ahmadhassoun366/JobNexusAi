@@ -488,11 +488,14 @@ def activate(request, uidb64, token):
 
 
 def activateEmail(request, user):
-    subject = "Activate your JobNexusAI account."
+    subject = "Activate your JobNexusAI account."   
     sender = "recruitsystem.webapp@gmail.com"
     context = {
+
+    
+
         'user': user.first_name + ' ' + user.last_name,
-        'domain': get_current_site(request).domain,
+        'domain': 'be.jobnexusai.navybits.com',
         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
         'token': account_activation_token.make_token(user),
         'protocol': 'https' if request.is_secure() else 'http'
