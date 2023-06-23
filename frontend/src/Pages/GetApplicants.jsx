@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
+import { FiDownload } from 'react-icons/fi';
 import Modal from '../Shared/Modal';
 
 
@@ -81,6 +82,18 @@ const GetApplicants = () => {
     return 0;
   }
 
+  // edited here
+  const download = (url) => {
+    let path = url.split('/').pop();
+    let aTag = document.createElement('a');
+    aTag.href = url;
+    aTag.setAttribute('download', path);
+    document.body.appendChild(aTag);
+    aTag.click();
+    aTag.remove();
+  }
+  // ended here
+
   return (
     <>
       <Navbar />
@@ -101,10 +114,10 @@ const GetApplicants = () => {
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.phone}</p>
                   </div>
                   <div className="ml-auto text-base  text-gray-900 font-bold">
-                  <span className="text-gray-500 font-semibold">CV AI Score:</span> {applicant?.cv_similarity}%
+                    <span className="text-gray-500 font-semibold">CV AI Score:</span> {applicant?.cv_similarity}%
                   </div>
                   <div className="ml-auto text-base  text-gray-900 font-bold">
-                  <span className="text-gray-500 font-semibold">Cover Letter AI Score:</span> {applicant?.letter_similarity}%
+                    <span className="text-gray-500 font-semibold">Cover Letter AI Score:</span> {applicant?.letter_similarity}%
                   </div>
                   <form onSubmit={handleSendNotification} className="ml-auto text-base  text-gray-900 font-bold">
                     {/* <input type="hidden" onChange={handleSeeker} value={applicant?.seeker.id}/> */}
@@ -127,9 +140,22 @@ const GetApplicants = () => {
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.email}</p>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.phone}</p>
-                <div className="flex justify-center mt-4">
-                  <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Download CV</button>
+                {/* edited here */}
+                <div className="flex justify-center mt-4 space-x-4">
+                  <button onClick={() => {
+                    download(applicant.cv);
+                  }} className="px-7 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">CV</button>
+                                <FiDownload size={25} color="black"/>
+
                 </div>
+                <div className="flex justify-center items-center mt-4 space-x-4">
+                  <button onClick={() => {
+                    download(applicant.coverLetter);
+                  }} className="px-5 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">CoverLetter</button>
+                                    <FiDownload size={25} color="black"/>
+
+                </div>
+                {/* ended here */}
               </div>
             ))}
           </div>
