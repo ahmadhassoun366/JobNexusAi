@@ -44,4 +44,6 @@ urlpatterns = [
     path('api/countries/', GETCountry.as_view(), name='countries'),
     path('api/job_types/', GETJobType.as_view(), name='job_types'),
     path('api/job_location_types/', GETLocationType.as_view(), name='job_location_types'),
+
+    path('activate/<uidb64>/<token>', activate, name='activate'),
 ]
