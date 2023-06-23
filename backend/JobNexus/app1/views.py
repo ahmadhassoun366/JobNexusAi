@@ -549,16 +549,11 @@ class accepteJobNotification(APIView):
         title = "Congratulations on Your " + job_title + " position"
 
         message = """
-Subject: Congratulations on Your Full Stack Position!
-
 Dear {job_seeker_firstName} {job_seeker_lastName},
 
 Congratulations! We are delighted to inform you that you have been accepted for the {postion} position at {company_name}. This is a remarkable achievement!
-
 Your exceptional qualifications, skills, and experience have made you stand out among the applicants. We were impressed by your dedication and commitment to excellence, which align perfectly with our company values.
-
 Our team will be reaching out to you soon to discuss the next steps in the hiring process, including contract details and the expected start date.
-
 We look forward to welcoming you onboard at {company_name} and working together to achieve great success!
 
 Best regards,
