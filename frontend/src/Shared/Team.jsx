@@ -1,8 +1,8 @@
 import React from 'react';
-import team2 from '../assets/img/team2.jpg';
+import israa from '../assets/img/israa.jpeg';
 import team3 from '../assets/img/team3.jpg';
 import ahmad from '../assets/img/ahmad.png';
-import team4 from '../assets/img/team4.png';
+import samad from '../assets/img/samad.jpg';
 import { FaFacebookSquare, FaLinkedin } from 'react-icons/fa';
 import { BsTwitter, BsGoogle } from 'react-icons/bs';
 
@@ -30,6 +30,9 @@ const Team = () => {
               <div className="pt-6 text-center">
                 <h5 className="text-xl font-bold">Ahmad Hassoun</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  Team Lead
+
+                  <br />
                   Full Stack Developer
                 </p>
                 <div className="mt-6">
@@ -50,14 +53,14 @@ const Team = () => {
             <div className="px-6">
               <img
                 alt="..."
-                src={team2}
+                src={samad}
                 className="shadow-lg rounded-full max-w-full mx-auto"
                 style={{ maxWidth: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Romina Hadid</h5>
+                <h5 className="text-xl font-bold">Mohammad Omarieh</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  Marketing Specialist
+                  Full Stack Developer
                 </p>
                 <div className="mt-6">
                   <button className="bg-red-600 text-white p-2 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
@@ -74,14 +77,14 @@ const Team = () => {
             <div className="px-6">
               <img
                 alt="..."
-                src={team3}
-                className="shadow-lg rounded-full max-w-full mx-auto"
+                src={samad}
+                className="shadow-lg rounded-full max-w-full mx-auto "
                 style={{ maxWidth: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Alexa Smith</h5>
+                <h5 className="text-xl font-bold">Mohammad El Samad</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  UI/UX Designer
+                  Full Stack Developer
                 </p>
                 <div className="mt-6">
                   <button className="bg-red-600 text-white p-2 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
@@ -98,14 +101,14 @@ const Team = () => {
             <div className="px-6">
               <img
                 alt="..."
-                src={team4}
-                className="shadow-lg rounded-full max-w-full mx-auto"
+                src={israa}
+                className="shadow-lg rounded-full h-32 w-36 bg-cover mx-auto"
                 style={{ maxWidth: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Jenna Kardi</h5>
+                <h5 className="text-xl font-bold">Israa Tartoussi</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  Founder and CEO
+                  Full Stack Developer
                 </p>
                 <div className="mt-6">
                   <button className="bg-pink-500 text-white p-2 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
