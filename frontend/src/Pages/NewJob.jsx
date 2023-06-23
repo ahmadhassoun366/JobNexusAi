@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Navbar from '../Components/RecruiterNav'
 import Modal from '../Shared/Modal'
+import { Navigate } from "react-router-dom";
 
 
 const NewJob = () => {
@@ -14,8 +15,8 @@ const NewJob = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     let [title, setTitle] = useState("");
-    let [company, setCompany] = useState(2);           //change to the id of the 1st element in database
-    let [country, setCountry] = useState(3);           //change to the id of the 1st element in database
+    let [company, setCompany] = useState(1);           //change to the id of the 1st element in database
+    let [country, setCountry] = useState(1);           //change to the id of the 1st element in database
     let [type, setType] = useState(1);                 //change to the id of the 1st element in database
     let [locationType, setLocationType] = useState(1); //change to the id of the 1st element in database
     let [description, setDescription] = useState("");
@@ -56,9 +57,7 @@ const NewJob = () => {
             .then(response => {
                 console.log('Added successfully:', response.data);
                 setIsModalOpen(true);
-                setTimeout(() => {
-                    window.location.href = "http://localhost:3000/recruiter";
-                  }, 3000);
+                Navigate('/recruiter')
             })
             .catch(error => console.error(error))
     }
