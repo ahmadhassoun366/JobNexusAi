@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from '../Components/Navbar';
+import Navbar from '../Components/RecruiterNav';
 import axios from 'axios';
 import bgProfile from "../assets/img/seekerProfile.webp";
 
