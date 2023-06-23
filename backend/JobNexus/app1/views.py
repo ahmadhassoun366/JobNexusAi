@@ -222,6 +222,13 @@ class ApplicationRegisterCreateAPIView(APIView):
 
             else:
                 print("No similarity result found.")
+
+            title = "Application Submitted for " + application.job.title + " postion"
+            message = "Application Submitted successfully for " + application.job.title + " postion"
+            seeker_data = Seeker.objects.get(id= request.data.get('seeker'))
+            userEmail = seeker_data.user.email
+            sendEmailView(userEmail, message, title)
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -440,7 +447,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     confirm_url = "http://localhost:3000/resetNewPassword/"
     context = {
         'current_user': reset_password_token.user,
-        'username': reset_password_token.user.username,
+        # 'username': reset_password_token.user.username,
         'email': reset_password_token.user.email,
         # 'reset_password_url': "{}?token={}".format(
         #     instance.request.build_absolute_uri(reverse('password_reset:reset-password-confirm')),
@@ -503,3 +510,65 @@ def activateEmail(request, user):
         print(f'Dear {user.first_name} {user.last_name}, please go to your email {user.email} inbox and click on received activation link to confirm and complete the registration. Note: Check your spam folder.')
     else:
         print(f'Problem sending email to {user.email}, check if you typed it correctly.')
+
+
+def sendEmailView(receive, message, title):
+
+    context = {
+        # 'email': receive,
+        'message': message,
+    }
+    html_content = render_to_string('notificationEmail.html', context)
+
+    # Email message object
+    subject = title
+    from_email = 'recruitsystem.webapp@gmail.com'
+    to_email = [receive]
+
+    email = EmailMessage(subject, html_content, from_email, to_email)
+
+    email_state = email.send()
+    if email_state:
+        return True
+    else:
+        return False
+
+class accepteJobNotification(APIView):
+    def post(self, request):
+
+        job_data = Job.objects.get(id=request.data.get('job'))
+        job_title = job_data.title
+        print("the job id is:")
+        print(job_data.id)
+        seeker_data = Seeker.objects.get(id= request.data.get('seeker'))
+        userEmail = seeker_data.user.email
+
+        title = "Congratulations on Your " + job_title + " position"
+
+        message = """
+Subject: Congratulations on Your Full Stack Position!
+
+Dear {job_seeker_firstName} {job_seeker_lastName},
+
+Congratulations! We are delighted to inform you that you have been accepted for the {postion} position at {company_name}. This is a remarkable achievement!
+
+Your exceptional qualifications, skills, and experience have made you stand out among the applicants. We were impressed by your dedication and commitment to excellence, which align perfectly with our company values.
+
+Our team will be reaching out to you soon to discuss the next steps in the hiring process, including contract details and the expected start date.
+
+We look forward to welcoming you onboard at {company_name} and working together to achieve great success!
+
+Best regards,
+
+JobNexusAi
+""".format(job_seeker_firstName = seeker_data.user.first_name,
+            job_seeker_lastName = seeker_data.user.last_name,
+            postion = job_title,
+            company_name = job_data.company.name,
+            )
+
+        email_state = sendEmailView(userEmail, message, title)
+        if email_state:
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

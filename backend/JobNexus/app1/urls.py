@@ -22,7 +22,7 @@ urlpatterns = [
     path('api/create_application/', ApplicationRegisterCreateAPIView.as_view(), name='applicants'),
     path('api/seeker_application/<int:seeker_id>/', GetSeekerApplication.as_view(), name='SeekerApplicants'),
 
-
+    path('api/accepte_Notification/', accepteJobNotification.as_view(), name='sendEmail'),
 
     path('api/delete_job/<int:job_id>/', DeleteJob.as_view(), name='delete_job'),
 
