@@ -86,7 +86,7 @@ class RecruiterRegisterCreateAPIView(APIView):
             user.is_active = False
             user.save()
             activateEmail(request, user)
-            
+
             # Create a Seeker instance and associate it with the newly created user
             recruiter_data = {
                 'user': user.id,
@@ -481,10 +481,10 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         print("Thank you for your email confirmation. Now you can login to your account.")
-        return redirect('http://localhost:3000/login')
+        return redirect('https://jobnexusai.navybits.com/login')  # redirect('http://localhost:3000/login')
     else:
         print("Activation link is invalid!")
-    return redirect('http://localhost:3000/register')
+    return redirect('https://jobnexusai.navybits.com/register')  # redirect('http://localhost:3000/register')
 
 
 def activateEmail(request, user):
