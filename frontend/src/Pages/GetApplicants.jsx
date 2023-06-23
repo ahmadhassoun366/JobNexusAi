@@ -30,6 +30,18 @@ const GetApplicants = () => {
     return 0;
   }
 
+  // edited here
+  const download = (url) => {
+    let path = url.split('/').pop();
+    let aTag = document.createElement('a');
+    aTag.href = url;
+    aTag.setAttribute('download', path);
+    document.body.appendChild(aTag);
+    aTag.click();
+    aTag.remove();
+  }
+  // ended here
+
   return (
     <>
       <Navbar />
@@ -50,10 +62,10 @@ const GetApplicants = () => {
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.phone}</p>
                   </div>
                   <div className="ml-auto text-base  text-gray-900 font-bold">
-                  <span className="text-gray-500 font-semibold">CV AI Score:</span> {applicant?.cv_similarity}%
+                    <span className="text-gray-500 font-semibold">CV AI Score:</span> {applicant?.cv_similarity}%
                   </div>
                   <div className="ml-auto text-base  text-gray-900 font-bold">
-                  <span className="text-gray-500 font-semibold">Cover Letter AI Score:</span> {applicant?.letter_similarity}%
+                    <span className="text-gray-500 font-semibold">Cover Letter AI Score:</span> {applicant?.letter_similarity}%
                   </div>
                 </div>
               </li>
@@ -72,9 +84,18 @@ const GetApplicants = () => {
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.email}</p>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.phone}</p>
+                {/* edited here */}
                 <div className="flex justify-center mt-4">
-                  <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Download CV</button>
+                  <button onClick={() => {
+                    download(applicant.cv);
+                  }} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Download CV</button>
                 </div>
+                <div className="flex justify-center mt-4">
+                  <button onClick={() => {
+                    download(applicant.coverLetter);
+                  }} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Download CoverLetter</button>
+                </div>
+                {/* ended here */}
               </div>
             ))}
           </div>
