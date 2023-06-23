@@ -71,7 +71,7 @@ const NewJob = () => {
             <>
             <Navbar/>
         <main className="main bg-gray-50 px-6 md:px-16 py-6">
-            <div className="w-2/4 max-w mx-auto bg-white p-10 m-5 rounded-2xl shadow-2xl">
+            <div className="w-full md:w-2/4 max-w mx-auto bg-white p-10 m-5 rounded-2xl shadow-2xl">
                 <form>
                     <h1 className="text-2xl mb-2">Add New Job</h1>
 
@@ -170,7 +170,7 @@ const NewJob = () => {
                         <div>
                             <label htmlFor="description" className="block text-gray-700 text-sm mb-2">Description</label>
                             <textarea name="description" 
-                            className="border shadow-inner"
+                            className="border shadow-inner md:w-284 w-full"
                             id="description" cols="76" rows="7" onChange={(event) => setDescription(event.target.value)}></textarea>
                         </div>
 

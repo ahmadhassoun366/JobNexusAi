@@ -29,7 +29,6 @@ export default function RecruiterDashboard() {
             <Nav />
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-24 my-10 pt-24 pb-36">
-
                 <div className="">
                     <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[16px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
                         <div className="rounded-xl overflow-hidden h-[140px] md:h-[262px]">
@@ -37,23 +36,20 @@ export default function RecruiterDashboard() {
                         </div>
                     </div>
                     <div className="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl h-[24px] max-w-[301px] md:h-[42px] md:max-w-[512px]"></div>
-                    <div className="relative mx-auto bg-gray-800 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]">
-                    </div>
+                    <div className="relative mx-auto bg-gray-800 rounded-b-xl h-[55px] max-w-[83px] md:h-[95px] md:max-w-[142px]"></div>
                 </div>
-
-                <div className="w-2/4 flex flex-col justify-center items-center gap-14">
+                <div className="w-full md:w-2/4 flex flex-col justify-center items-center gap-14">
                     <h1 className="text-xl font-bold leading-none lg:text-3xl xl:text-4xl text-center">Efficiently Identify Top Talent with AI</h1>
-                    <p className="w-11/12 text-center text-xl text-gray-950 font-semibold"   >Streamline your hiring process and make data-driven decisions.</p>
+                    <p className="w-11/12 text-center text-xl text-gray-950 font-semibold">Streamline your hiring process and make data-driven decisions.</p>
                     <p className="w-3/4 text-justify">Our advanced AI algorithms analyze candidate profiles, resumes, and interview responses to help you make data-driven hiring decisions. Streamline your recruitment workflow, identify top candidates, and reduce time-to-hire.</p>
                     <Link to={'/newJob'}>
-                        <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse" >Post Job Now</button>
+                        <button className="px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold animate-pulse">Post Job Now</button>
                     </Link>
                 </div>
-
             </div>
 
-            <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">
-                Manage Your Posted Jobs</h1>
+            <h1 className="text-4xl font-bold text-center leading-none lg:text-5xl xl:text-5xl text-gray-900">Manage Your Posted Jobs</h1>
+
 
             <div className="flex items-center justify-center mt-10">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
