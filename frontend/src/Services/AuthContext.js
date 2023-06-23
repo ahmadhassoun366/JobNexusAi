@@ -88,7 +88,8 @@ const AuthProvider = ({ children }) => {
 
       
     } catch (error) {
-      setError('Invalid email or password.');
+      if (error.response.status === 401)
+      alert('Invalid email or password.');
     } 
     
   };

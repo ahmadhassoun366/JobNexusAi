@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
 import Footer from "../Components/Footer";
 import Modal from '../Shared/Modal'
+import { AuthContext } from '../Services/AuthContext';
 
 const JobDetails = () => {
   const storedSeekerId = localStorage.getItem('seekerId');
@@ -14,12 +15,15 @@ const JobDetails = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [coverLetterFile, setCoverLetterFile] = useState(null);
   const [seeker] = useState(storedSeekerId);
+  const {  isAuthenticated } = useContext(AuthContext);
 
   // eslint-disable-next-line
 
   useEffect(() => {
-    getJobDetails();
-  }, []);
+    if(isAuthenticated){
+      getJobDetails();
+    }
+  }, [isAuthenticated]);
 
   const getJobDetails = async () => {
     try {
@@ -95,7 +99,7 @@ const JobDetails = () => {
 
 
 
-      <div className="containe p-5 ">
+      {isAuthenticated ? ( <div className="containe p-5 ">
         <div className="md:flex flex-row md:-mx-2 mt-8">
           {/* <!-- Left Side --> */}
           <div className="w-full md:w-3/12 md:mx-2">
@@ -256,6 +260,10 @@ const JobDetails = () => {
           </div>
         </div>
       </div>
+
+) : (
+<h1>Please login</h1>
+  )}
       {/* Modal */}
       {isModalOpen && (
         <Modal
