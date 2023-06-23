@@ -9,14 +9,29 @@ const ResetPassword = () => {
     const { token } = useParams();
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
+	const [passwordMatch, setPasswordMatch] = useState(true);
+	const [passwordError, setPasswordError] = useState('');
+
 
     const handlePassword = (e) => {
-        setPassword(e.target.value)
+        setPassword(e.target.value);
+		setPasswordError('');
+		setPasswordMatch(true);
     };
 
     const handleConfPassword = (e) => {
-        setConfPassword(e.target.value)
+        setConfPassword(e.target.value);
+		setPasswordError('');
+		setPasswordMatch(true);
     };
+
+	const validatePasswords = () => {
+		if (password !== confPassword) {
+		  setPasswordMatch(false);
+		} else {
+		  setPasswordMatch(true);
+		}
+	  };
 
     const handleReset = async (e) => {
 
@@ -84,12 +99,14 @@ const ResetPassword = () => {
 									Confirm New Password
 								</label>
 								<input
-									className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-									id="c_password"
+									className={`w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline ${
+										!passwordMatch ? 'border-red-500' : 'border-gray-200'
+									}`}
 									type="password"
 									placeholder="Confrim New Password..."
                                     value={confPassword}
                                     onChange={handleConfPassword}
+									onBlur={validatePasswords}
 								/>
 							</div>
 							<div className="mb-6 text-center">
@@ -102,6 +119,8 @@ const ResetPassword = () => {
 							</div>
 							<hr className="mb-6 border-t" />
 							<div className="text-center">
+							{!passwordMatch && <p className="text-red-500">Passwords do not match</p>}
+
 								<Link   to="/register"
 									className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
 									href="./register.html"

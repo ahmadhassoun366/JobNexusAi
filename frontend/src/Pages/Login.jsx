@@ -87,7 +87,7 @@ const handleLogin = async (e) => {
                         </label>
 					</div>
 				<div className="text-sm">
-					<Link to className="font-medium text-indigo-500 hover:text-indigo-500">
+					<Link to='/resetPassword' className="font-medium text-indigo-500 hover:text-indigo-500">
 								Forgot your password?
 					</Link>
 				</div>
