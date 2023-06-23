@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
+import { FiDownload } from 'react-icons/fi';
 
 const GetApplicants = () => {
   const { id } = useParams();
@@ -85,15 +86,19 @@ const GetApplicants = () => {
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.email}</p>
                 <p className="text-sm text-gray-600 text-center">{applicant?.seeker.user.phone}</p>
                 {/* edited here */}
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-center mt-4 space-x-4">
                   <button onClick={() => {
                     download(applicant.cv);
-                  }} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Download CV</button>
+                  }} className="px-7 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">CV</button>
+                                <FiDownload size={25} color="black"/>
+
                 </div>
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-center items-center mt-4 space-x-4">
                   <button onClick={() => {
                     download(applicant.coverLetter);
-                  }} className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Download CoverLetter</button>
+                  }} className="px-5 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">CoverLetter</button>
+                                    <FiDownload size={25} color="black"/>
+
                 </div>
                 {/* ended here */}
               </div>

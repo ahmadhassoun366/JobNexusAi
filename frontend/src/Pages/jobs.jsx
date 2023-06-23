@@ -101,7 +101,7 @@ const Alljobs = () => {
         <AliceCarousel
 
           items={jobs.slice(0, 5).map((job) => (
-            <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
+            <div key={job?.id} className="relative bg-white py-4 px-6 rounded-3xl w-80 my-8 mx-20 mb-20">
               <img alt="" src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" />
 
               <div className="mt-8">
@@ -159,104 +159,104 @@ const Alljobs = () => {
           animationDuration={1000} // Set animation duration in milliseconds
           animationEasingFunction="ease-in-out" // Set animation easing function
         />
-        <button className="px-6 py-2 mt-8 bg-gray-900 text-white rounded-lg shadow-2xl">
+        <button className="px-6 py-2 bg-gray-900 text-white rounded-lg shadow-2xl">
           See All Jobs
         </button>
       </div>
 
       <div className="bg-white pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto sm:py-16 lg:py-20">
-        <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto  sm:px-6 lg:px-8">
-          <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:px-6 lg:px-8">
-            <div className="pt-0 pr-4 pb-0 pl-4 mr-auto mb-0 ml-auto sm:flex sm:items-center sm:justify-between">
-              <div>
-                <p className="text-3xl font-bold text-gray-900">Open Positions</p>
-                <p className="text-sm mt-1 mr-0 mb-0 ml-0 font-semi-bold text-gray-500">Lorem ipsum dolor sit amet, consectetur
-                  adipis</p>
-              </div>
-              <div className="mt-4 mr-0 mb-0 ml-0 sm:mt-0">
-                <p className="sr-only">Search Position</p>
-                <div className="relative">
-                  <div className="flex items-center pt-0 pr-0 pb-0 pl-3 absolute inset-y-0 left-0 pointer-events-none">
-                    <p>
-                      <svg className="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21
-                    21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    </p>
-                  </div>
-                  <input placeholder="Search Positions " type="search" className="border block pt-2 pr-0 pb-2 pl-10 w-full py-2
-                 border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600 sm:text-sm"/>
-                </div>
-              </div>
-            </div>
-            <div className="shadow-2xl mt-8 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
-  <div className="pt--10 pr-0 pb-10 pl-0">
-    {jobs.map((job) => (
-      <div key={job?.id} className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-        <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-          <div className="flex items-center flex-1 min-w-0">
-            <img
-              alt=""
-              src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12   mb-8 " />
-            <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-              <p className="text-lg font-bold text-gray-800 truncate">{job.title}</p>
-              <p className="text-gray-600 text-md">{job.company.name}</p>
-              <div className="flex items-center gap-3 mt-2">
-                <span className="bg-gray-300 text-gray-900 rounded-full px-3 py-1 text-sm">{job.locationType.locationType}</span>
-                <span className="text-slate-600 text-sm flex gap-1 items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {job.type.type}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
-            {isAuthenticated ? (
-              <Link
-                to={`/jobDetails/${job.id}`}
-                className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
-              >
-                Apply Now
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className="bg-gray-900 mr-10 text-white font-medium px-4 py-2 rounded-md flex gap-1 items-center"
-              >
-                Login to Apply
-              </Link>
-            )}
-          </div>
-        </div>
-        <hr className="mt-5" />
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-between">
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900">Open Positions</h1>
+        <p className="text-sm mt-1 font-semibold text-gray-500">Lorem ipsum dolor sit amet, consectetur adipis</p>
       </div>
-    ))}
+      <div className="mt-4">
+        <label htmlFor="search" className="sr-only">Search Position</label>
+        <div className="relative">
+          <div className="flex items-center absolute inset-y-0 left-0 pl-3 pointer-events-none">
+            <svg className="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <input
+            id="search"
+            type="search"
+            placeholder="Search Positions"
+            className="border block w-full py-2 pl-10 pr-3 text-sm border-gray-300 rounded-lg focus:ring-indigo-600 focus:border-indigo-600"
+          />
+        </div>
+      </div>
+    </div>
+    
+    <div className="shadow-lg rounded-lg overflow-hidden bg-white mt-8">
+      <div className="p-6">
+        {jobs.map((job) => (
+          <div key={job?.id} className="mb-6">
+            <div className="flex items-center mb-4">
+              <img
+                alt=""
+                src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`}
+                className="w-12 h-12 rounded-full mr-4 object-cover"
+              />
+              <div>
+                <p className="text-lg font-bold text-gray-800 truncate">{job.title}</p>
+                <p className="text-gray-600 text-md">{job.company.name}</p>
+              </div>
+            </div>
+            <div className="flex items-center text-sm text-gray-600 mb-4">
+              <span className="px-3 py-1 bg-gray-300 text-gray-900 rounded-full mr-2">{job.type.type}</span>
+              <span className="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                {job.locationType.locationType}
+              </span>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="font-bold">Deadline: {job?.deadline}</p>
+              {isAuthenticated ? (
+                <Link
+                  to={`/jobDetails/${job.id}`}
+                  className="bg-gray-900 text-white font-medium px-4 py-2 rounded-md flex items-center"
+                >
+                  Apply Now
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="bg-gray-900 text-white font-medium px-4 py-2 rounded-md flex items-center"
+                >
+                  Login to Apply
+                </Link>
+              )}
+            </div>
+            <hr className="my-5" />
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </div>
 
-          </div>
-        </div>
-      </div>
-      <style>
-        {`
+<style>
+  {`
+  .alice-carousel__dots,
     .alice-carousel__prev-btn,
     .alice-carousel__next-btn {
       display: none !important;
     }
-    `}
-      </style>
+
+    .carousel-list {
+      list-style: none;
+    }
+  `}
+</style>
+
     </>
 
   );
