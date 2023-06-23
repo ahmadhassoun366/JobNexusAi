@@ -32,8 +32,7 @@ const Header = () => {
                 <GiHamburgerMenu name="menu"></GiHamburgerMenu>
               </div>
               <div
-                className={`md:hidden text-gray-900 absolute w-2/3 h-screen z-20
-                 px-7 py-2 font-medium bg-white top-0 duration-300 ${open ? "right-0" : "right-[-100%]"
+                className={`md:hidden text-gray-900 fixed inset-y-0 right-0 z-20 w-4/5 max-w-xs px-7 py-2 font-medium bg-white duration-300 transform ${open ? "translate-x-0" : "translate-x-full"
                   }`}
               >
                 <ul className="flex flex-col justify-center h-full gap-10 py-2 text-lg text-center">

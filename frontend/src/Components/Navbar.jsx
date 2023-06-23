@@ -5,9 +5,9 @@ import { AuthContext } from '../Services/AuthContext';
 import { GiHamburgerMenu } from 'react-icons/gi';
 const Header = () => {
   const id = localStorage.getItem('seekerId');
-  
+
   const { isAuthenticated, logout } = useContext(AuthContext);
-  
+
   const storedUserId = localStorage.getItem('userId');
 
   const [open, setOpen] = useState(false);
@@ -37,49 +37,48 @@ const Header = () => {
                 <GiHamburgerMenu name="menu"></GiHamburgerMenu>
               </div>
               <div
-                className={`md:hidden text-gray-900 absolute w-2/3 h-screen z-20
-                 px-7 py-2 font-medium bg-white top-0 duration-300 ${open ? "right-0" : "right-[-100%]"
+                className={`md:hidden text-gray-900 fixed inset-y-0 right-0 z-20 w-4/5 max-w-xs px-7 py-2 font-medium bg-white duration-300 transform ${open ? "translate-x-0" : "translate-x-full"
                   }`}
               >
                 <ul className="flex flex-col justify-center h-full gap-10 py-2 text-lg text-center">
-                    <li
-                      onClick={() => setOpen(false)}
-                      className="px-6 hover:text-cyan-600"
-                    >
-                    </li>
-                    <li>
-                      <Link to='/'>
+                  <li
+                    onClick={() => setOpen(false)}
+                    className="px-6 hover:text-cyan-600"
+                  >
+                  </li>
+                  <li>
+                    <Link to='/'>
                       Home
-                      </Link>
-                      
-                    </li>
-                    {!isAuthenticated && (
-                  <Link
-                    to="/register"
-                  
-                  >
-                    <span >
-                      Sign Up
-                    </span>
-                  </Link>
-                )}
-                {!isAuthenticated && (
-                  <Link
-                    to="/login"
-                   
-                  >
-                    <span>
-                      Login
-                    </span>
-                  </Link>
-                )}
+                    </Link>
 
-                {isAuthenticated && (
+                  </li>
+                  {!isAuthenticated && (
+                    <Link
+                      to="/register"
+
+                    >
+                      <span >
+                        Sign Up
+                      </span>
+                    </Link>
+                  )}
+                  {!isAuthenticated && (
+                    <Link
+                      to="/login"
+
+                    >
+                      <span>
+                        Login
+                      </span>
+                    </Link>
+                  )}
+
+                  {isAuthenticated && (
                     <li>
                       <Link to={`/profile/${storedUserId}`} >
                         <button
                           id="mega-menu-full-cta-image-button"
-                         
+
                         >
                           Profile
                         </button>
