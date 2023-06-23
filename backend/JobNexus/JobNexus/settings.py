@@ -150,10 +150,10 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 CORS_ALLOWED_ORIGINS = [
-    'https://be.jobnexusai.navybits.com/',
+    'https://be.jobnexusai.navybits.com',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://be.jobnexusai.navybits.com/']
+CSRF_TRUSTED_ORIGINS = ['https://be.jobnexusai.navybits.com']
 
 # CORS
 ALLOWED_HOSTS = ['*']
