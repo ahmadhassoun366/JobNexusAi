@@ -4,23 +4,23 @@ import { useParams } from "react-router-dom";
 import Navbar from '../Components/RecruiterNav'
 
 const EditJob = () => {
-    let { id } = useParams();
+    const { id } = useParams();
 
-    let [companies, setCompanies] = useState([]);
-    let [countries, setCountries] = useState([]);
-    let [types, setTypes] = useState([]);
-    let [locationTypes, setLocationTypes] = useState([]);
+    const [companies, setCompanies] = useState([]);
+    const [countries, setCountries] = useState([]);
+    const [types, setTypes] = useState([]);
+    const [locationTypes, setLocationTypes] = useState([]);
 
-    let [title, setTitle] = useState("");
-    let [company, setCompany] = useState(1);
-    let [country, setCountry] = useState(1);
-    let [type, setType] = useState(1);
-    let [locationType, setLocationType] = useState(1);
-    let [description, setDescription] = useState("");
-    let [deadline, setDeadline] = useState("");
+    const [title, setTitle] = useState("");
+    const [company, setCompany] = useState(1);
+    const [country, setCountry] = useState(1);
+    const [type, setType] = useState(1);
+    const [locationType, setLocationType] = useState(1);
+    const [description, setDescription] = useState("");
+    const [deadline, setDeadline] = useState("");
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_JOB_API_URL}users/api/job/${id}/`)
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job/${id}/`)
             .then(response => {
                 setTitle(response.data[0]?.title);
                 setCompany(response.data[0]?.company.id);
