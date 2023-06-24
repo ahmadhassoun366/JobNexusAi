@@ -3,7 +3,7 @@ import { FiUsers } from 'react-icons/fi';
 import { GrUserManager } from 'react-icons/gr';
 import { MdPersonSearch } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import tips from "../assets/img/tips.avif";
+import tips from "../assets/img/tips.jpg";
 
 const Tips = () => {
 

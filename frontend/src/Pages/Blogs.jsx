@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from '../Components/Navbar';
 import { Link } from 'react-router-dom';
-import blog1 from '../assets/img/blog1.avif'
-import blog2 from '../assets/img/blog2.avif'
-import blog3 from '../assets/img/blog3.avif'
+import blog1 from '../assets/img/blog1.jpg'
+import blog2 from '../assets/img/blog2.jpg'
+import blog3 from '../assets/img/blog3.jpg'
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);

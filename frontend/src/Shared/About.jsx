@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsFillRocketTakeoffFill } from 'react-icons/bs';
-import about from "../assets/img/about.avif";
+import about from "../assets/img/about.jpg";
 
 const About = () => {
   return (

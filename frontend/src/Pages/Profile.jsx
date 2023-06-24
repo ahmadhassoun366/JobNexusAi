@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
-import bgProfile from "../assets/img/seekerProfile.webp";
+import bgProfile from "../assets/img/seekerProfile.jpg";
 
 
 const Profile = () => {
