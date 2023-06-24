@@ -61,6 +61,8 @@ const Team = () => {
               <div className="pt-6 text-center">
                 <h5 className="text-xl font-bold">Mohammad Omarieh</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  Backend Lead
+                  <br/>
                   Full Stack Developer
                 </p>
                 <div className="mt-6">
