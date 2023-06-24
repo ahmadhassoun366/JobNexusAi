@@ -2,6 +2,7 @@ import React from 'react';
 import israa from '../assets/img/israa.jpeg';
 import team3 from '../assets/img/team3.jpg';
 import ahmad from '../assets/img/ahmad.png';
+import mohammad from '../assets/img/Mohammad_Omarieh.jpg'
 import samad from '../assets/img/samad.jpg';
 import { FaFacebookSquare, FaLinkedin } from 'react-icons/fa';
 import { BsTwitter, BsGoogle } from 'react-icons/bs';
@@ -53,7 +54,7 @@ const Team = () => {
             <div className="px-6">
               <img
                 alt="..."
-                src={samad}
+                src={mohammad}
                 className="shadow-lg rounded-full max-w-full mx-auto"
                 style={{ maxWidth: "120px" }}
               />
