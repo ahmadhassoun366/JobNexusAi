@@ -83,7 +83,7 @@ const Team = () => {
                 style={{ maxWidth: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Mohammad El Samad</h5>
+                <h5 className="text-xl font-bold">Mhamad El Samad</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   Full Stack Developer
                 </p>

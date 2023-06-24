@@ -4,20 +4,21 @@ import { useParams } from "react-router-dom";
 import Navbar from '../Components/RecruiterNav'
 
 const EditJob = () => {
-    const { id } = useParams();
+    let { id } = useParams();
+    let recruiter = Number(localStorage.getItem('recruiterId'));
 
-    const [companies, setCompanies] = useState([]);
-    const [countries, setCountries] = useState([]);
-    const [types, setTypes] = useState([]);
-    const [locationTypes, setLocationTypes] = useState([]);
+    let [companies, setCompanies] = useState([]);
+    let [countries, setCountries] = useState([]);
+    let [types, setTypes] = useState([]);
+    let [locationTypes, setLocationTypes] = useState([]);
 
-    const [title, setTitle] = useState("");
-    const [company, setCompany] = useState(1);
-    const [country, setCountry] = useState(1);
-    const [type, setType] = useState(1);
-    const [locationType, setLocationType] = useState(1);
-    const [description, setDescription] = useState("");
-    const [deadline, setDeadline] = useState("");
+    let [title, setTitle] = useState("");
+    let [company, setCompany] = useState(1);
+    let [country, setCountry] = useState(1);
+    let [type, setType] = useState(1);
+    let [locationType, setLocationType] = useState(1);
+    let [description, setDescription] = useState("");
+    let [deadline, setDeadline] = useState("");
 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job/${id}/`)
@@ -33,7 +34,7 @@ const EditJob = () => {
             })
             .catch(error => console.error(error));
 
-        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/companies/`)
+        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/companies/${recruiter}/`)
             .then(response => setCompanies(response.data))
             .catch(error => console.error(error));
 
@@ -48,7 +49,7 @@ const EditJob = () => {
         axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/job_location_types/`)
             .then(response => setLocationTypes(response.data))
             .catch(error => console.error(error));
-    }, [id]);
+    }, [id, recruiter]);
 
     const updateJob = () => {
         let jobData = {
@@ -73,9 +74,9 @@ const EditJob = () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <main className="main bg-gray-50 px-6 md:px-16 py-6">
-            <div className="w-2/4 max-w mx-auto bg-white p-10 m-5 rounded-2xl shadow-2xl">
+                <div className="w-2/4 max-w mx-auto bg-white p-10 m-5 rounded-2xl shadow-2xl">
                     <form>
                         <h1 className="text-2xl mb-2">  </h1>
 
@@ -161,21 +162,27 @@ const EditJob = () => {
                             </div>
 
 
-          			 <div>
-                            <label htmlFor="deadline" className="block text-gray-700 text-sm mb-2">Deadline</label>
-                            <input type="date" name="deadline" id="deadline" cols="76" rows="7" value={deadline} onChange={(event) => {
-                                let deadlineDate = event.target.value.toString();
-                                setDeadline(deadlineDate);
-                                console.log(deadlineDate);
-                            }}></input>
-                        </div>
+                            <div>
+                                <label htmlFor="deadline" className="block text-gray-700 text-sm mb-2">Deadline</label>
+                                <input type="date" name="deadline" id="deadline" cols="76" rows="7" value={deadline} onChange={(event) => {
+                                    let deadlineDate = event.target.value.toString();
+                                    setDeadline(deadlineDate);
+                                    // if (deadlineDate) {
+                                    //     setDeadline(deadlineDate);
+                                    // } else {
+                                    //     setDeadline("")
+                                    // }
+                                    // console.log(deadlineDate);
+                                    // console.log(deadline);
+                                }}></input>
+                            </div>
 
 
                             <div>
                                 <label htmlFor="description" className="block text-gray-700 text-sm mb-2">Description</label>
-                                <textarea type="text" 
-                                  className="border shadow-inner"
-                                  name="description" id="description" cols="76" rows="7" value={description} onChange={(event) => { setDescription(event.target.value) }}></textarea>
+                                <textarea type="text"
+                                    className="border shadow-inner"
+                                    name="description" id="description" cols="76" rows="7" value={description} onChange={(event) => { setDescription(event.target.value) }}></textarea>
                             </div>
 
                         </div>
