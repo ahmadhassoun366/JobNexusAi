@@ -356,10 +356,19 @@ class EditRecruiterProfile(APIView):
 
 
 class GETCompany(APIView):
-    def get(self, request):
-        companies = Company.objects.all()
+    def get(self, request, recruiter_id):
+        companies = Company.objects.filter(recruiter=recruiter_id)
         serializer = GetCompanySerializer(companies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class POSTCompany(APIView):
+    def post(self, request):
+        serializer = PostCompanySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class GETCountry(APIView):

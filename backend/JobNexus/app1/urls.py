@@ -40,7 +40,9 @@ urlpatterns = [
     path('blogsUpdate/<int:pk>', BlogUpdateAPIView.as_view(), name='blog_update'),
     path('blogsDelete/<int:pk>', BlogDeleteAPIView.as_view(), name='blog_delete'),
 
-    path('api/companies/', GETCompany.as_view(), name='companies'),
+    # path('api/companies/', GETCompany.as_view(), name='companies'),
+    path('api/companies/<int:recruiter_id>/', GETCompany.as_view(), name='companies'),
+    path('api/add_company/', POSTCompany.as_view(), name='add_company'),
     path('api/countries/', GETCountry.as_view(), name='countries'),
     path('api/job_types/', GETJobType.as_view(), name='job_types'),
     path('api/job_location_types/', GETLocationType.as_view(), name='job_location_types'),

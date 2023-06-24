@@ -79,7 +79,7 @@ class UpdateRecruiterSerializer(serializers.ModelSerializer):
 
 # use it with POST request
 class PostCompanySerializer(serializers.ModelSerializer):
-    country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
+    # country = serializers.PrimaryKeyRelatedField(queryset=Country.objects.all())
 
     class Meta:
         model = Company
