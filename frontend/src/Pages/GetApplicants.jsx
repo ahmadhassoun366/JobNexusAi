@@ -5,6 +5,8 @@ import Navbar from '../Components/Navbar';
 import { FiDownload } from 'react-icons/fi';
 import { AuthContext } from '../Services/AuthContext';
 import Modal from '../Shared/Modal';
+import { Link } from 'react-router-dom';
+
 
 
 const GetApplicants = () => {
@@ -109,14 +111,17 @@ const GetApplicants = () => {
 
           <ul className="space-y-6">
             {applicants.map(applicant => (
-              <li key={applicant?.id}>
+              <li key={applicant?.id}>   
                 <div className="flex items-center">
+                <Link to={`/seeker/${applicant?.seeker.user.id}`}>
                   <img className="w-12 h-12 rounded-full" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
+                  </Link>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-800">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.email}</p>
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.phone}</p>
                   </div>
+                  
                   <div className="ml-auto text-base  text-gray-900 font-bold">
                     <span className="text-gray-500 font-semibold">CV AI Score:</span> {applicant?.cv_similarity}%
                   </div>

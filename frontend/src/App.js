@@ -15,6 +15,7 @@ import EditJob from './Pages/EditJob';
 import RecruiterProfile from './Pages/RecruiterProfile';
 import ResetPasswordEmail  from './Pages/ResetPasswordEmail';
 import ResetPasswordNewPass from './Pages/RestPasswordNewPass';
+import ViewProfile from './Pages/ViewProfile';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/newJob" element={<NewJob />} />
           <Route path="/editJob/:id" element={<EditJob />} />
           <Route path="/editRecruiterProfile/:id" element={<RecruiterProfile />} />
+          <Route path="/seeker/:id" element={<ViewProfile />} />
         </Routes>
         
       </AuthProvider>
