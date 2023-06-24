@@ -64,18 +64,19 @@ const ResetPassword = () => {
   return (
     <>
     <Navbar/>
-<section className="font-mono bg-white">
-		<div className="container mx-auto">
-			<div className="flex justify-center px-6 my-12">
-				<div className="w-full xl:w-3/4 lg:w-11/12 flex">
-					<div
+<section className="bg-white">
+		<div className="flex justify-center items-center container w-full">
+			<div className="	 px-6 my-12 bg-r">
+				<div className=" flex justify-center items-center w-full shadow-2xl">
+					{/* <div
 						className="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-xl shadow-2xl"
 						style={{backgroundImage:`url(`+signup+`)`}}
-					></div>
-					<div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+					></div> */}
+					<div className="w-full lg:w-3/4 bg-white p-5 rounded-lg lg:rounded-l-none">
 						<div className="px-8 mb-4 text-center">
-							<h3 className="pt-4 mb-2 text-2xl">Forgot Your Password?</h3>
-							<p className="mb-4 text-sm text-gray-700">
+						<h2 className="mt-2 text-3xl font-bold text-gray-900">
+							New  Password</h2>
+							<p className="mb-4 text-sm text-gray-700 mt-5">
 								We get it, stuff happens. Just enter your email address below and we'll send you a
 								link to reset your password!
 							</p>
@@ -120,21 +121,6 @@ const ResetPassword = () => {
 							<hr className="mb-6 border-t" />
 							<div className="text-center">
 							{!passwordMatch && <p className="text-red-500">Passwords do not match</p>}
-
-								<Link   to="/register"
-									className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-									href="./register.html"
-								>
-									Create an Account!
-								</Link>
-							</div>
-							<div className="text-center">
-								<Link to="/login"
-									className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-									href="./index.html"
-								>
-									Already have an account? Login!
-								</Link>
 							</div>
 						</form>
 					</div>

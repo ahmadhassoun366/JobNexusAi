@@ -42,7 +42,7 @@ const ResetPassword = () => {
   return (
     <>
     <Navbar/>
-<section className="font-mono bg-white">
+<section className=" bg-white">
 		<div className="container mx-auto">
 			<div className="flex justify-center px-6 my-12">
 				<div className="w-full xl:w-3/4 lg:w-11/12 flex">
@@ -52,9 +52,10 @@ const ResetPassword = () => {
 					></div>
 					<div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
 						<div className="px-8 mb-4 text-center">
-							<h3 className="pt-4 mb-2 text-2xl">Forgot Your Password?</h3>
-							<p className="mb-4 text-sm text-gray-700">
-								We get it, stuff happens. Just enter your email address below and we'll send you a
+						<h2 className="mt-2 text-3xl font-bold text-gray-900">
+								Forgot Your Password?</h2>
+								<p className="mt-2 text-sm text-gray-600">			
+													We get it, stuff happens. Just enter your email address below and we'll send you a
 								link to reset your password!
 							</p>
 						</div>
