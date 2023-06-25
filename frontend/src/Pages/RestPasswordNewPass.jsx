@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import signup from '../assets/img/signup.png';
 import Navbar from '../Components/Navbar';
-import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 
@@ -11,6 +11,7 @@ const ResetPassword = () => {
     const [confPassword, setConfPassword] = useState('');
 	const [passwordMatch, setPasswordMatch] = useState(true);
 	const [passwordError, setPasswordError] = useState('');
+	const navigate = useNavigate();
 
 
     const handlePassword = (e) => {
@@ -53,7 +54,7 @@ const ResetPassword = () => {
 			  // Handle the response data
 			  console.log(data);
               alert("Done");
-			  Navigate('/login')
+			  navigate('/login')
 			})
 			.catch((error) => {
 			  // Handle the error
