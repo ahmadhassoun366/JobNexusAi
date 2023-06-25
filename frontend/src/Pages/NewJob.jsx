@@ -15,8 +15,8 @@ const NewJob = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     let [title, setTitle] = useState("");
-    let [company, setCompany] = useState(7);           //change to the id of the 1st element in database
-    let [country, setCountry] = useState(3);           //change to the id of the 1st element in database
+    let [company, setCompany] = useState(1);           //change to the id of the 1st element in database
+    let [country, setCountry] = useState(1);           //change to the id of the 1st element in database
     let [type, setType] = useState(1);                 //change to the id of the 1st element in database
     let [locationType, setLocationType] = useState(1); //change to the id of the 1st element in database
     let [description, setDescription] = useState("");
