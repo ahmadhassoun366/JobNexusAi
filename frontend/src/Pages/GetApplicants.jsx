@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useContext } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-import Navbar from '../Components/Navbar';
+import Navbar from '../Components/RecruiterNav';
 import { FiDownload } from 'react-icons/fi';
 import { AuthContext } from '../Services/AuthContext';
 import Modal from '../Shared/Modal';
