@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Nav from "../Components/RecruiterNav";
 import Footer from "../Components/Footer";
 import axios from 'axios';
@@ -7,17 +7,16 @@ import { AuthContext } from '../Services/AuthContext';
 
 export default function RecruiterDashboard() {
     let [jobs, setJobs] = useState([]);
-    const {  isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext);
 
     const storedRecruiterID = localStorage.getItem('recruiterId');
     useEffect(() => {
-        //getJobs();
         if (isAuthenticated) {
-        axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
-            .then(response => setJobs(response.data))
-            .catch(error => console.error(error));
+            axios.get(`${process.env.REACT_APP_JOB_API_URL}/users/api/jobRecruiter/${storedRecruiterID}/`)
+                .then(response => setJobs(response.data))
+                .catch(error => console.error(error));
         }
-    }, [storedRecruiterID,isAuthenticated])
+    }, [storedRecruiterID, isAuthenticated])
 
     const deleteJob = async (job_id) => {
         await fetch(`${process.env.REACT_APP_JOB_API_URL}/users/api/delete_job/${job_id}/`, {
@@ -60,9 +59,11 @@ export default function RecruiterDashboard() {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                     {jobs.map((job) => (
                         <div key={job?.id} className="relative bg-white py-6 px-6 rounded-3xl w-80 my-4 shadow-xl">
-                            {/* warning in console if there's no image */}
-                            <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" alt="" />
-
+                            {job?.company.logo ? (
+                                <img src={`${process.env.REACT_APP_JOB_API_URL}/${job?.company.logo}`} className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" alt="" />
+                            ) : (
+                                <img src="" className="flex-shrink-0 object-cover rounded-full btn- w-12 h-12 mb-8" alt="" />
+                            )}
                             <div className="mt-8">
                                 <p className="text-xl font-semibold my-2">{job?.title}</p>
                                 <div className="flex space-x-2  font-bold">
@@ -80,7 +81,7 @@ export default function RecruiterDashboard() {
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
-                                        <p className="font-semibold text-base mb-2">{job.type.type}</p>
+                                        <p className="font-semibold text-base mb-2">{job?.type.type}</p>
 
                                     </div>
 
@@ -90,11 +91,11 @@ export default function RecruiterDashboard() {
                                 <div className="flex justify-between">
                                     <div className="my-2">
                                         <div className="flex flex-row space-x-2 justify-center items-center">
-                                            <p className="font-semibold text-base mb-2">Recruiter</p>
-                                            {/* warning in console if there's no image */}
-                                            <img src={`${process.env.REACT_APP_JOB_API_URL}/${job.recruiter.profilePicture}`}
-                                                className="w-8 h-8 rounded-full" alt="" />
-
+                                            {job?.deadline ? (
+                                                <p className="font-semibold text-base mb-2">Deadline: {job?.deadline}</p>
+                                            ) : (
+                                                <p className="font-semibold text-base mb-2">Deadline: N/A</p>
+                                            )}
                                         </div>
                                     </div>
 

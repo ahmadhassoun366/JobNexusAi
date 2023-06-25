@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import signup from '../assets/img/signup.png';
 import Navbar from '../Components/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 
@@ -53,6 +53,7 @@ const ResetPassword = () => {
 			  // Handle the response data
 			  console.log(data);
               alert("Done");
+			  Navigate('/login')
 			})
 			.catch((error) => {
 			  // Handle the error

@@ -28,10 +28,13 @@ const handleLogin = async (e) => {
     e.preventDefault();
     try {
       // Call your login function passing email and password
-      await login(email, password);
+		await login(email, password);
+	
+
     } catch (error) {
       setError('Invalid email or password'); // Set error message if login fails
     }
+
   };
 
   return (
