@@ -204,6 +204,7 @@ const Register = () => {
 										First Name
 									</label>
 									<input
+                  required
 										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 										type="text"
 										placeholder="First Name"
@@ -216,6 +217,7 @@ const Register = () => {
 										Last Name
 									</label>
 									<input
+                  required
 										className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 										type="text"
 										placeholder="Last Name"
@@ -230,6 +232,7 @@ const Register = () => {
 									Email
 								</label>
 								<input
+                required
 									className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 								
 									type="email"
@@ -242,6 +245,7 @@ const Register = () => {
               <div className="mb-4 md:mr-2 md:mb-0">
               <label className="block mb-2 text-sm font-bold text-gray-700" >Phone number</label>
                   <input
+                  required
                     value={phone}
                     onChange={handlePhoneChange}
                     type="text"
@@ -256,6 +260,7 @@ const Register = () => {
 										Password
 									</label>
 									<input
+                  required
 										className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 										type="password"
 										placeholder="******************"
@@ -268,6 +273,7 @@ const Register = () => {
 										Confirm Password
 									</label>
 									<input
+                  required
 										type="password"
 										placeholder="******************"
                     value={confirmPassword}

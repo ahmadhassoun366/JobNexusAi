@@ -1,10 +1,10 @@
 import React from 'react';
-import israa from '../assets/img/israa.jpeg';
+import israa from '../assets/img/israa.jpg';
 import team3 from '../assets/img/team3.jpg';
 import ahmad from '../assets/img/ahmad.png';
 import mohammad from '../assets/img/Mohammad_Omarieh.jpg'
 import samad from '../assets/img/samad.jpg';
-import { FaFacebookSquare, FaLinkedin } from 'react-icons/fa';
+import { FaFacebookSquare, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { BsTwitter, BsGoogle } from 'react-icons/bs';
 
 const Team = () => {
@@ -29,7 +29,7 @@ const Team = () => {
                 style={{ maxWidth: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Ahmad Hassoun</h5>
+                <h5 className="text-xl font-bold">Ahmad <br /> Hassoun</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   Team Lead
 
@@ -62,7 +62,7 @@ const Team = () => {
                 <h5 className="text-xl font-bold">Mohammad Omarieh</h5>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   Backend Lead
-                  <br/>
+                  <br />
                   Full Stack Developer
                 </p>
                 <div className="mt-6">
@@ -85,16 +85,22 @@ const Team = () => {
                 style={{ maxWidth: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Mhamad El Samad</h5>
+                <h5 className="text-xl font-bold">Mhamad <br /> El Samad</h5>
+                <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  Software Engineer
+                </p>
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   Full Stack Developer
                 </p>
                 <div className="mt-6">
-                  <button className="bg-red-600 text-white p-2 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-                    <BsGoogle size={20} />
+                  <button className="bg-pink-500 text-white p-2 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
+                    <FaLinkedin size={20} />
                   </button>
                   <button className="bg-blue-400 text-white rounded-full p-2 outline-none focus:outline-none mr-1 mb-1" type="button">
-                    <BsTwitter size={20} />
+                    <FaGithub size={20} />
+                  </button>
+                  <button className="bg-red-600 text-white p-2 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
+                    <BsGoogle size={20} />
                   </button>
                 </div>
               </div>
@@ -106,10 +112,11 @@ const Team = () => {
                 alt="..."
                 src={israa}
                 className="shadow-lg rounded-full h-32 w-36 bg-cover mx-auto"
-                style={{ maxWidth: "120px" }}
+                style={{ maxWidth: "120px", maxHeight: "120px" }}
               />
               <div className="pt-6 text-center">
-                <h5 className="text-xl font-bold">Israa Tartoussi</h5>
+                <h5 className="text-xl font-bold">Israa <br /> Tartoussi</h5>
+                <br />
                 <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   Full Stack Developer
                 </p>
