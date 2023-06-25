@@ -458,7 +458,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
     :return:
     """
     # send an e-mail to the user
-    confirm_url = "http://localhost:3000/resetNewPassword/"
+    confirm_url = "https://jobnexusai.navybits.com/resetNewPassword/"
     context = {
         'current_user': reset_password_token.user,
         # 'username': reset_password_token.user.username,
