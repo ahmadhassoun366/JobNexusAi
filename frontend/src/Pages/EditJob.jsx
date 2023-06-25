@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Navbar from '../Components/RecruiterNav'
 
 const EditJob = () => {
@@ -67,7 +67,7 @@ const EditJob = () => {
             .then(response => {
                 console.log('Updated successfully:', response.data);
                 alert("Updated Successfully!");
-                window.location.href = "http://localhost:3000/recruiter";
+                Navigate('/recruiter')
             })
             .catch(error => console.error(error));
     }
