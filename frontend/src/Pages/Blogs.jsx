@@ -36,7 +36,7 @@ const BlogList = () => {
           <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
           {blogs.map((blog) => (
             <div  key={blog.id} className="lg:flex">
-              <img className="object-cover w-full h-56 rounded-lg lg:w-64" src={`http://127.0.0.1:8000/${blog.image}`} alt="" />
+              <img className="object-cover w-full h-56 rounded-lg lg:w-64" src={`${process.env.REACT_APP_JOB_API_URL}/${blog.image}`} alt="" />
 
               <div className="flex flex-col justify-between py-6 lg:mx-6">
                 <Link className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
