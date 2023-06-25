@@ -157,9 +157,11 @@ class JobIdViewSet(APIView):
 # @permission_classes([IsAuthenticated])
 class JobRegisterCreateAPIView(APIView):
     def post(self, request):
-        deadline = datetime.strptime(request.data.get('deadline'), '%Y-%m-%d').date()
-        if deadline is None:
-            return Response({'message': 'not a date'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        if request.data.get('deadline') != "":
+            deadline = datetime.strptime(request.data.get('deadline'), '%Y-%m-%d').date()
+            if deadline is None:
+                return Response({'message': 'not a date'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        deadline = None
         request.data['deadline'] = deadline
         serializer = POSTJobSerializer(data=request.data)
         print(serializer)
@@ -318,12 +320,15 @@ class SeekerUpdateAPIView(APIView):
 
 class EditJob(APIView):
     def put(self, request, job_id):
-        deadline = datetime.strptime(request.data.get('deadline'), '%Y-%m-%d').date()
-        if deadline is None:
-            return Response({'message': 'not a date'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        if request.data.get('deadline') != "":
+            deadline = datetime.strptime(request.data.get('deadline'), '%Y-%m-%d').date()
+            if deadline is None:
+                return Response({'message': 'not a date'}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        deadline = None
         job = Job.objects.get(id=job_id)
         request.data['deadline'] = deadline
         serializer = POSTJobSerializer(job, data=request.data, partial=True)
+        print(serializer)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

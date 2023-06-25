@@ -167,13 +167,13 @@ const EditJob = () => {
                                 <input type="date" name="deadline" id="deadline" cols="76" rows="7" value={deadline} onChange={(event) => {
                                     let deadlineDate = event.target.value.toString();
                                     setDeadline(deadlineDate);
-                                    // if (deadlineDate) {
-                                    //     setDeadline(deadlineDate);
-                                    // } else {
-                                    //     setDeadline("")
-                                    // }
-                                    // console.log(deadlineDate);
-                                    // console.log(deadline);
+                                    if (deadlineDate !== "") {
+                                        console.log("not empty string")
+                                        setDeadline(deadlineDate);
+                                    } else {
+                                        console.log("empty string")
+                                        setDeadline(null)
+                                    }
                                 }}></input>
                             </div>
 
