@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Navbar from '../Components/RecruiterNav'
 import Modal from '../Shared/Modal'
-import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 
 const NewJob = () => {
     let recruiter = Number(localStorage.getItem('recruiterId'));
-
+    const navigate = useNavigate();
     let [companies, setCompanies] = useState([]);
     let [countries, setCountries] = useState([]);
     let [types, setTypes] = useState([]);
@@ -57,7 +57,7 @@ const NewJob = () => {
             .then(response => {
                 console.log('Added successfully:', response.data);
                 setIsModalOpen(true);
-                Navigate('/recruiter')
+                navigate('/recruiter')
             })
             .catch(error => console.error(error))
     }
