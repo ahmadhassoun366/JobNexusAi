@@ -26,7 +26,7 @@ function App() {
           <Route path="blogs" element={<Blogs />} />
           <Route path="/recruiter" element={<RecruiterDashboard />} />
           {/* <Route path="*" element={<NoPage />} /> */}
-
+          
           <Route path="/login" element={<Login />} />
           <Route path="/resetPassword" element={<ResetPasswordEmail />} />
           <Route path="/resetNewPassword/:token" element={<ResetPasswordNewPass />} />
@@ -40,7 +40,6 @@ function App() {
           <Route path="/editRecruiterProfile/:id" element={<RecruiterProfile />} />
           <Route path="/seeker/:id" element={<ViewProfile />} />
         </Routes>
-        
       </AuthProvider>
     </BrowserRouter>
   );

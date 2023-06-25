@@ -4,6 +4,7 @@ import Navbar from '../Components/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Services/AuthContext';
 import loginImg from "../assets/img/login.jpeg";
+import Modal from '../Shared/Modal'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,10 +29,14 @@ const handleLogin = async (e) => {
     e.preventDefault();
     try {
       // Call your login function passing email and password
-      await login(email, password);
+      if(Modal){
+		await login(email, password);
+	  }
+
     } catch (error) {
       setError('Invalid email or password'); // Set error message if login fails
     }
+
   };
 
   return (

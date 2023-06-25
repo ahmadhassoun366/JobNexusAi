@@ -65,7 +65,6 @@ const AuthProvider = ({ children }) => {
         setSeekerId(seekerResponse.data[0].id)
         localStorage.setItem('seekerId', seekerResponse.data[0].id);
         navigate('/jobs');
-
       }
 
       else {
