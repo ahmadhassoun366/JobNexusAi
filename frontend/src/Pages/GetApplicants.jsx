@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Navbar from '../Components/RecruiterNav';
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const GetApplicants = () => {
   const { id } = useParams();
   const [applicants, setApplicants] = useState([]);
-  const {  isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const [seekerId, setSeekerId] = useState('');
   const [lastName, setLastName] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -38,7 +38,7 @@ const GetApplicants = () => {
     e.preventDefault();
 
     setSeekerId(e);
-    
+
     let job = id;
     console.log("job: ", id);
     let seeker = seekerId;
@@ -110,18 +110,18 @@ const GetApplicants = () => {
           <p className="text-gray-600 mb-8">We have carefully selected the following candidates based on their qualifications and experience:</p>
 
           <ul className="space-y-6">
-            {applicants.map(applicant => (
-              <li key={applicant?.id}>   
+            {applicants.slice(0, 5).map(applicant => (
+              <li key={applicant?.id}>
                 <div className="flex items-center">
-                <Link to={`/seeker/${applicant?.seeker.user.id}`}>
-                  <img className="w-12 h-12 rounded-full" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
+                  <Link to={`/seeker/${applicant?.seeker.user.id}`}>
+                    <img className="w-12 h-12 rounded-full" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
                   </Link>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-800">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.email}</p>
                     <p className="text-sm text-gray-600">{applicant?.seeker.user.phone}</p>
                   </div>
-                  
+
                   <div className="ml-auto text-base  text-gray-900 font-bold">
                     <span className="text-gray-500 font-semibold">CV AI Score:</span> {applicant?.cv_similarity}%
                   </div>
@@ -143,7 +143,7 @@ const GetApplicants = () => {
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">All Applicants</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {isAuthenticated && applicants.map(applicant => (
+            {isAuthenticated && applicants.map(applicant => (
               <div key={applicant?.id} className="bg-white p-6 rounded-lg shadow-md">
                 <img className="w-12 h-12 rounded-full mx-auto mb-4" src={`${process.env.REACT_APP_JOB_API_URL}/${applicant?.seeker.profilePicture}`} alt="Profile" />
                 <h3 className="text-lg font-semibold text-gray-800 text-center">{applicant?.seeker.user.first_name} {applicant?.seeker.user.last_name}</h3>
@@ -154,14 +154,14 @@ const GetApplicants = () => {
                   <button onClick={() => {
                     download(applicant.cv);
                   }} className="px-7 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">CV</button>
-                                <FiDownload size={25} color="black"/>
+                  <FiDownload size={25} color="black" />
 
                 </div>
                 <div className="flex justify-center items-center mt-4 space-x-4">
                   <button onClick={() => {
                     download(applicant.coverLetter);
                   }} className="px-5 py-2 bg-blue-500 text-white text-sm font-semibold rounded hover:bg-blue-600">CoverLetter</button>
-                                    <FiDownload size={25} color="black"/>
+                  <FiDownload size={25} color="black" />
 
                 </div>
                 {/* ended here */}
