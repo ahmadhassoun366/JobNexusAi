@@ -79,10 +79,10 @@ const GetApplicants = () => {
   };
 
   const compare = (a, b) => {
-    if (a?.similarity < b?.similarity) {
+    if (a?.cv_similarity < b?.cv_similarity) {
       return 1;
     }
-    if (a?.similarity > b?.similarity) {
+    if (a?.cv_similarity > b?.cv_similarity) {
       return -1;
     }
     return 0;
