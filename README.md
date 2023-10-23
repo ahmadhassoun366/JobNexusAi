@@ -5,4 +5,7 @@ Our recruitment system harnesses the power of Artificial Intelligence to streaml
 Intelligent candidate screening
 Efficient job matching
 Automated interview scheduling
-![Uploading image.png…]()
+
+
+
+![Alt text](https://raw.githubusercontent.com/ahmadhassoun366/JobNexusAi/main/images/landing.png)
